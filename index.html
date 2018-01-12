@@ -7,10 +7,25 @@
         <link rel="stylesheet" href="./style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        <script scr="./request.js"></script>
     </head>
     <body>
-        <h1 class="header">
-            Our Website!
-        </h1>
+        <div id="bg">
+            <h1 class="header">
+                Our Website!
+            </h1>
+            <h2 class="subheader">
+                Comments...
+            </h2>
+            <div class="comments">
+                Loading comments... Please wait...
+            </div>
+            <div class="ui input" id="submit">
+                <input type="text" placeholder="Submit a comment...">
+                <button class="ui primary button" onsubmit="submitComment()">
+                    Submit
+                </button>
+            </div>
+        </div>
     </body>
 </html>
