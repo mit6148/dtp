@@ -6,18 +6,18 @@ Features to implement:
 
 Create Events
 
-*Add Events
+* Add Events
 
-*Log in (by OpenID/MIT Kerberos)
+* Log in (by OpenID/MIT Kerberos)
 
-*Google Calendar Integration
+* Google Calendar Integration
 
-*Invite to event by email
+* Invite to event by email
 
-*Make Event Public/Private
+* Make Event Public/Private
 
-*Search events by course, assignment, location, and time
+* Search events by course, assignment, location, and time
 
-*Create and edit Profile
+* Create and edit Profile
 
-*Email Notifications when events that fit certain criteria are created
+* Email Notifications when events that fit certain criteria are created
