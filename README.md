@@ -1,10 +1,10 @@
 # jaeyoung-jung-alvinzhu33-nikhilreddy6547-2018
 
-Project: dtp (down to pset)
+## Project: dtp (down to pset)
 
-Features to implement:
+#### Features to implement:
 
-Create Events
+* Create Events
 
 * Add Events
 
