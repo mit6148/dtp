@@ -2,13 +2,13 @@
 
 ## Project: dtp (down to pset)
 
-#### Features to implement:
+#### Features to implement (Features targeted for MVP are in bold):
 
-* Create Events
+* **Create Events**
 
-* Add Events
+* **Add Events**
 
-* Log in (by OpenID/MIT Kerberos)
+* **Log in (by OpenID/MIT Kerberos)**
 
 * Google Calendar Integration
 
@@ -16,7 +16,7 @@
 
 * Make Event Public/Private
 
-* Search events by course, assignment, location, and time
+* **Search events by course, assignment, location, and time**
 
 * Create and edit Profile
 
