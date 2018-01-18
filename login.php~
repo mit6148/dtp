@@ -18,7 +18,7 @@
 		curl_setopt($curl_req,CURLOPT_POSTFIELDS,http_build_query($post));
 		$response=curl_exec($curl_req);
 		curl_close($curl_req);
-		//var_dump($response);
+		var_dump($response);
 	}else{
 		echo "state variables do not match";
 	}
