@@ -1,0 +1,3 @@
+AuthType SSLCert
+Require user jungj nreddy alvinzhu
+ErrorDocument 401 /__scripts/needcerts
