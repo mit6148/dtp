@@ -10,7 +10,8 @@
 		"code"=>$_GET["code"],
 		"redirect_uri"=>"https://jungj.scripts.mit.edu:444/dtp/login.php"
 	);
-	if ($_COOKIE["state"] == $_GET["state"]) {
+	$state = explode(".", $_COOKIE["state"]);
+	if ($state[0] == $_GET["state"]) {
 		$ch = curl_init("https://oidc.mit.edu/token");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_USERPWD,CLIENT_ID . ":" . CLIENT_SECRET);
@@ -49,7 +50,11 @@
 						$userinfo["sub"],
 						time()+60*60*24*30
 					));
-					setcookie("login_uid", $login_uid, time()+60*60*24*90);
+					if ($state[1] == "persistent"){
+						setcookie("login_uid", $login_uid, time()+60*60*24*90);
+					} else {
+						setcookie("login_uid", $login_uid);
+					}
 					header("Location: https://jungj.scripts.mit.edu:444/dtp/");
 				} else {
 					echo "Not all scopes enabled";

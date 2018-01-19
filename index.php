@@ -45,12 +45,29 @@
 					</button>
 				</a>
 			<?php } else { ?>
-				<a href="https://oidc.mit.edu/authorize?<?php
-				echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state."&nonce=".$nonce;?>">
+				<input type="checkbox" id="persistent" value="Stay logged in" checked>
+				<a id="login" href="#">
 					<button class="ui primary button log">
 						Log In
 					</button>
 				</a>
+				<script>
+					const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+					const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+					const loginButton = document.getElementById("login");
+					const persistentCheckbox = document.getElementById("persistent");
+					function updatePersistent() {
+						let href;
+						if (persistentCheckbox.checked == true) {
+							href = hrefPart1 + ".persistent" + hrefPart2;
+						} else {
+							href = hrefPart1 + hrefPart2;
+						}
+						loginButton.href = href;
+					}
+					persistentCheckbox.onclick = updatePersistent;
+					updatePersistent();
+				</script>
 			<?php } ?>
 
 		</div>
