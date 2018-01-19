@@ -3,7 +3,6 @@
 	include("user.php");
 	include("event.php");
 
-	echo $_COOKIE["login_uid"];
 	if (!is_valid_login_uid($db, $_COOKIE["login_uid"])) {
 		die("Not logged in");
 	}
