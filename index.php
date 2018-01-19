@@ -1,10 +1,27 @@
 <?php
 	include("oidc.php");
 	include("db.php");
-	$state=md5(rand());
-	$nonce=md5(rand());
-	setcookie("state",$state);
-	setcookie("nonce",$nonce);
+	
+	$logged_in=false;
+	if(isset($_COOKIE["session_uid"])){
+		$stmt=$db->prepare("SELECT * FROM sessions WHERE uid = ?");
+		$stmt->bindParam(1,$uid);
+		$uid=$_COOKIE["session_uid"];
+		$stmt->execute();
+		$result=$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		if($stmt->rowCount()>0){
+			$session=$stmt->fetch();
+			if($session["expire_time"]>time()){
+				$logged_in=true;
+			}
+		}
+	}
+	if(!logged_in){
+		$state=md5(rand());
+		$nonce=md5(rand());
+		setcookie("state",$state);
+		setcookie("nonce",$nonce);
+	}
 ?>
 <!doctype html>
 <html>
@@ -12,23 +29,7 @@
 	<title>Log in</title>
 </head>
 <body>
-	<?php
-		$logged_in=false;
-		if(isset($_COOKIE["session_uid"])){
-			$stmt=$db->prepare("SELECT * FROM sessions WHERE uid = ?");
-			$stmt->bindParam(1,$uid);
-			$uid=$_COOKIE["session_uid"];
-			$stmt->execute();
-			$result=$stmt->setFetchMode(PDO::FETCH_ASSOC);
-			if($stmt->rowCount()>0){
-				$session=$stmt->fetch();
-				if($session["expire_time"]>time()){
-					$logged_in=true;
-				}
-			}
-		}
 
-	?>
 	<?php
 		if($logged_in){ ?>
 		<h1>You are logged in!</h1>
