@@ -39,16 +39,16 @@
 		 	</a>
 		  <div class="right menu">
 		  	<?php if ($logged_in) { ?>
-					<a class="item" href="logout.php">
-						Logout
-					</a>
-				<?php } else { ?>
-					<a class="item">
+		  		<a class="item">
 				    My Events
 				 	</a>
 				 	<a class="item">
 				    My Classes
 				 	</a>
+					<a class="item" href="logout.php">
+						Logout
+					</a>
+				<?php } else { ?>
 					<div class="ui item">
 						<div class="ui checked checkbox">
 						 	<input type="checkbox" id="persistent" checked="">
@@ -79,13 +79,6 @@
 				<?php } ?>
 		  </div>
 		</div>
-		<?php
-			if ($logged_in) {
-				$sub = get_sub($db, $_COOKIE["login_uid"]);
-				$userdata = get_userdata($db, $sub);
-				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
-			} 
-		?>
 		<div class="ui container">
 			<h1 class="ui center header">
 				Are you down to pset?
