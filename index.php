@@ -26,48 +26,51 @@
 </head>
 <body>
 	<div id="bg">
-		<div class="ui sidebar vertical menu visible" id="navbar">
+		<!--<div class="ui sidebar vertical menu visible" id="navbar">
 		    <h1 class="item">
 		    	Dumb &amp; Lonely
 		    </h1>
 			<a class="item">Lobby</a>
 			<a class="item">Profile</a>
-	    </div>
+	    </div>-->
 		<div class="container">
-			<div class="right">
-				<?php
-				if ($logged_in) { ?>
-					<a href="logout.php">
-						<button class="ui primary button log">
-							Log Out
-						</button>
-					</a>
-				<?php } else { ?>
-					<input type="checkbox" id="persistent" value="Stay logged in" checked>
-					<a id="login" href="#">
-						<button class="ui primary button log">
-							Log In
-						</button>
-					</a>
-					<script>
-						const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
-						const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-						const loginButton = $("#login");
-						const persistentCheckbox = $("#persistent");
-						function updatePersistent() {
-							let href;
-							if (persistentCheckbox.prop("checked")) {
-								href = hrefPart1 + ".persistent" + hrefPart2;
-							} else {
-								href = hrefPart1 + hrefPart2;
+			<div>
+				<div class="right">
+					<?php if ($logged_in) { ?>
+						<a href="logout.php">
+							<button class="ui primary button log">
+								Log Out
+							</button>
+						</a>
+					<?php } else { ?>
+						<input type="checkbox" id="persistent" value="Stay logged in" checked>
+						<a id="login" href="#">
+							<button class="ui primary button log">
+								Log In
+							</button>
+						</a>
+						<script>
+							const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+							const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+							const loginButton = $("#login");
+							const persistentCheckbox = $("#persistent");
+							function updatePersistent() {
+								let href;
+								if (persistentCheckbox.prop("checked")) {
+									href = hrefPart1 + ".persistent" + hrefPart2;
+								} else {
+									href = hrefPart1 + hrefPart2;
+								}
+								loginButton.attr("href", href);
 							}
-							loginButton.attr("href", href);
-						}
-						persistentCheckbox.on("click", updatePersistent);
-						updatePersistent();
-					</script>
-				<?php } ?>
-
+							persistentCheckbox.on("click", updatePersistent);
+							updatePersistent();
+						</script>
+					<?php } ?>
+				</div>
+				<h1>
+					Are you down to pset?
+				</h1>
 			</div>
 			<?php
 				if ($logged_in) {
@@ -76,12 +79,11 @@
 					echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
 				} 
 			?>
-			<h1>Welcome to Dumb &amp; Lonely</h1>
 			<!--<h3>OpenID Test</h3>
 			<p>Click "Test" on the side</p>-->
 			<div class="ui icon input fluid" id="start">
-	  		<input placeholder="Search for classes or assignments..." type="text">
-	  		<i class="search icon"></i>
+		  		<input placeholder="Search for classes or assignments..." type="text">
+		  		<i class="search icon"></i>
 			</div>
 		</div>
 	</div>
