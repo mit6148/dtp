@@ -33,64 +33,51 @@
 			<a class="item">Lobby</a>
 			<a class="item">Profile</a>
 	    </div>-->
-		<div>
-			<div class="ui secondary pointing menu">
-			 	<a class="item active">
-			    Home
-			 	</a>
-			 	<a class="item">
-			    Events
-			 	</a>
-			 	<a class="item">
-			    Classes
-			 	</a>
-			  <div class="right menu">
-			  	<?php if ($logged_in) { ?>
-						<a class="item" href="logout.php">
-							Logout
-						</a>
-					<?php } else { ?>
-						<div class="ui item">
-							<div class="ui checked checkbox">
-							 	<input type="checkbox" id="persistent" checked="">
-							 	<label>Stay logged in</label>
-							</div>
+		<div class="ui big secondary menu">
+		 	<a class="item active" href="index.php">
+		    Home
+		 	</a>
+		  <div class="right menu">
+		  	<?php if ($logged_in) { ?>
+					<a class="item" href="logout.php">
+						Logout
+					</a>
+				<?php } else { ?>
+					<a class="item">
+				    My Events
+				 	</a>
+				 	<a class="item">
+				    My Classes
+				 	</a>
+					<div class="ui item">
+						<div class="ui checked checkbox">
+						 	<input type="checkbox" id="persistent" checked="">
+						 	<label>Stay logged in</label>
 						</div>
-						<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-						<a class="item" id="login" href="#">
-							Log In
-						</a>
-						<script>
-							const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
-							const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-							const loginButton = $("#login");
-							const persistentCheckbox = $("#persistent");
-							function updatePersistent() {
-								let href;
-								if (persistentCheckbox.prop("checked")) {
-									href = hrefPart1 + ".persistent" + hrefPart2;
-								} else {
-									href = hrefPart1 + hrefPart2;
-								}
-								loginButton.attr("href", href);
-							};
-							persistentCheckbox.on("click", updatePersistent);
-							updatePersistent();
-						</script>
-					<?php } ?>
-			  </div>
-			</div>
-			<div class="ui segment">
-			 	<p></p>
-			</div>
-			<h1 class="ui header">
-				Are you down to pset?
-			</h1>
-			<div class="ui divider">
-			</div>
-			<h2 class="ui header">
-				Find pset buddies for all of your classes!
-			</h2>
+					</div>
+					<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
+					<a class="item" id="login" href="#">
+						Log In
+					</a>
+					<script>
+						const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+						const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+						const loginButton = $("#login");
+						const persistentCheckbox = $("#persistent");
+						function updatePersistent() {
+							let href;
+							if (persistentCheckbox.prop("checked")) {
+								href = hrefPart1 + ".persistent" + hrefPart2;
+							} else {
+								href = hrefPart1 + hrefPart2;
+							}
+							loginButton.attr("href", href);
+						};
+						persistentCheckbox.on("click", updatePersistent);
+						updatePersistent();
+					</script>
+				<?php } ?>
+		  </div>
 		</div>
 		<?php
 			if ($logged_in) {
@@ -99,11 +86,19 @@
 				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
 			} 
 		?>
-		<!--<h3>OpenID Test</h3>
-		<p>Click "Test" on the side</p>-->
-		<div class="ui icon input fluid" id="start">
-	  	<input placeholder="Search for classes or assignments..." type="text">
-	  	<i class="search icon"></i>
+		<div class="ui container">
+			<h1 class="ui center header">
+				Are you down to pset?
+			</h1>
+			<h2 class="ui center header">
+				Find pset buddies for all of your classes!
+			</h2>
+			<!--<h3>OpenID Test</h3>
+			<p>Click "Test" on the side</p>-->
+			<div class="ui center icon input fluid">
+		  	<input placeholder="Search for classes or assignments..." type="text">
+		  	<i class="search icon"></i>
+			</div>
 		</div>
 	</div>
 </body>
