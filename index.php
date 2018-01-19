@@ -23,21 +23,53 @@
 		setcookie("nonce",$nonce);
 	}
 ?>
+
 <!doctype html>
 <html>
 <head>
-	<title>Log in</title>
+	<title>dtp</title>
+	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+	<script src="semantic/dist/semantic.min.js"></script>
 </head>
 <body>
+	<div class="ui sidebar vertical menu visible" id="navbar">
+    <h1 class="item">
+      Dumb &amp; Lonely
+    </h1>
+		<a class="item">Lobby</a>
+		<a class="item">Profile</a>
+  </div>
+	<div class="container">
+		<div class="right">
+			<?php
+			if ($logged_in) { ?>
+				<a href="logout.php">
+					<button class="ui primary button log">
+						Log Out
+					</button>
+				</a>
+			<?php } else { ?>
+				<a href="https://oidc.mit.edu/authorize?<?php
+				echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state."&nonce=".$nonce;?>">
+					<button class="ui primary button log">
+						Log In
+					</button>
+				</a>
+			<?php } ?>
 
-	<?php
-		if ($logged_in) { ?>
-		<h1>You are logged in!</h1>
-		<a href="logout.php">Click here to log out</a>
-	<?php } else { ?>
-		<h1>Log in</h1>
-	<a href="https://oidc.mit.edu/authorize?<?php
-		echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state."&nonce=".$nonce;
-	?>">Click here to login</a><?php } ?>
+		</div>
+		<h1>Welcome to Dumb &amp; Lonely</h1>
+		<!--<h3>OpenID Test</h3>
+		<p>Click "Test" on the side</p>-->
+		<div class="ui icon input fluid" id="start">
+  		<input placeholder="Search for classes or users" type="text">
+  		<i class="search icon"></i>
+		</div>
+	</div>
 </body>
 </html>
