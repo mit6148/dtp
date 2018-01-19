@@ -111,5 +111,48 @@
 			</form>
 		</div>
 	</div>
+	<div class="ui modal">
+		<i class="close icon"></i>
+		<div class="header">
+	    Add A New Event
+	  </div>
+	  <form class="ui form">
+			<div class="field">
+				<div class="three fields">
+					<div class="field">
+						<input placeholder="Search by Course" type="text" name="search[course]">
+					</div>
+					<div class="field">
+			  		<input placeholder="Assignment" type="text" name="search[assignment]">
+			  	</div>
+			  	<div class="field">
+			  		<input placeholder="Location" type="text" name="search[location]">
+			  	</div>
+				</div>
+			</div>
+			<div class="field">
+				<div class="three fields">
+					<div class="field">
+						<input placeholder="Date" type="date" name="search[date]">
+					</div>
+					<div class="field">
+				  	<input placeholder="Start Time" type="time" name="search[start_time]">
+				  </div>
+				  <div class="field">
+				  	<input placeholder="End Time" type="time" name="search[end_time]">
+				  </div>
+				</div>
+			</div>
+		</form>
+		<div class="actions">
+	    <div class="ui black deny button">
+	      Cancel
+	    </div>
+	    <div class="ui positive right labeled icon button">
+	      Add My Event
+	      <i class="checkmark icon"></i>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>
