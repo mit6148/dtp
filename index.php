@@ -71,20 +71,18 @@
 			<?php } ?>
 	  </div>
 	</div>
-	<div class="ui middle aligned grid">
-		<div class="ui center aligned container">
-			<h1 class="ui header">
-				Are you down to pset?
-			</h1>
-			<h2 class="ui header">
-				Find pset buddies for all of your classes!
-			</h2>
-			<!--<h3>OpenID Test</h3>
-			<p>Click "Test" on the side</p>-->
-			<div class="ui icon input fluid">
-		  	<input placeholder="Search for classes or assignments..." type="text">
-		  	<i class="search icon"></i>
-			</div>
+	<div class="ui center aligned container" id="containter">
+		<h1 class="ui header">
+			Are you down to pset?
+		</h1>
+		<h2 class="ui header">
+			Find pset buddies for all of your classes!
+		</h2>
+		<!--<h3>OpenID Test</h3>
+		<p>Click "Test" on the side</p>-->
+		<div class="ui icon input fluid">
+	  	<input placeholder="Search for classes or assignments..." type="text">
+	  	<i class="search icon"></i>
 		</div>
 	</div>
 </body>
