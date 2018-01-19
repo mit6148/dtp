@@ -79,7 +79,7 @@
 				<?php } ?>
 		  </div>
 		</div>
-		<div class="ui center aligned container">
+		<div class="ui center aligned middle aligned container">
 			<h1 class="ui header">
 				Are you down to pset?
 			</h1>
