@@ -1,6 +1,7 @@
 <?php
 	include("oidc.php");
 	include("db.php");
+	include("user.php");
 	
 	$logged_in=false;
 	if (isset($_COOKIE["session_uid"])) {
@@ -17,10 +18,10 @@
 		}
 	}
 	if (!$logged_in) {
-		$state=md5(rand());
-		$nonce=md5(rand());
-		setcookie("state",$state);
-		setcookie("nonce",$nonce);
+		$state = md5(rand());
+		$nonce = md5(rand());
+		setcookie("state", $state);
+		setcookie("nonce", $nonce);
 	}
 ?>
 
@@ -65,14 +66,16 @@
 		</div>
 		<?php
 			if ($logged_in) {
-			$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
-			$stmt->execute(array($_COOKIE["session_uid"]));
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			//echo $row["sub"];
-			$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
-			$userdata_stmt->execute(array($row["sub"]));
-			$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);
-			echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";} 
+				/*$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
+				$stmt->execute(array($_COOKIE["session_uid"]));
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);*/
+				//echo $row["sub"];
+				$sub = get_sub($_COOKIE["session_uid"]);
+				$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
+				$userdata_stmt->execute(array($sub));
+				$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);
+				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
+			} 
 		?>
 		<h1>Welcome to Dumb &amp; Lonely</h1>
 		<!--<h3>OpenID Test</h3>
