@@ -16,7 +16,7 @@
 			}
 		}
 	}
-	if (!logged_in) {
+	if (!$logged_in) {
 		$state=md5(rand());
 		$nonce=md5(rand());
 		setcookie("state",$state);
