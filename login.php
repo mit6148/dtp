@@ -26,31 +26,30 @@
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".$response["access_token"]));
 				$userinfo = curl_exec($ch);
 				$userinfo = json_decode($userinfo,true);
-			    $stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
-		    	$stmt->bindParam(1, $userinfo["sub"]);
-			    $stmt->execute();
+				$stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
+				$stmt->bindParam(1, $userinfo["sub"]);
+				$stmt->execute();
 				$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-			    if (isset($userinfo["preferred_username"]) && isset($userinfo["email"])) {
-			    	if ($stmt->rowCount() == 0) {
-				    	$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name) VALUES (?, ?, ?, ?, ?)");
-				    	$insert_stmt->execute(array(
-				    		$userinfo["sub"],
-				    		$userinfo["preferred_username"],
-				    		$userinfo["email"],
-				    		$userinfo["name"],
-						$userinfo["given_name"]
-				    	));
-			    	}
-			    	$user = $stmt->fetch();
-			    	$session_stmt = $db->prepare("INSERT INTO sessions (uid, sub, expire_time) VALUES (?, ?, ?)");
-			    	$session_uid = md5($userinfo["sub"] . (string)(time()*rand()));
-			    	$session_stmt->execute(array(
-			    		$session_uid,
-			    		$userinfo["sub"],
-			    		time()+60*60*24*30
-			    	));
-			    	setcookie("session_uid", $session_uid, time()+60*60*24*90);
-			    	header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+				if (isset($userinfo["preferred_username"]) && isset($userinfo["email"])) {
+					if ($stmt->rowCount() == 0) {
+						$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name) VALUES (?, ?, ?, ?, ?)");
+						$insert_stmt->execute(array(
+							$userinfo["sub"],
+							$userinfo["preferred_username"],
+							$userinfo["email"],
+							$userinfo["name"],
+							$userinfo["given_name"]
+						));
+					}
+					$session_stmt = $db->prepare("INSERT INTO sessions (uid, sub, expire_time) VALUES (?, ?, ?)");
+					$session_uid = md5($userinfo["sub"] . (string)(time()*rand()));
+					$session_stmt->execute(array(
+						$session_uid,
+						$userinfo["sub"],
+						time()+60*60*24*30
+					));
+					setcookie("session_uid", $session_uid, time()+60*60*24*90);
+					header("Location: https://jungj.scripts.mit.edu:444/dtp/");
 				} else {
 					echo "Not all scopes enabled";
 				}
