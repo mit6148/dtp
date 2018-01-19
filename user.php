@@ -5,7 +5,7 @@
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $row["sub"];
 	}
-	function get_userdata($db, $sub) {
+	function get_userinfo($db, $sub) {
 		$stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
 		$stmt->execute(array($sub));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
