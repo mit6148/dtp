@@ -25,9 +25,9 @@
 	<script src="semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-	<div id="bg">
-		<div class="ui big secondary menu">
-		 	<a class="item active" href="index.php">
+	<div class="ui middle aligned" id="bg">
+		<div class="ui top aligned big secondary menu">
+		 	<a class="item" href="index.php">
 		    Home
 		 	</a>
 		  <div class="right menu">
