@@ -11,6 +11,6 @@
 		$end_available_time,
 		$start_available_time
 	));
-	$results = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($results);
 ?>
