@@ -82,8 +82,14 @@
 			<!--<h3>OpenID Test</h3>
 			<p>Click "Test" on the side</p>-->
 			<div class="ui icon input fluid">
-		  	<input placeholder="Search for classes or assignments..." type="text">
-		  	<i class="search icon"></i>
+		  	<input placeholder="Search by Course" type="text">
+		  	<input placeholder="Assignment" type="text">
+		  	<input placeholder="Location" type="text">
+			</div>
+			<div class="ui icon input fluid">
+		  	<input placeholder="Date" type="text">
+		  	<input placeholder="Start Time" type="time">
+		  	<input placeholder="End Time" type="time">
 			</div>
 		</div>
 	</div>
