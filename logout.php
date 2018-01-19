@@ -8,6 +8,7 @@
 		$stmt->execute();
 	}
 	$db->query("DELETE FROM `logins` WHERE expire_time < UNIX_TIMESTAMP()");
+	unset($_COOKIE["login_uid"]);
 	setcookie("login_uid", "", time()-3600);
 	header("Location: https://jungj.scripts.mit.edu:444/dtp/");
 ?>
