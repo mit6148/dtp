@@ -33,21 +33,32 @@
 			<a class="item">Lobby</a>
 			<a class="item">Profile</a>
 	    </div>-->
-		<div class="container">
-			<div>
-				<div class="right">
-					<?php if ($logged_in) { ?>
-						<a href="logout.php">
-							<button class="ui primary button log">
-								Log Out
-							</button>
+		<div>
+			<div class="ui secondary pointing menu">
+			 	<a class="item active">
+			    Home
+			 	</a>
+			 	<a class="item">
+			    Events
+			 	</a>
+			 	<a class="item">
+			    Classes
+			 	</a>
+			  <div class="right menu">
+			  	<?php if ($logged_in) { ?>
+						<a class="item" href="logout.php">
+							Logout
 						</a>
 					<?php } else { ?>
-						<input type="checkbox" id="persistent" value="Stay logged in" checked>
-						<a id="login" href="#">
-							<button class="ui primary button log">
-								Log In
-							</button>
+						<div class="ui item">
+							<div class="ui checked checkbox">
+							 	<input type="checkbox" id="persistent" checked="">
+							 	<label>Stay logged in</label>
+							</div>
+						</div>
+						<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
+						<a class="item" id="login" href="#">
+							Log In
 						</a>
 						<script>
 							const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
@@ -62,29 +73,37 @@
 									href = hrefPart1 + hrefPart2;
 								}
 								loginButton.attr("href", href);
-							}
+							};
 							persistentCheckbox.on("click", updatePersistent);
 							updatePersistent();
 						</script>
 					<?php } ?>
-				</div>
-				<h1>
-					Are you down to pset?
-				</h1>
+			  </div>
 			</div>
-			<?php
-				if ($logged_in) {
-					$sub = get_sub($db, $_COOKIE["login_uid"]);
-					$userdata = get_userdata($db, $sub);
-					echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
-				} 
-			?>
-			<!--<h3>OpenID Test</h3>
-			<p>Click "Test" on the side</p>-->
-			<div class="ui icon input fluid" id="start">
-		  		<input placeholder="Search for classes or assignments..." type="text">
-		  		<i class="search icon"></i>
+			<div class="ui segment">
+			 	<p></p>
 			</div>
+			<h1 class="ui header">
+				Are you down to pset?
+			</h1>
+			<div class="ui divider">
+			</div>
+			<h2 class="ui header">
+				Find pset buddies for all of your classes!
+			</h2>
+		</div>
+		<?php
+			if ($logged_in) {
+				$sub = get_sub($db, $_COOKIE["login_uid"]);
+				$userdata = get_userdata($db, $sub);
+				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
+			} 
+		?>
+		<!--<h3>OpenID Test</h3>
+		<p>Click "Test" on the side</p>-->
+		<div class="ui icon input fluid" id="start">
+	  	<input placeholder="Search for classes or assignments..." type="text">
+	  	<i class="search icon"></i>
 		</div>
 	</div>
 </body>
