@@ -2,7 +2,7 @@
 	include("oidc.php");
 	include("db.php");
 	include("user.php");
-	
+
 	$logged_in=false;
 	if (isset($_COOKIE["session_uid"])) {
 		$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
@@ -70,10 +70,11 @@
 				$stmt->execute(array($_COOKIE["session_uid"]));
 				$row = $stmt->fetch(PDO::FETCH_ASSOC);*/
 				//echo $row["sub"];
-				$sub = get_sub($_COOKIE["session_uid"]);
-				$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
+				$sub = get_sub($db, $_COOKIE["session_uid"]);
+				/*$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
 				$userdata_stmt->execute(array($sub));
-				$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);
+				$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);*/
+				$userdata = get_userdata($db, $sub);
 				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
 			} 
 		?>
