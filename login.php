@@ -1,6 +1,7 @@
 <?php
 	include("oidc.php");
 	include("db.php");
+	
 	if (!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))) {
 		echo("cookies not set");
 	}
@@ -42,7 +43,7 @@
 						));
 					}
 					$session_stmt = $db->prepare("INSERT INTO sessions (uid, sub, expire_time) VALUES (?, ?, ?)");
-					$session_uid = md5($userinfo["sub"] . (string)(time()*rand()));
+					$session_uid = md5($userinfo["sub"] . (string) (time()) . (string) (rand()));
 					$session_stmt->execute(array(
 						$session_uid,
 						$userinfo["sub"],

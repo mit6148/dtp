@@ -1,5 +1,6 @@
 <?php
 	include("db.php");
+	
 	if (isset($_COOKIE["session_uid"])) {
 		$stmt = $db->prepare("DELETE FROM sessions WHERE uid = ?");
 		$stmt->bindParam(1, $uid);

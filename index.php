@@ -82,7 +82,7 @@
 		<!--<h3>OpenID Test</h3>
 		<p>Click "Test" on the side</p>-->
 		<div class="ui icon input fluid" id="start">
-  		<input placeholder="Search for classes or users" type="text">
+  		<input placeholder="Search for classes or assignments..." type="text">
   		<i class="search icon"></i>
 		</div>
 	</div>
