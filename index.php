@@ -25,54 +25,54 @@
 	<script src="semantic/dist/semantic.min.js"></script>
 </head>
 <body>
-	<div class="ui middle aligned" id="bg">
-		<div class="ui top aligned big secondary menu">
-		 	<a class="item" href="index.php">
-		    Home
-		 	</a>
-		  <div class="right menu">
-		  	<?php if ($logged_in) { ?>
-		  		<a class="item">
-				    My Events
-				 	</a>
-				 	<a class="item">
-				    My Classes
-				 	</a>
-					<a class="item" href="logout.php">
-						Logout
-					</a>
-				<?php } else { ?>
-					<div class="ui item">
-						<div class="ui checked checkbox">
-						 	<input type="checkbox" id="persistent" checked="">
-						 	<label>Stay logged in</label>
-						</div>
+	<div class="ui big secondary menu">
+	 	<a class="item" href="index.php">
+	    Home
+	 	</a>
+	  <div class="right menu">
+	  	<?php if ($logged_in) { ?>
+	  		<a class="item">
+			    My Events
+			 	</a>
+			 	<a class="item">
+			    My Classes
+			 	</a>
+				<a class="item" href="logout.php">
+					Logout
+				</a>
+			<?php } else { ?>
+				<div class="ui item">
+					<div class="ui checked checkbox">
+					 	<input type="checkbox" id="persistent" checked="">
+					 	<label>Stay logged in</label>
 					</div>
-					<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-					<a class="item" id="login" href="#">
-						Log In
-					</a>
-					<script>
-						const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
-						const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-						const loginButton = $("#login");
-						const persistentCheckbox = $("#persistent");
-						function updatePersistent() {
-							let href;
-							if (persistentCheckbox.prop("checked")) {
-								href = hrefPart1 + ".persistent" + hrefPart2;
-							} else {
-								href = hrefPart1 + hrefPart2;
-							}
-							loginButton.attr("href", href);
-						};
-						persistentCheckbox.on("click", updatePersistent);
-						updatePersistent();
-					</script>
-				<?php } ?>
-		  </div>
-		</div>
-		<div class="ui center aligned middle container">
+				</div>
+				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
+				<a class="item" id="login" href="#">
+					Log In
+				</a>
+				<script>
+					const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+					const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+					const loginButton = $("#login");
+					const persistentCheckbox = $("#persistent");
+					function updatePersistent() {
+						let href;
+						if (persistentCheckbox.prop("checked")) {
+							href = hrefPart1 + ".persistent" + hrefPart2;
+						} else {
+							href = hrefPart1 + hrefPart2;
+						}
+						loginButton.attr("href", href);
+					};
+					persistentCheckbox.on("click", updatePersistent);
+					updatePersistent();
+				</script>
+			<?php } ?>
+	  </div>
+	</div>
+	<div class="ui middle aligned grid">
+		<div class="ui center aligned container">
 			<h1 class="ui header">
 				Are you down to pset?
 			</h1>
