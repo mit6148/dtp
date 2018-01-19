@@ -5,4 +5,9 @@
 .container {
   padding-left: 300px;
   padding-top: 50px;
+  padding-right: 150px;
+}
+
+#start {
+  margin-top: 20%;
 }

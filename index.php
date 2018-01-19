@@ -29,8 +29,12 @@
   </div>
 	<div class="container">
 		<h1>Welcome to Dumb & Lonely</h1>
-		<h3>OpenID Test</h3>
-		<p>Click "Test" on the side</p>
+		<!--<h3>OpenID Test</h3>
+		<p>Click "Test" on the side</p>-->
+		<div class="ui icon input fluid" id="start">
+  		<input placeholder="Search for classes or users" type="text">
+  		<i class="search icon"></i>
+		</div>
 	</div>
 </body>
 </html>
