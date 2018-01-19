@@ -27,12 +27,12 @@
 <body>
 	<div id="bg">
 		<!--<div class="ui sidebar vertical menu visible" id="navbar">
-		    <h1 class="item">
-		    	Dumb &amp; Lonely
-		    </h1>
+		   <h1 class="item">
+		    Dumb &amp; Lonely
+		   </h1>
 			<a class="item">Lobby</a>
 			<a class="item">Profile</a>
-	    </div>-->
+	   </div>-->
 		<div class="ui big secondary menu">
 		 	<a class="item active" href="index.php">
 		    Home
@@ -79,16 +79,16 @@
 				<?php } ?>
 		  </div>
 		</div>
-		<div class="ui container">
-			<h1 class="ui center header">
+		<div class="ui center aligned container">
+			<h1 class="ui header">
 				Are you down to pset?
 			</h1>
-			<h2 class="ui center header">
+			<h2 class="ui header">
 				Find pset buddies for all of your classes!
 			</h2>
 			<!--<h3>OpenID Test</h3>
 			<p>Click "Test" on the side</p>-->
-			<div class="ui center icon input fluid">
+			<div class="ui icon input fluid">
 		  	<input placeholder="Search for classes or assignments..." type="text">
 		  	<i class="search icon"></i>
 			</div>
