@@ -33,6 +33,7 @@
 	<?php
 		if($logged_in){ ?>
 		<h1>You are logged in!</h1>
+		<a href="logout.php">Click here to log out</a>
 	<?php }else{ ?>
 		<h1>Log in</h1>
 	<a href="https://oidc.mit.edu/authorize?<?php
