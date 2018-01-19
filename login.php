@@ -1,48 +1,65 @@
 <?php
 	include("oidc.php");
-	/*if($_COOKIE["state"]==$_GET["state"]){
-		echo "state variables match. ok<br>";
-		echo "auth code: ".$_GET["code"];
-	}else{
-		echo "state variables do not match";
-	}*/
-	$session=unserialize($_COOKIE["session"]);
-	$post=array(
+	include("db.php");
+	if(!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))){
+		header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+	}
+	$post_array=array(
 		"grant_type"=>"authorization_code",
 		"code"=>$_GET["code"],
 		"redirect_uri"=>"https://jungj.scripts.mit.edu:444/dtp/login.php"
 	);
-	if($session["state"]==$_GET["state"]){
-		echo "<p>Step 1 OK</p>";
-		$curl_req=curl_init("https://oidc.mit.edu/token");
-		curl_setopt($curl_req,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($curl_req,CURLOPT_USERPWD,CLIENT_ID.":".CLIENT_SECRET);
-		curl_setopt($curl_req,CURLOPT_POSTFIELDS,http_build_query($post));
-		$response=curl_exec($curl_req);
-		$response=json_decode($response,true);
-		curl_close($curl_req);
-		echo "<p>Step 2 OK</p>";
+	if($_COOKIE["state"]==$_GET["state"]){
+		$ch=curl_init("https://oidc.mit.edu/token");
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		curl_setopt($ch,CURLOPT_USERPWD,CLIENT_ID.":".CLIENT_SECRET);
+		curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($post_array));
+		$response=curl_exec($ch);
+		$response=json_decode($response);
+		curl_close($ch);
 		if(isset($response["id_token"])){
-			$id_token=explode(".",$response["id_token"]);
+			$id_token=$response["id_token"];
 			$id_token_body=json_decode(base64_decode($id_token[1]),true);
-			if($session["nonce"]==$id_token_body["nonce"]){
-				$curl_req=curl_init("https://oidc.mit.edu/userinfo");
-				curl_setopt($curl_req,CURLOPT_RETURNTRANSFER,true);
-				//echo $response["access_token"];
-				curl_setopt($curl_req,CURLOPT_HTTPHEADER,array("Authorization: Bearer ".$response["access_token"]));
+			if($_COOKIE["nonce"]==$id_token_body["nonce"]){
+				$ch=curl_init("https://oidc.mit.edu/userinfo");
+				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+				curl_setopt($ch,CURLOPT_HTTPHEADER,array("Authorization: Bearer ".$response["access_token"]));
 				$userinfo=curl_exec($curl_req);
-				$userinfo=json_decode($userinfo,true);
-				curl_close($curl_req);
-				echo "User info:<br>";
-				var_dump($userinfo);
+
+			    $stmt=$db->prepare("SELECT * FROM users WHERE sub = ?");
+		    	$stmt->bindParam(1,$userinfo["sub"]);
+			    $stmt->execute();
+				$result=$stmt->setFetchMode(PDO::FETCH_ASSOC);
+				//$user=$stmt->fetch();
+			    if(isset($userinfo["preferred_username"]) && isset($userinfo["email"])){
+			    	if($stmt->rowCount()==0){
+				    	$insert_stmt=$db->prepare("INSERT INTO users (sub, kerberos, email, name) VALUES (?, ?, ?, ?)");
+				    	$insert_stmt->execute(array(
+				    		$userinfo["sub"],
+				    		$userinfo["preferred_username"],
+				    		$userinfo["email"],
+				    		$userinfo["name"]
+				    	));
+			    	}
+			    	$user=$stmt->fetch();
+			    	$session_stmt=$db->prepare("INSERT INTO sessions (uid, sub, expire_time VALUES (?, ?, ?)");
+			    	$session_uid=md5($userinfo["sub"].(string)(time()*rand()));
+			    	$session_stmt->execute(array(
+			    		$session_uid,
+			    		$userinfo["sub"],
+			    		time()+60*60*24*30
+			    	));
+			    	setcookie("session_uid",$session_uid,time()+60*60*24*90);
+			    	header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+				}else{
+					echo "Not all scopes enabled";
+				}
 			}else{
-				echo "<p>nonce variables do not match</p>";
+				echo "nonce does not match";
 			}
 		}else{
-			print "<p>No ID token</p>";
+			echo "No id_token";
 		}
 	}else{
-		echo "state variables do not match";
+		echo "state does not match";
 	}
-
-?>
