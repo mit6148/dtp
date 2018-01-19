@@ -63,6 +63,17 @@
 			<?php } ?>
 
 		</div>
+		<?php
+			if ($logged_in) {
+			$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
+			$stmt->execute(array($_COOKIE["session_uid"]));
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			//echo $row["sub"];
+			$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
+			$userdata_stmt->execute(array($row["sub"]));
+			$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);
+			echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";} 
+		?>
 		<h1>Welcome to Dumb &amp; Lonely</h1>
 		<!--<h3>OpenID Test</h3>
 		<p>Click "Test" on the side</p>-->

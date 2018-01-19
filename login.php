@@ -32,12 +32,13 @@
 				$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 			    if (isset($userinfo["preferred_username"]) && isset($userinfo["email"])) {
 			    	if ($stmt->rowCount() == 0) {
-				    	$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name) VALUES (?, ?, ?, ?)");
+				    	$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name) VALUES (?, ?, ?, ?, ?)");
 				    	$insert_stmt->execute(array(
 				    		$userinfo["sub"],
 				    		$userinfo["preferred_username"],
 				    		$userinfo["email"],
-				    		$userinfo["name"]
+				    		$userinfo["name"],
+						$userinfo["given_name"]
 				    	));
 			    	}
 			    	$user = $stmt->fetch();
