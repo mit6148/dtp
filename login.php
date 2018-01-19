@@ -2,7 +2,8 @@
 	include("oidc.php");
 	include("db.php");
 	if(!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))){
-		header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+		echo("cookies not set");
+//		header("Location: https://jungj.scripts.mit.edu:444/dtp/");
 	}
 	$post_array=array(
 		"grant_type"=>"authorization_code",
@@ -15,16 +16,19 @@
 		curl_setopt($ch,CURLOPT_USERPWD,CLIENT_ID.":".CLIENT_SECRET);
 		curl_setopt($ch,CURLOPT_POSTFIELDS,http_build_query($post_array));
 		$response=curl_exec($ch);
-		$response=json_decode($response);
+		$response=json_decode($response,true);
 		curl_close($ch);
+//		var_dump($response);
 		if(isset($response["id_token"])){
-			$id_token=$response["id_token"];
+			$id_token=explode(".",$response["id_token"]);
 			$id_token_body=json_decode(base64_decode($id_token[1]),true);
+//			var_dump($id_token_body);
 			if($_COOKIE["nonce"]==$id_token_body["nonce"]){
 				$ch=curl_init("https://oidc.mit.edu/userinfo");
 				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 				curl_setopt($ch,CURLOPT_HTTPHEADER,array("Authorization: Bearer ".$response["access_token"]));
-				$userinfo=curl_exec($curl_req);
+				$userinfo=curl_exec($ch);
+				$userinfo=json_decode($userinfo,true);
 
 			    $stmt=$db->prepare("SELECT * FROM users WHERE sub = ?");
 		    	$stmt->bindParam(1,$userinfo["sub"]);
@@ -42,7 +46,7 @@
 				    	));
 			    	}
 			    	$user=$stmt->fetch();
-			    	$session_stmt=$db->prepare("INSERT INTO sessions (uid, sub, expire_time VALUES (?, ?, ?)");
+			    	$session_stmt=$db->prepare("INSERT INTO sessions (uid, sub, expire_time) VALUES (?, ?, ?)");
 			    	$session_uid=md5($userinfo["sub"].(string)(time()*rand()));
 			    	$session_stmt->execute(array(
 			    		$session_uid,
