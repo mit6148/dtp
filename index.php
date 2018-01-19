@@ -26,13 +26,6 @@
 </head>
 <body>
 	<div id="bg">
-		<!--<div class="ui sidebar vertical menu visible" id="navbar">
-		   <h1 class="item">
-		    Dumb &amp; Lonely
-		   </h1>
-			<a class="item">Lobby</a>
-			<a class="item">Profile</a>
-	   </div>-->
 		<div class="ui big secondary menu">
 		 	<a class="item active" href="index.php">
 		    Home
@@ -79,7 +72,7 @@
 				<?php } ?>
 		  </div>
 		</div>
-		<div class="ui center aligned middle aligned container">
+		<div class="ui center aligned middle container">
 			<h1 class="ui header">
 				Are you down to pset?
 			</h1>
