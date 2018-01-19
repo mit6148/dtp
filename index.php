@@ -42,7 +42,7 @@
 				</a>
 			<?php } else { ?>
 				<div class="ui item">
-					<div class="ui checked checkbox">
+					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
 					 	<label>Stay logged in</label>
 					</div>
@@ -81,16 +81,34 @@
 			</h2>
 			<!--<h3>OpenID Test</h3>
 			<p>Click "Test" on the side</p>-->
-			<div class="ui icon input fluid">
-		  	<input placeholder="Search by Course" type="text">
-		  	<input placeholder="Assignment" type="text">
-		  	<input placeholder="Location" type="text">
-			</div>
-			<div class="ui icon input fluid">
-		  	<input placeholder="Date" type="text">
-		  	<input placeholder="Start Time" type="time">
-		  	<input placeholder="End Time" type="time">
-			</div>
+			<form class="ui form">
+				<div class="field">
+					<div class="three fields">
+						<div class="field">
+							<input placeholder="Search by Course" type="text" name="search[course]">
+						</div>
+						<div class="field">
+				  		<input placeholder="Assignment" type="text" name="search[assignment]">
+				  	</div>
+				  	<div class="field">
+				  		<input placeholder="Location" type="text" name="search[location]">
+				  	</div>
+					</div>
+				</div>
+				<div class="field">
+					<div class="three fields">
+						<div class="field">
+							<input placeholder="Date" type="date" name="search[date]">
+						</div>
+						<div class="field">
+					  	<input placeholder="Start Time" type="time" name="search[start_time]">
+					  </div>
+					  <div class="field">
+					  	<input placeholder="End Time" type="time" name="search[end_time]">
+					  </div>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>
