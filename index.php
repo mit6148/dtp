@@ -4,15 +4,15 @@
 	include("user.php");
 
 	$logged_in=false;
-	if (isset($_COOKIE["session_uid"])) {
-		$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
+	if (isset($_COOKIE["login_uid"])) {
+		$stmt = $db->prepare("SELECT * FROM logins WHERE uid = ?");
 		$stmt->bindParam(1,$uid);
-		$uid = $_COOKIE["session_uid"];
+		$uid = $_COOKIE["login_uid"];
 		$stmt->execute();
 		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 		if ($stmt->rowCount() > 0) {
-			$session = $stmt->fetch();
-			if($session["expire_time"] > time()) {
+			$login = $stmt->fetch();
+			if($login["expire_time"] > time()) {
 				$logged_in = true;
 			}
 		}
@@ -66,14 +66,7 @@
 		</div>
 		<?php
 			if ($logged_in) {
-				/*$stmt = $db->prepare("SELECT * FROM sessions WHERE uid = ?");
-				$stmt->execute(array($_COOKIE["session_uid"]));
-				$row = $stmt->fetch(PDO::FETCH_ASSOC);*/
-				//echo $row["sub"];
-				$sub = get_sub($db, $_COOKIE["session_uid"]);
-				/*$userdata_stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
-				$userdata_stmt->execute(array($sub));
-				$userdata = $userdata_stmt->fetch(PDO::FETCH_ASSOC);*/
+				$sub = get_sub($db, $_COOKIE["login_uid"]);
 				$userdata = get_userdata($db, $sub);
 				echo "<h1>Hi, " . $userdata["given_name"] . ".</h1>\n";
 			} 

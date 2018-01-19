@@ -1,7 +1,7 @@
 <?php
-	function get_sub($db, $session_uid) {
-		$stmt = $db->prepare("SELECT sub FROM sessions WHERE uid = ?");
-		$stmt->execute(array($session_uid));
+	function get_sub($db, $login_uid) {
+		$stmt = $db->prepare("SELECT sub FROM logins WHERE uid = ?");
+		$stmt->execute(array($login_uid));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $row["sub"];
 	}
