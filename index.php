@@ -5,17 +5,7 @@
 
 	$logged_in=false;
 	if (isset($_COOKIE["login_uid"])) {
-		$stmt = $db->prepare("SELECT * FROM logins WHERE uid = ?");
-		$stmt->bindParam(1,$uid);
-		$uid = $_COOKIE["login_uid"];
-		$stmt->execute();
-		$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-		if ($stmt->rowCount() > 0) {
-			$login = $stmt->fetch();
-			if($login["expire_time"] > time()) {
-				$logged_in = true;
-			}
-		}
+		$logged_in = is_valid_login_uid($db, $_COOKIE["login_uid"]);
 	}
 	if (!$logged_in) {
 		$state = md5(rand());
