@@ -24,6 +24,16 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="semantic/dist/semantic.min.js"></script>
+	<script>
+		<?php
+			if ($logged_in) {
+				echo "logged_in = true;";
+				echo "sub = " . get_sub($db, $_COOKIE["login_uid"]) . ";";
+			} else {
+				echo "logged_in = false;";
+			}
+		?>
+	</script>
 </head>
 <body>
 	<div class="ui big secondary menu">
