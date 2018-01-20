@@ -55,9 +55,9 @@
 				"%" . $_GET["course"] . "%",
 				"%" . $_GET["assignment"] . "%",
 				"%" . $_GET["location"] . "%",
-				$opposite_offset,
+				$timezone_offset,
 				$end_available_modulo,
-				$opposite_offset,
+				$timezone_offset,
 				$start_available_modulo
 			));
 		} else {
