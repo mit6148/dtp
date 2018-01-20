@@ -11,11 +11,24 @@ if (!String.prototype.format) {
 }
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
+    let available_date;
+    if ($('[name="search_start_time"]').val() && parseInt($('[name="search_start_time"]').val().substr(2)) < 4) {
+        if ($('[name="search_date"]').val()) {
+            let s = $('[name="search_date"]').val().split("-");
+            let d = new Date(parseInt(s[0]), parseInt(s[1]), parseInt(s[2]));
+            d = d.setDate(d.getDate() + 1);
+            month = "0" + d.getMonth();
+            day = "0" + d.getDate();
+            available_date = d.getFullYear() + "-" + month.substr(-2) + "-" + day.substr(-2);
+            console.log("Old: " + $('[name="search_date"]').val());
+            console.log("New: " + available_date);
+        }
+    }
     let data = {
         course : $('[name="search_course"]').val(),
         assignment : $('[name="search_assignment"]').val(),
         location : $('[name="search_location"]').val(),
-        available_date : $('[name="search_date"]').val(),
+        available_date : available_date || $('[name="search_date"]').val(),
         start_available_time : $('[name="search_start_time"]').val(),
         end_available_time : $('[name="search_end_time"]').val(),
     };
@@ -37,13 +50,28 @@ $('#searchEvents').submit(function(event) {
     .fail(console.log)
     ;
 });
-function parseEvent(event) {
-    let start_date = new Date(event.start_time * 1000);
-    let hours = "0" + start_date.getHours();
+function parseTime(date) {
+    let hours;
+    let day;
+    if (date.getHours() === 0) {
+        hours = 12;
+        day = " am";
+    } else if (date.getHours() == 12) {
+        hours = 12;
+        day = " pm";
+    } else if (date.getHours() > 12) {
+        hours = date.getHours() - 12;
+        day = " pm";
+    } else {
+        hours = date.getHours();
+        day = " am";
+    }
     let minutes = "0" + start_date.getMinutes();
-
-    let end_date = new Date(event.end_time * 1000);
-    let end_hours = "0" + end_date.getHours();
-    let end_minutes = "0" + end_date.getMinutes();
-    $('#events').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(event.course, event.assignment, event.location, start_date.toDateString(), hours.substr(-2) + ":" + minutes.substr(-2), end_hours.substr(-2) + ":" + end_minutes.substr(-2)));
+    return hours + ":" + minutes.substr(-2) + day;
+}
+function parseEvent(event) {
+    let start_time = new Date(event.start_time * 1000);
+    let start_date = (new Date(event.start_time * 1000 - 3600 * 1000 * 4)).toDateString().split(" ");
+    let end_time = new Date(event.end_time * 1000);
+    $('#events').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time)));
 }

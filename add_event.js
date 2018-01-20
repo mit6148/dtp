@@ -6,11 +6,24 @@ $('#submitEvent').submit(addEventForm);
 
 function addEventForm(event) {
     event.preventDefault();
+    let available_date;
+    if ($('[name="submit_start_time"]').val() && parseInt($('[name="submit_start_time"]').val().substr(2)) < 4) {
+        if ($('[name="submit_date"]').val()) {
+            let s = $('[name="submit_date"]').val().split("-");
+            let d = new Date(parseInt(s[0]), parseInt(s[1]), parseInt(s[2]));
+            d = d.setDate(d.getDate() + 1);
+            month = "0" + d.getMonth();
+            day = "0" + d.getDate();
+            available_date = d.getFullYear() + "-" + month.substr(-2) + "-" + day.substr(-2);
+            console.log("Old: " + $('[name="submit_date"]').val());
+            console.log("New: " + available_date);
+        }
+    }
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
         'location' : $('input[name=submit_location]').val(),
-        'date' : $('input[name=submit_date]').val(),
+        'date' : available_date || $('input[name=submit_date]').val(),
         'start_time' : $('input[name=submit_start_time]').val(),
         'end_time' : $('input[name=submit_end_time]').val(),
     };
@@ -21,7 +34,7 @@ function addEventForm(event) {
         cache: false,
     })
     .done(function() {
-        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event received!</div><p>Other students will be able to see and add your event.</p></div>');
+        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
@@ -31,7 +44,7 @@ function addEventForm(event) {
         });
     })
     .fail(function() {
-        $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
+        $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
