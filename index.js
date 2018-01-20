@@ -1,6 +1,16 @@
 $('#addEvent').on('click', function() {
     $('.ui.modal').modal('show');
 });
+$('#submitEvent').form({
+    fields: {
+        submit_course: 'empty',
+        submit_assignment: 'empty',
+        submit_location: 'empty',
+        submit_date: 'empty',
+        submit_start_time: 'empty',
+        submit_end_time: 'empty'
+    }
+});
 $('#submitEvent').submit(function(event) {
     //console.log("hello");
     var input = {
