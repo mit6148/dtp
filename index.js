@@ -10,7 +10,14 @@ $('#submitEvent').form({
         submit_end_time: 'empty'
     }
 );
-$('#submitEvent').form('onSuccess', function() {
+$('#submitEvent').submit(function(event) {
+    console.log("hello");
+    $('#submitEvent').form('validate form');
+    event.preventDefault();
+});
+$('#submitEvent').onFailure = console.log;
+
+$('#submitEvent').onSuccess = function() {
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
@@ -47,10 +54,9 @@ $('#submitEvent').form('onSuccess', function() {
     });
     $('.ui.modal').modal('hide');
     $('#submitEvent').form('reset');
-});
-$('#submitEvent').submit(function(event) {
-    //console.log("hello");
-
+};
+/*$('#submitEvent').submit(function(event) {
+    console.log("hello");
     $('#submitEvent').form('validate form');
     event.preventDefault();
-});
+});*/
