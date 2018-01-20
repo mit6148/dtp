@@ -204,5 +204,6 @@
 	<script src="add_event.js"></script>
 	<script src="get_events.js"></script>
 	<script src="signup_event.js"></script>
+	<script src="cancel_signup_event.js"></script>
 </body>
 </html>
