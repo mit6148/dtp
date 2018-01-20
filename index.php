@@ -132,7 +132,7 @@
 		<div class="ui center aligned header">
 	    Add A New Event
 	  </div>
-	  <form class="ui form">
+	  <form class="ui form" id="submitEvent">
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
@@ -160,15 +160,20 @@
 				</div>
 			</div>
 			<div class="actions">
-				<div class="ui positive right floated right labeled icon button">
+				<button class="ui positive right floated right labeled icon button" type=submit>
 		      Add My Event
 		      <i class="checkmark icon"></i>
-		    </div>
+		    </button>
 		    <div class="ui black right floated deny button">
 		      Cancel
 		    </div>
 		  </div>
 		</form>
+		<script>
+			$('submitEvent').on('submit', function() {
+				//to be filled
+			});
+		</script>
 	</div>
 </body>
 </html>
