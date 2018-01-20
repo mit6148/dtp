@@ -133,23 +133,23 @@
 						<input placeholder="Course" type="text" name="submit_course" required>
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="submit_assignment">
+			  		<input placeholder="Assignment" type="text" name="submit_assignment" required>
 			  	</div>
 			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="submit_location">
+			  		<input placeholder="Location" type="text" name="submit_location" required>
 			  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="submit_date">
+						<input placeholder="Date" type="date" name="submit_date" required>
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="submit_start_time">
+				  	<input placeholder="Start Time" type="time" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="submit_end_time">
+				  	<input placeholder="End Time" type="time" name="submit_end_time" required>
 				  </div>
 				</div>
 			</div>

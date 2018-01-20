@@ -1,29 +1,10 @@
 $('#addEvent').on('click', function() {
     $('.ui.modal').modal('show');
 });
-$('#submitEvent').form({
-        submit_course: 'empty',
-        submit_assignment: 'empty',
-        submit_location: 'empty',
-        submit_date: 'empty',
-        submit_start_time: 'empty',
-        submit_end_time: 'empty'
-    },
-    {
-        onSuccess: addEventFormSuccess,
-        onFailure: console.log
-    }
-);
-/*$('#submitEvent').submit(function(event) {
-    event.preventDefault();
-    console.log("hello");
-    $('#submitEvent').form('validate form');
 
-});*/
+$('#submitEvent').submit(addEventForm);
 
-function addEventFormSuccess(event, fields) {
-    event.preventDefault();
-    console.log(fields);
+function addEventForm(event) {
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
