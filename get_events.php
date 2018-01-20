@@ -39,14 +39,14 @@
 			if (exists($_GET["start_available_time"])) {
 				$start_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["start_available_time"]);
 				$start_available_modulo = date_timestamp_get($start_available_datetime_modulo) + $timezone_offset;
-				echo $start_available_modulo;
+				//echo $start_available_modulo;
 			} else {
 				$start_available_modulo = 0;
 			}
 			if (exists($_GET["end_available_time"])) {
 				$end_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["end_available_time"]);
 				$end_available_modulo = date_timestamp_get($end_available_datetime_modulo) + $timezone_offset;
-				echo $end_available_modulo;
+				//echo $end_available_modulo;
 			} else {
 				$end_available_datetime_modulo = 86399;
 			}
