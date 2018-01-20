@@ -12,11 +12,11 @@ if (!String.prototype.format) {
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
     let available_date;
-    if ($('[name="search_start_time"]').val() && parseInt($('[name="search_start_time"]').val().substr(2)) < 4) {
+    if ($('[name="search_start_time"]').val() && parseInt($('[name="search_start_time"]').val().substr(0, 2)) < 4) {
         if ($('[name="search_date"]').val()) {
             let s = $('[name="search_date"]').val().split("-");
             let d = new Date(parseInt(s[0]), parseInt(s[1]), parseInt(s[2]));
-            d = d.setDate(d.getDate() + 1);
+            d = new Date(d.setDate(d.getDate() + 1));
             month = "0" + d.getMonth();
             day = "0" + d.getDate();
             available_date = d.getFullYear() + "-" + month.substr(-2) + "-" + day.substr(-2);
@@ -73,5 +73,5 @@ function parseEvent(event) {
     let start_time = new Date(event.start_time * 1000);
     let start_date = (new Date(event.start_time * 1000 - 3600 * 1000 * 4)).toDateString().split(" ");
     let end_time = new Date(event.end_time * 1000);
-    $('#events').append(('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td>' + ((logged_in) ? '<td>{7}</td>' : '') + '</tr>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), '<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>', 'Add event'));
+    $('#events').append(('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td>' + ((logged_in) ? '<td>{7}</td>' : '') + '</tr>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), '<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>', '<button class="ui blue right labeled icon submit button">Add My Event<i class="add icon"></i></button>'));
 }
