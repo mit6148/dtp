@@ -171,5 +171,6 @@
 	<div class="ui center aligned container" id="messages">
 	</div>
 	<script src="add_event.js"></script>
+	<script src="get_events.js"></script>
 </body>
 </html>
