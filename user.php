@@ -22,7 +22,7 @@
 		return false;
 	}
 	function get_user_owned_events($db, $sub) {
-		$stmt = $db->query("SELECT * FROM events WHERE owner_sub = ?");
+		$stmt = $db->prepare("SELECT * FROM events WHERE owner_sub = ?");
 		$stmt->execute(array(
 			$sub
 		));
@@ -30,14 +30,14 @@
 		return $results;
 	}
 	function get_user_signedup_events($db, $sub) {
-		$stmt = $db->query("SELECT event_id FROM signups WHERE user_sub = ?");
+		$stmt = $db->prepare("SELECT event_id FROM signups WHERE user_sub = ?");
 		$stmt->execute(array(
 			$sub
 		));
 		$event_ids = $stmt->fetchAll(PDO::FETCH_NUM);
 		$results = array();
 		foreach ($event_ids as $event_id) {
-			$results[] = get_eventinfo($event_id[0]);
+			$results[] = get_eventinfo($db, $event_id[0]);
 		}
 		return $results;
 	}
