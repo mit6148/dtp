@@ -1,5 +1,5 @@
-body { 
-  background: url(img/bg.jpg) no-repeat center center fixed; 
+body {
+  background: url(img/bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -9,7 +9,7 @@ body {
     height: 60%;
     display: flex;
     /* flex-direction: column;*/
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 ::-webkit-input-placeholder {
@@ -30,8 +30,12 @@ body {
 
 }
 
-:-ms-input-placeholder {  
+:-ms-input-placeholder {
 
    text-align: center;
 
+}
+
+.modal {
+  padding: 0 25px 15px 25px;
 }
