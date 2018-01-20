@@ -16,7 +16,7 @@ function addEventForm(event) {
     };
     $.ajax({
         type: 'POST',
-        url: 'addevent.php',
+        url: 'add_event.php',
         data : input,
         cache: false,
     })
@@ -43,3 +43,4 @@ function addEventForm(event) {
     $('.ui.modal').modal('hide');
     $('#submitEvent').form('clear');
 };
+
