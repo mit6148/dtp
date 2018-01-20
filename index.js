@@ -35,8 +35,8 @@ $('#submitEvent').submit(function(event) {
         data : input,
         cache: false,
     })
-    .done(function () {
-        $('#main').append('<div class="ui success message"><i class="close icon"></i><div class="header">Event received!</div><p>Other students will be see and add your event.</p></div>');
+    .done(function() {
+        $('#main').append('<div class="ui success message"><i class="close icon"></i><div class="header">Event received!</div><p>Other students will be able to see and add your event.</p></div>');
     })
     .fail(function() {
         $('#main').append('<div class="ui error message"><i class="close icon"></i><div class="header">Your event was not received.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
