@@ -191,6 +191,9 @@
 					<th>Start Time</th>
 					<th>End Time</th>
 					<th>Owner</th>
+					<?php if ($logged_in) {
+						echo "<th></th>";
+					}?>
 				</tr>
 			</thead>
 		  <tbody class="ui title" id="events">
