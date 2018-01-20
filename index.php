@@ -26,16 +26,22 @@
 </head>
 <body>
 	<div class="ui big secondary menu">
-	 	<a class="item" href="index.php">
+	 	<!--<a class="item" href="index.php">
 	    Home
+	 	</a>-->
+	 	<!--Todo feature<a class="item">
+	    My Classes
+	 	</a>-->
+	 	<a class="item">
+	    My Events
 	 	</a>
+	 	<div class="ui white button">
+		  Add My Event
+		</div>
 	  <div class="right menu">
 	  	<?php if ($logged_in) { ?>
-	  		<a class="item">
-			    My Events
-			 	</a>
-			 	<a class="item">
-			    My Classes
+	  		<a class="blue item">
+			    New Event
 			 	</a>
 				<a class="item" href="logout.php">
 					Logout
@@ -108,6 +114,7 @@
 					  </div>
 					</div>
 				</div>
+
 			</form>
 		</div>
 	</div>
@@ -143,16 +150,16 @@
 				  </div>
 				</div>
 			</div>
+			<div class="actions">
+		    <div class="ui black deny button">
+		      Cancel
+		    </div>
+		    <div class="ui positive right labeled icon button">
+		      Add My Event
+		      <i class="checkmark icon"></i>
+		    </div>
+		  </div>
 		</form>
-		<div class="actions">
-	    <div class="ui black deny button">
-	      Cancel
-	    </div>
-	    <div class="ui positive right labeled icon button">
-	      Add My Event
-	      <i class="checkmark icon"></i>
-	    </div>
-	  </div>
 	</div>
 </body>
 </html>
