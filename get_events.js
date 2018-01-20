@@ -9,6 +9,9 @@ if (!String.prototype.format) {
     });
   };
 }
+
+let events;
+
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
     let available_date;
@@ -46,6 +49,7 @@ $('#searchEvents').submit(function(event) {
         for (let i = 0; i < res.length; i++) {
             parseEvent(res[i]);
         }
+        events = res;
     })
     .fail(console.log)
     ;
@@ -74,4 +78,13 @@ function parseEvent(event) {
     let start_date = (new Date(event.start_time * 1000 - 3600 * 1000 * 4)).toDateString().split(" ");
     let end_time = new Date(event.end_time * 1000);
     $('#events').append(('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td>' + ((logged_in) ? '<td id="{7}"></td>' : '') + '</tr>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id));
+    eventButton(event.id, event.is_signed_up);
+}
+
+function eventButton(id, signed_up) {
+    if (signed_up) {
+        #('#' + id).html('<button class="ui black right labeled icon cancel button" id="cancel_' + event.id + '" onclick="cancel_signup(' + event.id + ')">Cancel<i class="remove icon"></i></button>');
+    } else {
+        #('#' + id).html('<button class="ui blue right labeled icon submit button" id="signup_' + event.id + '" onclick="signup(' + event.id + ')">Signup<i class="add icon"></i></button>');
+    }
 }

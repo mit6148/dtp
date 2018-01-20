@@ -15,6 +15,7 @@ function signup(event_id) {
               .transition('fade')
             ;
         });
+    eventButton(event_id,true);
 	})
 	.fail(function() {
         $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your request was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
