@@ -18,8 +18,8 @@
 <!doctype html>
 <html>
 <head>
-	<title>dtp</title>
 	<meta charset="utf-8">
+	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -102,12 +102,21 @@
 					<div class="three fields">
 						<div class="field">
 							<input placeholder="Search by Course" type="text" name="search[course]">
+							<div class="ui mini corner label">
+						    <i class="red asterisk icon"></i>
+						  </div>
 						</div>
 						<div class="field">
 				  		<input placeholder="Assignment" type="text" name="search[assignment]">
+				  		<div class="ui mini corner label">
+						    <i class="red asterisk icon"></i>
+						  </div>
 				  	</div>
 				  	<div class="field">
 				  		<input placeholder="Location" type="text" name="search[location]">
+				  		<div class="ui mini corner label">
+						    <i class="red asterisk icon"></i>
+						  </div>
 				  	</div>
 					</div>
 				</div>
@@ -115,9 +124,15 @@
 					<div class="three fields" class="center">
 						<div class="field">
 							<input placeholder="Date" type="date" name="search[date]">
+							<div class="ui mini corner label">
+						    <i class="red asterisk icon"></i>
+						  </div>
 						</div>
 						<div class="field">
 					  	<input placeholder="Start Time" type="time" name="search[start_time]">
+					  	<div class="ui mini corner label">
+						    <i class="red asterisk icon"></i>
+						  </div>
 					  </div>
 					  <div class="field">
 					  	<input placeholder="End Time" type="time" name="search[end_time]">
