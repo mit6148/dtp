@@ -31,12 +31,35 @@
 			$start_available_time
 		));
 	} else {
-		$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ?");
-		$stmt->execute(array(
-			"%" . $_GET["course"] . "%",
-			"%" . $_GET["assignment"] . "%",
-			"%" . $_GET["location"] . "%"
-		));
+		if (exists($_GET["start_available_time"]) || exists($_GET["end_available_time"])) {
+			if (exists($_GET["start_available_time"])) {
+				$start_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["start_available_time"]);
+				$start_available_modulo = date_timestamp_get($start_available_datetime_modulo);
+			} else {
+				$start_available_modulo = 0;
+			}
+			if (exists($_GET["end_available_time"])) {
+				$end_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["end_available_time"]);
+				$end_available_modulo = date_timestamp_get($end_available_datetime_modulo);
+			} else {
+				$end_available_datetime_modulo = 86399;
+			}
+			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND (start_time % 86400) > ? AND (end_time % 86400) < ?");
+			$stmt->execute(array(
+				"%" . $_GET["course"] . "%",
+				"%" . $_GET["assignment"] . "%",
+				"%" . $_GET["location"] . "%",
+				$start_available_modulo,
+				$end_available_modulo
+			));
+		} else {
+			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ?");
+			$stmt->execute(array(
+				"%" . $_GET["course"] . "%",
+				"%" . $_GET["assignment"] . "%",
+				"%" . $_GET["location"] . "%"
+			));
+		}
 	}
 	//$start_available_datetime = date_create_from_format("Y-m-d H:i", $_GET["available_date"] . " " . $_GET["start_available_time"]);
 	//$start_available_time = date_timestamp_get($start_available_datetime);
