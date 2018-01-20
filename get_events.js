@@ -15,7 +15,7 @@ $('#searchEvents').submit(function(event) {
         dataType : "json",
         url : "get_events.php",
     })
-    .success(console.log)
-    .failure(console.log)
+    .done(console.log)
+    .fail(console.log)
     ;
 });
