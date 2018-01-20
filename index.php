@@ -85,13 +85,11 @@
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
-				Are you down to pset?
+				dtp
 			</h1>
-			<h2 class="ui header">
-				Find pset buddies for all of your classes!
-			</h2>
-			<!--<h3>OpenID Test</h3>
-			<p>Click "Test" on the side</p>-->
+			<p class="ui">
+				Find a study group...
+			</p>
 			<form class="ui form">
 				<div class="field">
 					<div class="three fields">
@@ -166,6 +164,6 @@
 		  </div>
 		</form>
 	</div>
-	<script scr="index.js"></script>
+	<script src="index.js"></script>
 </body>
 </html>
