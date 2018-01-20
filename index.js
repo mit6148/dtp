@@ -21,11 +21,11 @@ $('#submitEvent').form({
         onFailure: console.log
     }
 );
-/*$('#submitEvent').submit(function(event) {
+$('#submitEvent').submit(function(event) {
     console.log("hello");
     $('#submitEvent').form('validate form');
     event.preventDefault();
-});*/
+});
 //$('#submitEvent').onFailure = console.log;
 
 function addEventFormSuccess() {
