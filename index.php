@@ -28,7 +28,7 @@
 		<?php
 			if ($logged_in) {
 				echo "logged_in = true;";
-				echo "sub = " . get_sub($db, $_COOKIE["login_uid"]) . ";";
+				echo "sub = '" . get_sub($db, $_COOKIE["login_uid"]) . "';";
 			} else {
 				echo "logged_in = false;";
 			}
