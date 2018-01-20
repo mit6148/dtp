@@ -16,6 +16,7 @@ $('#searchEvents').submit(function(event) {
         url : "get_events.php",
     })
     .done(function(res) {
+        console.log(res);
         for (let i = 0; i < res.length; i++) {
             parseEvent(res[i]);
         }
