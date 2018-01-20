@@ -94,26 +94,26 @@
 				<div class="field">
 					<div class="three fields">
 						<div class="field">
-							<input placeholder="Search by Course" type="text" name="search[course]">
+							<input placeholder="Search by Course" type="text" name="search_course">
 						</div>
 						<div class="field">
-				  		<input placeholder="Assignment" type="text" name="search[assignment]">
+				  		<input placeholder="Assignment" type="text" name="search_assignment">
 				  	</div>
 				  	<div class="field">
-				  		<input placeholder="Location" type="text" name="search[location]">
+				  		<input placeholder="Location" type="text" name="search_location">
 				  	</div>
 					</div>
 				</div>
 				<div class="field">
 					<div class="three fields" class="center">
 						<div class="field">
-							<input placeholder="Date" type="date" name="search[date]">
+							<input placeholder="Date" type="date" name="search_date">
 						</div>
 						<div class="field">
-					  	<input placeholder="Start Time" type="time" name="search[start_time]">
+					  	<input placeholder="Start Time" type="time" name="search_start_time">
 					  </div>
 					  <div class="field">
-					  	<input placeholder="End Time" type="time" name="search[end_time]">
+					  	<input placeholder="End Time" type="time" name="search_end_time">
 					  </div>
 					</div>
 				</div>
