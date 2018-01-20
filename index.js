@@ -5,6 +5,7 @@ $('#addEvent').on('click', function() {
 $('#submitEvent').submit(addEventForm);
 
 function addEventForm(event) {
+    event.preventDefault();
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
