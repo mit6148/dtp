@@ -4,6 +4,7 @@
 
 	include("db.php");
 	include("user.php");
+	include("event.php");
 
 	function exists($string) {
 		if (trim($string) == "") {
@@ -75,11 +76,17 @@
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+	$requester_sub = get_sub($db, $_COOKIE["login_uid"]);
+
 	foreach ($results as $key => $row) {
-		$userinfo = get_userinfo($db, $row["owner_sub"]);
-		$results[$key]["owner_name"] = $userinfo["name"];
-		$results[$key]["owner_email"] = $userinfo["email"];
+		$owner_userinfo = get_userinfo($db, $row["owner_sub"]);
+		$results[$key]["owner_name"] = $owner_userinfo["name"];
+		$results[$key]["owner_email"] = $owner_userinfo["email"];
+		$results[$key]["is_signed_up"] = (is_signed_up($db, $requester_sub, $row["id"])) ? 1 : 0;
 	}
+
+
+
 
 	echo json_encode($results);
 ?>
