@@ -7,7 +7,7 @@
 			$stmt->execute(array(
 				$user_sub,
 				$event_id
-			));		
+			));
 		}
 	}
 	function get_eventinfo($db, $event_id) {
@@ -24,6 +24,6 @@
 			$user_sub,
 			$event_id
 		));
-		return $exists_stmt->rowCount() > 0;
+		return $stmt->rowCount() > 0;
 	}
 ?>
