@@ -35,7 +35,7 @@
 			$timezone = new DateTimeZone(date_default_timezone_get());
 			$datetime = new DateTime();
 			$timezone_offset = timezone_offset_get($timezone, $datetime);
-
+			$opposite_offset = 0 - $timezone_offset;
 			if (exists($_GET["start_available_time"])) {
 				$start_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["start_available_time"]);
 				$start_available_modulo = date_timestamp_get($start_available_datetime_modulo) + $timezone_offset;
@@ -50,14 +50,14 @@
 			} else {
 				$end_available_modulo = 86399;
 			}
-			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND ((start_time - ?) % 86400) < ? AND ((end_time - ?) % 86400) > ?");
+			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND ((start_time + ?) % 86400) < ? AND ((end_time + ?) % 86400) > ?");
 			$stmt->execute(array(
 				"%" . $_GET["course"] . "%",
 				"%" . $_GET["assignment"] . "%",
 				"%" . $_GET["location"] . "%",
-				$timezone_offset,
+				$opposite_offset,
 				$end_available_modulo,
-				$timezone_offset,
+				$opposite_offset,
 				$start_available_modulo
 			));
 		} else {
