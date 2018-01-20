@@ -20,3 +20,7 @@ body {
 .modal {
   padding: 0 25px 15px 25px;
 }
+
+.large.text {
+	font-size: 2rem;
+}
