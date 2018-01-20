@@ -1,3 +1,10 @@
+$('.ui.modal').modal({
+    onApprove: function() {
+        $('#submitEvent').submit();
+        return false;
+    }
+});
+
 $('#addEvent').on('click', function() {
     $('.ui.modal').modal('show');
 });
@@ -14,11 +21,11 @@ $('#submitEvent').form({
         onFailure: console.log
     }
 );
-$('#submitEvent').submit(function(event) {
+/*$('#submitEvent').submit(function(event) {
     console.log("hello");
     $('#submitEvent').form('validate form');
     event.preventDefault();
-});
+});*/
 //$('#submitEvent').onFailure = console.log;
 
 function addEventFormSuccess() {
@@ -59,8 +66,3 @@ function addEventFormSuccess() {
     $('.ui.modal').modal('hide');
     $('#submitEvent').form('reset');
 };
-/*$('#submitEvent').submit(function(event) {
-    console.log("hello");
-    $('#submitEvent').form('validate form');
-    event.preventDefault();
-});*/
