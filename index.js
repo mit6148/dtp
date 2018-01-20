@@ -9,7 +9,7 @@ $('#submitEvent').form({
         submit_start_time: 'empty',
         submit_end_time: 'empty'
     }
-});
+);
 $('#submitEvent').submit(function(event) {
     //console.log("hello");
     var input = {
