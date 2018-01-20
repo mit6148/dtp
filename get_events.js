@@ -1,3 +1,14 @@
+if (!String.prototype.format) {
+  String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) { 
+      return typeof args[number] != 'undefined'
+        ? args[number]
+        : match
+      ;
+    });
+  };
+}
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
     let data = {
@@ -17,6 +28,8 @@ $('#searchEvents').submit(function(event) {
     })
     .done(function(res) {
         console.log(res);
+        $('#events').html("");
+        $('#eventsTable').show();
         for (let i = 0; i < res.length; i++) {
             parseEvent(res[i]);
         }
@@ -25,5 +38,5 @@ $('#searchEvents').submit(function(event) {
     ;
 });
 function parseEvent(event) {
-    $('#event').append('<div class="ui success compact message">There is an event here!</div>');
+    $('#events').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(event.course, event.assignment, event.location, event.date, event.start_time, event.end_time));
 }

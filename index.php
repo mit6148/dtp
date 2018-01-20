@@ -170,8 +170,21 @@
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
-	<div class="ui center aligned container" id="events">
-	</div>
+	<table class="ui table" hidden="" id="eventsTable">
+		<thead>
+			<tr>
+				<th>Course</th>
+				<th>Assignment</th>
+				<th>Location</th>
+				<th>Date</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			</tr>
+		</thead>
+	  <tbody class="ui title" id="events">
+	    
+	  </tbody>
+	</table>
 	<script src="add_event.js"></script>
 	<script src="get_events.js"></script>
 </body>
