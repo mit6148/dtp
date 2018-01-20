@@ -66,7 +66,7 @@ function parseTime(date) {
         hours = date.getHours();
         day = " am";
     }
-    let minutes = "0" + start_date.getMinutes();
+    let minutes = "0" + date.getMinutes();
     return hours + ":" + minutes.substr(-2) + day;
 }
 function parseEvent(event) {
