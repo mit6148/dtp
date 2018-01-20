@@ -19,6 +19,7 @@
 <html>
 <head>
 	<title>dtp</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -170,8 +171,8 @@
 		  </div>
 		</form>
 		<script>
-			$('submitEvent').on('submit', function() {
-				//to be filled
+			$('#submitEvent').on('submit', function() {
+				//to be filled with a proper AJAX request
 			});
 		</script>
 	</div>
