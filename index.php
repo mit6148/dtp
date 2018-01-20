@@ -18,6 +18,7 @@
 <!doctype html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -136,31 +137,31 @@
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
-						<input placeholder="Course" type="text" name="submit[course]">
+						<input placeholder="Course" type="text" name="submit_course">
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="submit[assignment]">
+			  		<input placeholder="Assignment" type="text" name="submit_assignment">
 			  	</div>
 			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="submit[location]">
+			  		<input placeholder="Location" type="text" name="submit_location">
 			  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="submit[date]">
+						<input placeholder="Date" type="date" name="submit_date">
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="submit[start_time]">
+				  	<input placeholder="Start Time" type="time" name="submit_start_time">
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="submit[end_time]">
+				  	<input placeholder="End Time" type="time" name="submit_end_time">
 				  </div>
 				</div>
 			</div>
 			<div class="actions">
-				<button class="ui positive right floated right labeled icon button" type=submit>
+				<button class="ui positive right floated right labeled icon button" type="submit">
 		      Add My Event
 		      <i class="checkmark icon"></i>
 		    </button>
@@ -170,8 +171,22 @@
 		  </div>
 		</form>
 		<script>
-			$('submitEvent').on('submit', function() {
-				//to be filled
+			$('#submitEvent').submit(function() {
+				console.log("hello");
+					var input = {
+							'course' : $('input[name=submit_course]').val(),
+							'assignment' : $('input[name=submit_assignment]').val(),
+							'location' : $('input[name=submit_location]').val(),
+							'date' : $('input[name=submit_date]').val(),
+							'start_time' : $('input[name=submit_start_time]').val(),
+							'end_time' : $('input[name=submit_end_time]').val(),
+					};
+					$.ajax({
+						type: 'POST',
+						url: 'addevent.php',
+						data : input,
+						cache: false,
+					});
 			});
 		</script>
 	</div>
