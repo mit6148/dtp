@@ -50,12 +50,14 @@
 			} else {
 				$end_available_modulo = 86399;
 			}
-			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND (start_time % 86400) < ? AND (end_time % 86400) > ?");
+			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND ((start_time - ?) % 86400) < ? AND ((end_time - ?) % 86400) > ?");
 			$stmt->execute(array(
 				"%" . $_GET["course"] . "%",
 				"%" . $_GET["assignment"] . "%",
 				"%" . $_GET["location"] . "%",
+				$timezone_offset,
 				$end_available_modulo,
+				$timezone_offset,
 				$start_available_modulo
 			));
 		} else {
