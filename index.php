@@ -95,7 +95,7 @@
 	</div>
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
-			<h1 class="ui header large text">
+			<h1 class="ui header">
 				dtp
 			</h1>
 			<p class="ui">
