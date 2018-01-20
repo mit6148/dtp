@@ -48,7 +48,7 @@
 				$end_available_modulo = date_timestamp_get($end_available_datetime_modulo) + $timezone_offset;
 				//echo $end_available_modulo;
 			} else {
-				$end_available_modulo = 86399;
+				$end_available_modulo = 60 * 60 * 24 - 1;
 			}
 			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND ((start_time + ?) % 86400) < ? AND ((end_time + ?) % 86400) > ?");
 			$stmt->execute(array(
