@@ -160,12 +160,12 @@
 				</div>
 			</div>
 			<div class="actions">
-		    <div class="ui black right floated deny button">
-		      Cancel
-		    </div>
-		    <div class="ui positive right floated labeled icon button">
+				<div class="ui positive right floated right labeled icon button">
 		      Add My Event
 		      <i class="checkmark icon"></i>
+		    </div>
+		    <div class="ui black right floated deny button">
+		      Cancel
 		    </div>
 		  </div>
 		</form>
