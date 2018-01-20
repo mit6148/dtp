@@ -35,22 +35,24 @@
 	 	<a class="item">
 	    My Events
 	 	</a>
-	 	<div class="item">
-	 		<div class="ui white button" id="addEvent">
-		  	Add My Event
-			</div>
-		</div>
-		<script>
-			$('#addEvent').on('click', function() {
-				$('.ui.modal').modal('show');
-			});
-		</script>
-	  <div class="right menu">
-	  	<?php if ($logged_in) { ?>
+  	<?php if ($logged_in) { ?>
+			<div class="right menu">
+				<div class="item">
+			 		<div class="ui white button" id="addEvent">
+				  	Add My Event
+					</div>
+				</div>
+				<script>
+					$('#addEvent').on('click', function() {
+						$('.ui.modal').modal('show');
+					});
+				</script>
 				<a class="item" href="logout.php">
 					Logout
 				</a>
-			<?php } else { ?>
+			</div>
+		<?php } else { ?>
+			<div class="right menu">
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
@@ -61,25 +63,25 @@
 				<a class="item" id="login" href="#">
 					Log In
 				</a>
-				<script>
-					const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
-					const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-					const loginButton = $("#login");
-					const persistentCheckbox = $("#persistent");
-					function updatePersistent() {
-						let href;
-						if (persistentCheckbox.prop("checked")) {
-							href = hrefPart1 + ".persistent" + hrefPart2;
-						} else {
-							href = hrefPart1 + hrefPart2;
-						}
-						loginButton.attr("href", href);
-					};
-					persistentCheckbox.on("click", updatePersistent);
-					updatePersistent();
-				</script>
-			<?php } ?>
-	  </div>
+			</div>
+			<script>
+				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+				const loginButton = $("#login");
+				const persistentCheckbox = $("#persistent");
+				function updatePersistent() {
+					let href;
+					if (persistentCheckbox.prop("checked")) {
+						href = hrefPart1 + ".persistent" + hrefPart2;
+					} else {
+						href = hrefPart1 + hrefPart2;
+					}
+					loginButton.attr("href", href);
+				};
+				persistentCheckbox.on("click", updatePersistent);
+				updatePersistent();
+			</script>
+		<?php } ?>
 	</div>
 	<div class="ui center aligned container" id="containter">
 		<div>
