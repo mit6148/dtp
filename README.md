@@ -14,6 +14,10 @@
 
 * **Add events to schedule**
 
+* **View schedule**
+
+* **Edit events**
+
 * Google Calendar integration
 
 * Invite to event by email
