@@ -8,6 +8,10 @@ $('#submitEvent').form({
         submit_date: 'empty',
         submit_start_time: 'empty',
         submit_end_time: 'empty'
+    },
+    {
+        onSuccess: addEventFormSuccess,
+        onFailure: console.log
     }
 );
 $('#submitEvent').submit(function(event) {
@@ -15,9 +19,9 @@ $('#submitEvent').submit(function(event) {
     $('#submitEvent').form('validate form');
     event.preventDefault();
 });
-$('#submitEvent').onFailure = console.log;
+//$('#submitEvent').onFailure = console.log;
 
-$('#submitEvent').onSuccess = function() {
+function addEventFormSuccess() {
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
