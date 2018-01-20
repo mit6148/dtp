@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="semantic/dist/semantic.min.js"></script>
+	<script scr="index.js"></script>
 </head>
 <body>
 	<div class="ui big secondary menu">
@@ -46,11 +47,6 @@
 				  	Add My Event
 					</div>
 				</div>
-				<script>
-					$('#addEvent').on('click', function() {
-						$('.ui.modal').modal('show');
-					});
-				</script>
 				<a class="item" href="logout.php">
 					Logout
 				</a>
@@ -170,26 +166,6 @@
 		    </div>
 		  </div>
 		</form>
-		<script>
-			$('#submitEvent').submit(function(event) {
-				//console.log("hello");
-				var input = {
-						'course' : $('input[name=submit_course]').val(),
-						'assignment' : $('input[name=submit_assignment]').val(),
-						'location' : $('input[name=submit_location]').val(),
-						'date' : $('input[name=submit_date]').val(),
-						'start_time' : $('input[name=submit_start_time]').val(),
-						'end_time' : $('input[name=submit_end_time]').val(),
-				};
-				$.ajax({
-					type: 'POST',
-					url: 'addevent.php',
-					data : input,
-					cache: false,
-				});
-				event.preventDefault();
-			});
-		</script>
 	</div>
 </body>
 </html>
