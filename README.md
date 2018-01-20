@@ -1,6 +1,6 @@
 # jaeyoung-jung-alvinzhu33-nikhilreddy6547-2018
 
-## Project: dtp (down to pset)
+## Project: dtp (down to pset) (name subject to change)
 
 #### Features implemented
 
