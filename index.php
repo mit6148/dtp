@@ -31,7 +31,7 @@
 				echo "sub = '" . get_sub($db, $_COOKIE["login_uid"]) . "';";
 			} else {
 				echo "logged_in = false;";
-				echo "sub = '';"
+				echo "sub = ''";
 			}
 		?>
 	</script>
