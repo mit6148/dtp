@@ -35,7 +35,7 @@
 			$timezone = new DateTimeZone(date_default_timezone_get());
 			$datetime = new DateTime();
 			$timezone_offset = timezone_offset_get($timezone, $datetime);
-			$opposite_offset = 0 - $timezone_offset;
+
 			if (exists($_GET["start_available_time"])) {
 				$start_available_datetime_modulo = date_create_from_format("Y-m-d H:i", "1970-01-01 " . $_GET["start_available_time"]);
 				$start_available_modulo = date_timestamp_get($start_available_datetime_modulo) + $timezone_offset;
