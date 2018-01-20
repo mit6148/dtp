@@ -38,5 +38,12 @@ $('#searchEvents').submit(function(event) {
     ;
 });
 function parseEvent(event) {
-    $('#events').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(event.course, event.assignment, event.location, event.date, event.start_time, event.end_time));
+    let start_date = new Date(event.start_time * 1000);
+    let hours = start_date.getHours();
+    let minutes = "0" + start_date.getMinutes();
+
+    let end_date = new Date(event.end_time * 1000);
+    let end_hours = end_date.getHours();
+    let end_minutes = "0" + end_date.getMinutes();
+    $('#events').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>'.format(event.course, event.assignment, event.location, start_date.toDateString(), hours + ":" + minutes.substr(-2), end_hours + ":" + end_minutes.substr(-2)));
 }
