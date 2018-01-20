@@ -111,7 +111,7 @@
 					</div>
 				</div>
 				<div class="field">
-					<div class="three fields">
+					<div class="three fields" class="center">
 						<div class="field">
 							<input placeholder="Date" type="date" name="search[date]">
 						</div>
@@ -147,7 +147,7 @@
 				</div>
 			</div>
 			<div class="field">
-				<div class="three fields">
+				<div class="three fields" class="center">
 					<div class="field">
 						<input placeholder="Date" type="date" name="submit[date]">
 					</div>
