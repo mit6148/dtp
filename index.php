@@ -130,7 +130,7 @@
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
-						<input placeholder="Course" type="text" name="submit_course">
+						<input placeholder="Course" type="text" name="submit_course" required>
 					</div>
 					<div class="field">
 			  		<input placeholder="Assignment" type="text" name="submit_assignment">
@@ -154,7 +154,7 @@
 				</div>
 			</div>
 			<div class="actions">
-				<button class="ui green right floated right labeled icon button ok">
+				<button class="ui green right floated right labeled icon button ok" type="submit">
 		      Add My Event
 		      <i class="checkmark icon"></i>
 		    </button>

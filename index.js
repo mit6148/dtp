@@ -1,14 +1,14 @@
-$('.ui.modal').modal({
+/*$('.ui.modal').modal({
     onApprove: function() {
         $('#submitEvent').submit();
         return false;
     }
-});
+});*/
 
 $('#addEvent').on('click', function() {
     $('.ui.modal').modal('show');
 });
-$('#submitEvent').form({
+/*$('#submitEvent').form({
         submit_course: 'empty',
         submit_assignment: 'empty',
         submit_location: 'empty',
@@ -22,9 +22,10 @@ $('#submitEvent').form({
     }
 );
 $('#submitEvent').submit(function(event) {
+    event.preventDefault();
     console.log("hello");
     $('#submitEvent').form('validate form');
-    event.preventDefault();
+
 });
 //$('#submitEvent').onFailure = console.log;
 
@@ -65,4 +66,4 @@ function addEventFormSuccess() {
     });
     $('.ui.modal').modal('hide');
     $('#submitEvent').form('reset');
-};
+};*/
