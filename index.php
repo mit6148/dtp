@@ -170,6 +170,8 @@
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
+	<div class="ui center aligned container" id="events">
+	</div>
 	<script src="add_event.js"></script>
 	<script src="get_events.js"></script>
 </body>

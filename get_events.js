@@ -15,7 +15,14 @@ $('#searchEvents').submit(function(event) {
         dataType : "json",
         url : "get_events.php",
     })
-    .done(console.log)
+    .done(function(res) {
+        for (let i = 0; i < res.length; i++) {
+            parseEvent(res[i]);
+        }
+    })
     .fail(console.log)
     ;
 });
+function parseEvent(event) {
+    $('#event').append('<div class="ui success compact message">There is an event here!</div>');
+}
