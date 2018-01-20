@@ -17,11 +17,5 @@ $('#submitEvent').submit(function(event) {
         data : input,
         cache: false,
     });
-    $('input[name=submit_course]').val("");
-    $('input[name=submit_assignment]').val("");
-    $('input[name=submit_location]').val("");
-    $('input[name=submit_date]').val("");
-    $('input[name=submit_start_time]').val("");
-    $('input[name=submit_end_time]').val("");
-    event.preventDefault();
+    $('#submitEvent').form('reset');
 });
