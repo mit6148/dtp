@@ -35,8 +35,10 @@
 	 	<a class="item">
 	    My Events
 	 	</a>
-	 	<div class="ui white button" id="addEvent">
-		  Add My Event
+	 	<div class="item">
+	 		<div class="ui white button" id="addEvent">
+		  	Add My Event
+			</div>
 		</div>
 		<script>
 			$('#addEvent').on('click', function() {
@@ -45,9 +47,6 @@
 		</script>
 	  <div class="right menu">
 	  	<?php if ($logged_in) { ?>
-	  		<a class="blue item">
-			    New Event
-			 	</a>
 				<a class="item" href="logout.php">
 					Logout
 				</a>
