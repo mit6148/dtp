@@ -32,10 +32,13 @@
 	 	<!--Todo feature<a class="item">
 	    My Classes
 	 	</a>-->
-	 	<a class="item">
-	    My Events
-	 	</a>
   	<?php if ($logged_in) { ?>
+  		<a class="item">
+		    My Events
+		 	</a>
+		 	<a class="item">
+		    Profile
+		 	</a>
 			<div class="right menu">
 				<div class="item">
 			 		<div class="ui white button" id="addEvent">
@@ -126,7 +129,7 @@
 	</div>
 	<div class="ui modal">
 		<i class="close icon"></i>
-		<div class="header">
+		<div class="ui center aligned header">
 	    Add A New Event
 	  </div>
 	  <form class="ui form">
@@ -156,7 +159,7 @@
 				  </div>
 				</div>
 			</div>
-			<div class="actions">
+			<div class="ui right aligned actions">
 		    <div class="ui black deny button">
 		      Cancel
 		    </div>
