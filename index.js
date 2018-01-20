@@ -1,14 +1,7 @@
-/*$('.ui.modal').modal({
-    onApprove: function() {
-        $('#submitEvent').submit();
-        return false;
-    }
-});*/
-
 $('#addEvent').on('click', function() {
     $('.ui.modal').modal('show');
 });
-/*$('#submitEvent').form({
+$('#submitEvent').form({
         submit_course: 'empty',
         submit_assignment: 'empty',
         submit_location: 'empty',
@@ -21,15 +14,16 @@ $('#addEvent').on('click', function() {
         onFailure: console.log
     }
 );
-$('#submitEvent').submit(function(event) {
+/*$('#submitEvent').submit(function(event) {
     event.preventDefault();
     console.log("hello");
     $('#submitEvent').form('validate form');
 
-});
-//$('#submitEvent').onFailure = console.log;
+});*/
 
-function addEventFormSuccess() {
+function addEventFormSuccess(event, fields) {
+    event.preventDefault();
+    console.log(fields);
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
@@ -66,4 +60,4 @@ function addEventFormSuccess() {
     });
     $('.ui.modal').modal('hide');
     $('#submitEvent').form('reset');
-};*/
+};
