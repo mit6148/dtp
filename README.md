@@ -1,26 +1,25 @@
 # jaeyoung-jung-alvinzhu33-nikhilreddy6547-2018
 
-## Project: dtp (down to pset)
+## Project: dtp (down to pset) (name subject to change)
 
 #### Features implemented
 
 * Log in (by OpenID/MIT Kerberos)
 
+* Create events
+
+* Search events by course, assignment, location, and time
+
 #### Features to implement (Features targeted for MVP are in bold):
 
-* **Create Events**
+* **Add events to schedule**
 
-* **Add Events**
-
-* Google Calendar Integration
+* Google Calendar integration
 
 * Invite to event by email
 
-* Make Event Public/Private
+* Make event public/private
 
-* **Search events by course, assignment, location, and time**
+* Create and edit profile
 
-* Create and edit Profile
-
-* Email Notifications when events that fit certain criteria are created
-
+* Email notifications when events that fit certain criteria are created

@@ -20,7 +20,7 @@
 			$end_available_timestamp = date_timestamp_get($end_available_datetime);
 		} else {
 			$end_available_datetime = date_create_from_format("Y-m-d", $_GET["available_date"]);
-			$end_available_timestamp = date_timestamp_get($end_available_datetime) + 60 * 60 * 24 - 1;
+			$end_available_timestamp = date_timestamp_get($end_available_datetime) + 86399;
 		}
 		$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND start_time < ? AND end_time > ?");
 		$stmt->execute(array(
@@ -69,10 +69,6 @@
 			));
 		}
 	}
-	//$start_available_datetime = date_create_from_format("Y-m-d H:i", $_GET["available_date"] . " " . $_GET["start_available_time"]);
-	//$start_available_time = date_timestamp_get($start_available_datetime);
-	//$end_available_datetime = date_create_from_format("Y-m-d H:i", $_GET["available_date"] . " " . $_GET["end_available_time"]);
-	//$end_available_time = date_timestamp_get($end_available_datetime);
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
