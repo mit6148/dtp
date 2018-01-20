@@ -154,7 +154,7 @@
 				</div>
 			</div>
 			<div class="actions">
-				<button class="ui positive right floated right labeled icon button" type="submit">
+				<button class="ui green right floated right labeled icon button" type="submit">
 		      Add My Event
 		      <i class="checkmark icon"></i>
 		    </button>
