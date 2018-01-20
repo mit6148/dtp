@@ -36,10 +36,10 @@ $('#submitEvent').submit(function(event) {
         cache: false,
     })
     .done(function() {
-        $('body').append('<div class="ui success message"><i class="close icon"></i><div class="header">Event received!</div><p>Other students will be able to see and add your event.</p></div>');
+        $('#messages').append('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event received!</div><p>Other students will be able to see and add your event.</p></div>');
     })
     .fail(function() {
-        $('body').append('<div class="ui error message"><i class="close icon"></i><div class="header">Your event was not received.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
+        $('#messages').append('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
     })
     ;
     event.preventDefault();

@@ -164,6 +164,8 @@
 		  </div>
 		</form>
 	</div>
+	<div class="ui center aligned container" id="messages">
+	</div>
 	<script src="index.js"></script>
 </body>
 </html>
