@@ -83,7 +83,7 @@
 		<?php } ?>
 	</div>
 	<div class="ui center aligned container" id="containter">
-		<div>
+		<div id="main">
 			<h1 class="ui header">
 				Are you down to pset?
 			</h1>
