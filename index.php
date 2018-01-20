@@ -43,7 +43,7 @@
 			<div class="right menu">
 				<div class="item">
 			 		<div class="ui white button" id="addEvent">
-				  	Add My Event
+				  	New Event
 					</div>
 				</div>
 				<a class="item" href="logout.php">
@@ -90,7 +90,7 @@
 			<p class="ui">
 				Find a study group...
 			</p>
-			<form class="ui form">
+			<form class="ui form" id="searchEvents">
 				<div class="field">
 					<div class="three fields">
 						<div class="field">
@@ -117,8 +117,12 @@
 					  </div>
 					</div>
 				</div>
-
+				<button class="ui blue center floated right labeled icon submit button">
+		      Search for Study Events
+		      <i class="search icon"></i>
+		    </button>
 			</form>
+
 		</div>
 	</div>
 	<div class="ui modal">
