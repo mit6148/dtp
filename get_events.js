@@ -1,4 +1,5 @@
-$('#searchEvents').submit(function() {
+$('#searchEvents').submit(function(event) {
+    event.preventDefault();
     let data = {
         course : $('[name="search_course"]').val(),
         assignment : $('[name="search_assignment"]').val(),
