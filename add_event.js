@@ -33,7 +33,7 @@ function addEventForm(event) {
         data : input,
         cache: false,
     })
-    .done(function() {
+    .done(function(response) {
         $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
@@ -42,6 +42,7 @@ function addEventForm(event) {
               .transition('fade')
             ;
         });
+        console.log(response);
     })
     .fail(function() {
         $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
