@@ -35,9 +35,14 @@
 	 	<a class="item">
 	    My Events
 	 	</a>
-	 	<div class="ui white button">
+	 	<div class="ui white button" id="addEvent">
 		  Add My Event
 		</div>
+		<script>
+			$('#addEvent').on('click', function() {
+				$('.ui.modal').modal('show');
+			});
+		</script>
 	  <div class="right menu">
 	  	<?php if ($logged_in) { ?>
 	  		<a class="blue item">
