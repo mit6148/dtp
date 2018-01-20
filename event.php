@@ -10,6 +10,13 @@
 			));
 		}
 	}
+	function cancel_signup($db, $user_sub, $event_id) {
+		$stmt = $db->prepare("DELETE FROM signups WHERE user_sub = ? AND event_id = ?");
+		$stmt->execute(array(
+			$user_sub,
+			$event_id
+		));
+	}
 	function get_eventinfo($db, $event_id) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
 		$stmt->execute(array(

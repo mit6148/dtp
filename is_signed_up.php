@@ -1,4 +1,7 @@
 <?php
+	//GET: event_id
+	//returns: 1 if signed up, 0 if not signed up
+
 	include("db.php");
 	include("user.php");
 	include("event.php");
