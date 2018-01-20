@@ -3,7 +3,15 @@ $('#addEvent').on('click', function() {
 });
 $('#submitEvent').form({
     fields: {
-        submit_course: 'empty',
+        submit_course: {
+            identifier: 'submit_course',
+            rules: [
+              {
+                type   : 'empty',
+                prompt : 'Please enter your course'
+              }
+            ]
+          },
         submit_assignment: 'empty',
         submit_location: 'empty',
         submit_date: 'empty',
