@@ -180,6 +180,7 @@
 					<th>Date</th>
 					<th>Start Time</th>
 					<th>End Time</th>
+					<th>Owner</th>
 				</tr>
 			</thead>
 		  <tbody class="ui title" id="events">
