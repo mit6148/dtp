@@ -1,4 +1,7 @@
 <?php
+	//GET: course, assignment, location, available_date, start_available_time, end_available_time
+	//returns: all matching events as a JSON
+
 	include("db.php");
 	include("user.php");
 

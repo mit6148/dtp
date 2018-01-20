@@ -1,4 +1,6 @@
 <?php
+	//user functions library
+
 	function get_sub($db, $login_uid) {
 		$stmt = $db->prepare("SELECT sub FROM logins WHERE uid = ?");
 		$stmt->execute(array($login_uid));

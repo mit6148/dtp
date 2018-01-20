@@ -1,4 +1,7 @@
 <?php
+	//POST: course, assignment, location, date, start_time, end_time
+	//returns: none
+
 	include("db.php");
 	include("user.php");
 	include("event.php");
