@@ -41,5 +41,5 @@ function addEventForm(event) {
         });
     });
     $('.ui.modal').modal('hide');
-    $('#submitEvent').form('reset');
+    $('#submitEvent').form('clear');
 };
