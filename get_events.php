@@ -19,10 +19,10 @@
 	));
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	foreach ($row as $results) {
+	foreach ($results as $key => $row) {
 		$userinfo = get_userinfo($db, $row["owner_sub"]);
-		$row["owner_name"] = $userinfo["name"];
-		$row["owner_email"] = $userinfo["email"];
+		$results[$key]["owner_name"] = $userinfo["name"];
+		$results[$key]["owner_email"] = $userinfo["email"];
 	}
 
 	echo json_encode($results);
