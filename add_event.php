@@ -9,13 +9,16 @@
 	$sub = get_sub($db, $_COOKIE["login_uid"]);
 
 	$event_stmt = $db->prepare("INSERT INTO events (owner_sub, course, assignment, location, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)");
+
+	$start_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["start_time"]);
+	$end_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["end_time"]);
 	$event_stmt->execute(array(
 		$sub,
 		$_POST["course"],
 		$_POST["assignment"],
 		$_POST["location"],
-		strtotime($_POST["date"] . $_POST["start_time"]),
-		strtotime($_POST["date"] . $_POST["end_time"])
+		date_timestamp_get($start_datetime),
+		date_timestamp_get($end_datetime)
 	));
 	$event_id_stmt = $db->query("SELECT LAST_INSERT_ID()");
 	$row = $event_id_stmt->fetch(PDO::FETCH_ASSOC);
