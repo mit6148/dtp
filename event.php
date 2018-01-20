@@ -1,19 +1,21 @@
 <?php
 	//event functions library
-	
+
 	function signup($db, $user_sub, $event_id) {
-		$exists_stmt = $db->prepare("SELECT * FROM signups WHERE user_sub = ? AND event_id = ?");
-		$exists_stmt->execute(array(
-			$user_sub,
-			$event_id
-		));
-		if ($exists_stmt->rowCount == 0){
+		if (!is_signed_up($db, $user_sub, $event_id)){
 			$stmt = $db->prepare("INSERT INTO signups (user_sub, event_id) VALUES (?, ?)");
 			$stmt->execute(array(
 				$user_sub,
 				$event_id
-			));		
+			));
 		}
+	}
+	function cancel_signup($db, $user_sub, $event_id) {
+		$stmt = $db->prepare("DELETE FROM signups WHERE user_sub = ? AND event_id = ?");
+		$stmt->execute(array(
+			$user_sub,
+			$event_id
+		));
 	}
 	function get_eventinfo($db, $event_id) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
@@ -22,5 +24,13 @@
 		));
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $result;
+	}
+	function is_signed_up($db, $user_sub, $event_id) {
+		$stmt = $db->prepare("SELECT * FROM signups WHERE user_sub = ? AND event_id = ?");
+		$stmt->execute(array(
+			$user_sub,
+			$event_id
+		));
+		return $stmt->rowCount() > 0;
 	}
 ?>
