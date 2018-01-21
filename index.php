@@ -45,11 +45,11 @@
 	    My Classes
 	 	</a>-->
   	<?php if ($logged_in) { ?>
-  		<a class="item">
-		    My Events
+  			<a class="item" onclick="$('#scheduleModal').modal('show');">
+		    	My Events
 		 	</a>
 		 	<a class="item">
-		    Profile
+		    	Profile
 		 	</a>
 			<div class="right menu">
 				<div class="item">
@@ -136,7 +136,7 @@
 
 		</div>
 	</div>
-	<div class="ui modal">
+	<div class="ui modal" id="submitEventModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
 	    Add A New Event
@@ -178,6 +178,12 @@
 		    </div>
 		  </div>
 		</form>
+	</div>
+	<div class="ui modal" id="scheduleModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+	    	My Schedule
+	  	</div>
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>

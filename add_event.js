@@ -1,5 +1,5 @@
 $('#addEvent').on('click', function() {
-    $('.ui.modal').modal('show');
+    $('#submitEventModal').modal('show');
 });
 
 $('#submitEvent').submit(addEventForm);
@@ -54,7 +54,7 @@ function addEventForm(event) {
             ;
         });
     });
-    $('.ui.modal').modal('hide');
+    $('#submitEventModal').modal('hide');
     $('#submitEvent').form('clear');
 };
 
