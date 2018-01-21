@@ -46,7 +46,7 @@ function cancel_signup(event_id) {
               .transition('fade')
             ;
         });
-    if (event_id in searchResultEvents.map(function(a){return a.id;})){
+    if (searchResultEvents.map(function(a){return parseInt(a.id)}).indexOf(event_id)!=-1){
       eventButton(event_id,false);
     }
     updateScheduleBody();
