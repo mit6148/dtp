@@ -46,13 +46,13 @@
 		return $results;
 	}
 	function event_cleanup($db) {
-		$stmt->query("SELECT id FROM events WHERE end_time < UNIX_TIMESTAMP()");
+		$stmt = $db->query("SELECT id FROM events WHERE end_time < UNIX_TIMESTAMP()");
 		$rows = $stmt->fetchAll(PDO::FETCH_NUM);
 		foreach ($rows as $row) {
-			$signup_del_stmt->prepare("DELETE FROM signups WHERE event_id = ?");
+			$signup_del_stmt = $db->prepare("DELETE FROM signups WHERE event_id = ?");
 			$signup_del_stmt->execute($row);
-			$event_del_stmt->prepare("DELETE FROM events WHERE id");
-			$event_del_stmt->prepare($row);
+			$event_del_stmt = $db->prepare("DELETE FROM events WHERE id = ?");
+			$event_del_stmt->execute($row);
 		}
 	}
 ?>
