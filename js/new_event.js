@@ -34,7 +34,8 @@ function addEventForm(event) {
         cache: false,
     })
     .done(function(response) {
-        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
+        //$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
+        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Created</div></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
@@ -58,4 +59,3 @@ function addEventForm(event) {
     $('#submitEventModal').modal('hide');
     $('#submitEvent').form('clear');
 };
-

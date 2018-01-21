@@ -48,6 +48,7 @@
 	 	<!--Todo feature<a class="item">
 	    My Classes
 	 	</a>-->
+		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
   			<a class="item" id="scheduleLink">
 		    	My Schedule
@@ -100,10 +101,10 @@
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
-				dtp
+				Down to PSET?
 			</h1>
 			<p class="ui">
-				Find a study group...
+				Search a field!
 			</p>
 			<form class="ui form" id="searchEvents">
 				<div class="field">

@@ -20,3 +20,17 @@ body {
 .modal {
   padding: 0 25px 15px 25px;
 }
+
+#scheduleLink {
+  margin-top: 3px;
+  margin-left: -25px;
+}
+
+#login {
+  margin-right: 26px;
+}
+
+.ui.success.compact.message {
+  margin-left: 5px;
+  margin-right: 5px;
+}
