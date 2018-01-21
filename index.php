@@ -224,10 +224,10 @@
 		</table>
 	</div>
 	<script src="js/universal.js"></script>
-	<script src="js/get_events.js"></script>
+	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
 	<?php if ($logged_in){ ?>
-		<script src="js/add_event.js"></script>
+		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
 	<?php } ?>
 </body>

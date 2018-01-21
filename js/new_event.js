@@ -29,7 +29,7 @@ function addEventForm(event) {
     };
     $.ajax({
         type: 'POST',
-        url: 'php/add_event.php',
+        url: 'php/new_event.php',
         data : input,
         cache: false,
     })
