@@ -113,30 +113,17 @@
 							<input placeholder="Search by Course" type="text" name="search_course">
 						</div>
 						<div class="field">
-				  		<input placeholder="Assignment" type="text" name="search_assignment">
-				  	</div>
-				  	<div class="field">
-				  		<input placeholder="Location" type="text" name="search_location">
-				  	</div>
-					</div>
-				</div>
-				<div class="field">
-					<div class="three fields" class="center">
-						<div class="field">
-							<input placeholder="Date" type="date" name="search_date">
-						</div>
-						<div class="field">
-					  	<input placeholder="Start Time" type="time" name="search_start_time">
-					  </div>
-					  <div class="field">
-					  	<input placeholder="End Time" type="time" name="search_end_time">
-					  </div>
+				  			<input placeholder="Assignment" type="text" name="search_assignment">
+				  		</div>
+					  	<div class="field">
+					  		<input placeholder="Location" type="text" name="search_location">
+					  	</div>
 					</div>
 				</div>
 				<button class="ui blue center floated right labeled icon submit button">
-		      Search for Study Events
-		      <i class="search icon"></i>
-		    </button>
+		      		Search for Study Events
+		    		<i class="search icon"></i>
+		    	</button>
 			</form>
 
 		</div>

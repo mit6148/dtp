@@ -1,6 +1,6 @@
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
-    let available_date;
+    /*let available_date;
     if ($('[name="search_start_time"]').val() && parseInt($('[name="search_start_time"]').val().substr(0, 2)) < 4) {
         if ($('[name="search_date"]').val()) {
             let s = $('[name="search_date"]').val().split("-");
@@ -12,14 +12,11 @@ $('#searchEvents').submit(function(event) {
             console.log("Old: " + $('[name="search_date"]').val());
             console.log("New: " + available_date);
         }
-    }
+    }*/
     let data = {
         course : $('[name="search_course"]').val(),
         assignment : $('[name="search_assignment"]').val(),
-        location : $('[name="search_location"]').val(),
-        available_date : available_date || $('[name="search_date"]').val(),
-        start_available_time : $('[name="search_start_time"]').val(),
-        end_available_time : $('[name="search_end_time"]').val(),
+        location : $('[name="search_location"]').val()
     };
     $.ajax({
         method : 'GET',

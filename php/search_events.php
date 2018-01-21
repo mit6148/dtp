@@ -6,7 +6,7 @@
 	include("user.php");
 	include("event.php");
 
-	function exists($string) {
+	/*function exists($string) {
 		if (trim($string) == "") {
 			return false;
 		}
@@ -65,14 +65,16 @@
 				$start_available_modulo
 			));
 		} else {
-			$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ?");
-			$stmt->execute(array(
-				"%" . $_GET["course"] . "%",
-				"%" . $_GET["assignment"] . "%",
-				"%" . $_GET["location"] . "%"
-			));
+
 		}
-	}
+	}*/
+
+	$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ?");
+	$stmt->execute(array(
+		"%" . $_GET["course"] . "%",
+		"%" . $_GET["assignment"] . "%",
+		"%" . $_GET["location"] . "%"
+	));
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
