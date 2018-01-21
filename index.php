@@ -184,7 +184,7 @@
 		<div class="ui center aligned header">
 	    	My Schedule
 	  	</div>
-	  	<table class="ui table" hidden="">
+	  	<table class="ui table">
 			<thead>
 				<tr>
 					<th>Course</th>
