@@ -72,7 +72,7 @@ function parseEvent(event) {
 
 function eventButton(id, signed_up) {
     if (signed_up) {
-        $('#' + id).html('<button class="ui black right labeled icon cancel button" onclick="cancel_signup(' + id + ')">Cancel<i class="remove icon"></i></button>');
+        $('#' + id).html('<button class="ui black right labeled icon cancel button" onclick="cancel_signup(' + id + ', true)">Cancel<i class="remove icon"></i></button>');
     } else {
         $('#' + id).html('<button class="ui blue right labeled icon submit button" onclick="signup(' + id + ')">Signup<i class="add icon"></i></button>');
     }

@@ -16,6 +16,7 @@ function signup(event_id) {
             ;
         });
     eventButton(event_id,true);
+    updateScheduleBody();
 	})
 	.fail(function() {
         $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your request was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
@@ -28,7 +29,7 @@ function signup(event_id) {
         });
     });
 }
-function cancel_signup(event_id) {
+function cancel_signup(event_id, changeButtonState) {
   $.ajax({
     type: 'POST',
     url: 'cancel_signup_event.php',
@@ -45,7 +46,10 @@ function cancel_signup(event_id) {
               .transition('fade')
             ;
         });
-    eventButton(event_id,false);
+    if (changeButtonState){
+      eventButton(event_id,false);
+    }
+    updateScheduleBody();
   })
   .fail(function() {
         $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your request was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
