@@ -34,8 +34,8 @@ function addEventForm(event) {
         cache: false,
     })
     .done(function(response) {
-        //$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
-        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Created</div></div>');
+        //$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Created</div></div>');
+        message('messages', 'success', 'Event Created', '');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
@@ -47,7 +47,8 @@ function addEventForm(event) {
         console.log(response);
     })
     .fail(function() {
-        $('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
+        //$('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
+        message('messages', 'error', 'Your request was not received by the server.', 'If the problem persists, contact a Network Adminstrator.');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)

@@ -1,18 +1,5 @@
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
-    /*let available_date;
-    if ($('[name="search_start_time"]').val() && parseInt($('[name="search_start_time"]').val().substr(0, 2)) < 4) {
-        if ($('[name="search_date"]').val()) {
-            let s = $('[name="search_date"]').val().split("-");
-            let d = new Date(parseInt(s[0]), parseInt(s[1]) - 1, parseInt(s[2]));
-            d.setDate(d.getDate() + 1);
-            month = "0" + parseInt(d.getMonth()) + 1;
-            day = "0" + d.getDate();
-            available_date = d.getFullYear() + "-" + month.substr(-2) + "-" + day.substr(-2);
-            console.log("Old: " + $('[name="search_date"]').val());
-            console.log("New: " + available_date);
-        }
-    }*/
     let data = {
         course : $('[name="search_course"]').val(),
         assignment : $('[name="search_assignment"]').val(),
