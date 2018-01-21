@@ -6,9 +6,9 @@
 		echo("cookies not set");
 	}
 	$post_array = array(
-		"grant_type"=>"authorization_code",
-		"code"=>$_GET["code"],
-		"redirect_uri"=>"https://jungj.scripts.mit.edu:444/dtp/login.php"
+		"grant_type" => "authorization_code",
+		"code" => $_GET["code"],
+		"redirect_uri" => LOGIN_PAGE_URL
 	);
 	$state = explode(".", $_GET["state"]);
 	if ($state[0] == $_COOKIE["state"]) {
@@ -55,7 +55,7 @@
 					} else {
 						setcookie("login_uid", $login_uid);
 					}
-					header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+					header("Location: " . INDEX_URL);
 				} else {
 					echo "Not all scopes enabled";
 				}

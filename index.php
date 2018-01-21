@@ -80,7 +80,7 @@
 				</a>
 			</div>
 			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode("https://jungj.scripts.mit.edu:444/dtp/login.php")."&state=".$state; ?>";
+				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
 				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");

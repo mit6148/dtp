@@ -11,5 +11,5 @@
 	login_cleanup($db);
 	unset($_COOKIE["login_uid"]);
 	setcookie("login_uid", "", time()-3600);
-	header("Location: https://jungj.scripts.mit.edu:444/dtp/");
+	header("Location: " . INDEX_URL);
 ?>
