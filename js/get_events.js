@@ -26,7 +26,7 @@ $('#searchEvents').submit(function(event) {
         cache : false,
         data : data,
         dataType : "json",
-        url : "get_events.php",
+        url : "php/get_events.php",
     })
     .done(function(res) {
         console.log(res);

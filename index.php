@@ -1,7 +1,7 @@
 <?php
-	include("oidc.php");
-	include("db.php");
-	include("user.php");
+	include("php/oidc.php");
+	include("php/db.php");
+	include("php/user.php");
 
 	$logged_in=false;
 	if (isset($_COOKIE["login_uid"])) {
@@ -224,12 +224,12 @@
 		  </tbody>
 		</table>
 	</div>
-	<script src="universal.js"></script>
-	<script src="get_events.js"></script>
-	<script src="signup_event.js"></script>
+	<script src="js/universal.js"></script>
+	<script src="js/get_events.js"></script>
+	<script src="js/signup_event.js"></script>
 	<?php if ($logged_in){ ?>
-		<script src="add_event.js"></script>
-		<script src="schedule.js"></script>
+		<script src="js/add_event.js"></script>
+		<script src="js/schedule.js"></script>
 	<?php } ?>
 </body>
 </html>

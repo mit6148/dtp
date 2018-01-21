@@ -1,7 +1,7 @@
 function signup(event_id) {
 	$.ajax({
 		type: 'POST',
-		url: 'signup_event.php',
+		url: 'php/signup_event.php',
 		data: {
 			'event_id': event_id
 		},
@@ -32,7 +32,7 @@ function signup(event_id) {
 function cancel_signup(event_id) {
   $.ajax({
     type: 'POST',
-    url: 'cancel_signup_event.php',
+    url: 'php/cancel_signup_event.php',
     data: {
       'event_id': event_id
     },

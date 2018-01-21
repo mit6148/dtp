@@ -4,7 +4,7 @@ $('#scheduleLink').on('click', function() {
 function updateScheduleBody(){
 	$.ajax({
 		type: 'GET',
-		url: 'get_signedup_events.php',
+		url: 'php/get_signedup_events.php',
 		cache: false,
 		dataType: "json"
 	})
