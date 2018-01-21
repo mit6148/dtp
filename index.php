@@ -6,6 +6,10 @@
 	$logged_in=false;
 	if (isset($_COOKIE["login_uid"])) {
 		$logged_in = is_valid_login_uid($db, $_COOKIE["login_uid"]);
+		if (!$logged_in) {
+			unset($_COOKIE["login_uid"]);
+			setcookie("login_uid", "", time() - 3600);
+		}
 	}
 	if (!$logged_in) {
 		$state = md5(rand());
