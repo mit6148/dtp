@@ -220,7 +220,6 @@
 				</tr>
 			</thead>
 		  <tbody class="ui title" id="events">
-		    
 		  </tbody>
 		</table>
 	</div>

@@ -1,5 +1,5 @@
 <?php
-	include("db.php");
+	include("php/db.php");
 
 	if (isset($_COOKIE["login_uid"])) {
 		$stmt = $db->prepare("DELETE FROM logins WHERE uid = ?");

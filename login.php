@@ -1,6 +1,6 @@
 <?php
-	include("oidc.php");
-	include("db.php");
+	include("php/oidc.php");
+	include("php/db.php");
 
 	if (!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))) {
 		echo("cookies not set");
