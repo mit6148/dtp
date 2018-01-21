@@ -17,7 +17,7 @@ $('#searchEvents').submit(function(event) {
         $('#events').html('');
         $('#eventsTable').show();
         if (res.length == 0){
-            $('#events').append('<tr><td class="center">No results returned :(</td></tr>');
+            $('#events').append('<tr><td><div class="center">No results returned :(</div><button class="ui green right floated right labeled icon submit button">Create Event</button></td></tr>');
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {
