@@ -13,3 +13,4 @@ if (!String.prototype.format) {
 function ByStartTime(a,b) {
 	return parseInt(a.start_time) - parseInt(b.start_time);
 }
+let searchResultEvents = false;

@@ -46,8 +46,10 @@ function cancel_signup(event_id) {
               .transition('fade')
             ;
         });
-    if (searchResultEvents.map(function(a){return parseInt(a.id)}).indexOf(event_id)!=-1){
-      eventButton(event_id,false);
+    if (searchResultEvents){
+      if (searchResultEvents.map(function(a){return parseInt(a.id)}).indexOf(event_id)!=-1){
+        eventButton(event_id,false);
+      }
     }
     updateScheduleBody();
   })
