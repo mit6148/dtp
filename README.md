@@ -18,6 +18,8 @@
 
 * **Edit events**
 
+* **View number of people attending an event**
+
 * Google Calendar integration
 
 * Invite to event by email

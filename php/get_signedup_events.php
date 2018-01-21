@@ -6,7 +6,13 @@
 	include("user.php");
 	include("event.php");
 
-	$sub = get_sub($db, $_COOKIE["login_uid"]);
-	$user_signedup_events = get_user_signedup_events($db, $sub);
-	echo json_encode($user_signedup_events);
+	$requester_sub = get_sub($db, $_COOKIE["login_uid"]);
+	$results = get_user_signedup_events($db, $requester_sub);
+
+	foreach ($results as $key => $row) {
+		$owner_userinfo = get_userinfo($db, $row["owner_sub"]);
+		$results[$key]["owner_name"] = $owner_userinfo["name"];
+		$results[$key]["owner_email"] = $owner_userinfo["email"];
+	}
+	echo json_encode($results);
 ?>

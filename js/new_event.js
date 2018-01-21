@@ -7,7 +7,7 @@ $('#submitEvent').submit(addEventForm);
 function addEventForm(event) {
     event.preventDefault();
     let available_date;
-    if ($('[name="submit_start_time"]').val() && parseInt($('[name="submit_start_time"]').val().substr(0, 2)) < 4) {
+    /*if ($('[name="submit_start_time"]').val() && parseInt($('[name="submit_start_time"]').val().substr(0, 2)) < 4) {
         if ($('[name="submit_date"]').val()) {
             let s = $('[name="submit_date"]').val().split("-");
             let d = new Date(parseInt(s[0]), parseInt(s[1]) - 1, parseInt(s[2]));
@@ -18,23 +18,24 @@ function addEventForm(event) {
             console.log("Old: " + $('[name="submit_date"]').val());
             console.log("New: " + available_date);
         }
-    }
+    }*/
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
         'location' : $('input[name=submit_location]').val(),
-        'date' : available_date || $('input[name=submit_date]').val(),
+        'date' : $('input[name=submit_date]').val(),
         'start_time' : $('input[name=submit_start_time]').val(),
         'end_time' : $('input[name=submit_end_time]').val(),
     };
     $.ajax({
         type: 'POST',
-        url: 'php/add_event.php',
+        url: 'php/new_event.php',
         data : input,
         cache: false,
     })
     .done(function(response) {
-        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
+        //$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event submitted!</div><p>Other students will be able to see and add your event.</p></div>');
+        $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Created</div></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
@@ -42,6 +43,7 @@ function addEventForm(event) {
               .transition('fade')
             ;
         });
+        updateScheduleBody();
         console.log(response);
     })
     .fail(function() {
@@ -57,4 +59,3 @@ function addEventForm(event) {
     $('#submitEventModal').modal('hide');
     $('#submitEvent').form('clear');
 };
-

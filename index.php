@@ -6,6 +6,10 @@
 	$logged_in=false;
 	if (isset($_COOKIE["login_uid"])) {
 		$logged_in = is_valid_login_uid($db, $_COOKIE["login_uid"]);
+		if (!$logged_in) {
+			unset($_COOKIE["login_uid"]);
+			setcookie("login_uid", "", time() - 3600);
+		}
 	}
 	if (!$logged_in) {
 		$state = md5(rand());
@@ -44,6 +48,7 @@
 	 	<!--Todo feature<a class="item">
 	    My Classes
 	 	</a>-->
+		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
   			<a class="item" id="scheduleLink">
 		    	My Schedule
@@ -96,10 +101,10 @@
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
-				dtp
+				Down to PSET?
 			</h1>
 			<p class="ui">
-				Find a study group...
+				Search a field!
 			</p>
 			<form class="ui form" id="searchEvents">
 				<div class="field">
@@ -224,10 +229,10 @@
 		</table>
 	</div>
 	<script src="js/universal.js"></script>
-	<script src="js/get_events.js"></script>
+	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
 	<?php if ($logged_in){ ?>
-		<script src="js/add_event.js"></script>
+		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
 	<?php } ?>
 </body>

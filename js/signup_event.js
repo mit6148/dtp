@@ -7,7 +7,7 @@ function signup(event_id) {
 		},
 		cache: false
 	}).done(function() {
-		$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event added to schedule!</div></div>');
+		$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Added</div></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
@@ -38,7 +38,7 @@ function cancel_signup(event_id) {
     },
     cache: false
   }).done(function() {
-    $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event cancelled</div></div>');
+    $('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Removed</div></div>');
         $('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
