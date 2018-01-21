@@ -1,5 +1,3 @@
-let searchResultEvents;
-
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
     let available_date;
