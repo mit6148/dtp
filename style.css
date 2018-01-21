@@ -35,6 +35,10 @@ body {
   margin-right: 5px;
 }
 
+#addEvent {
+  overflow: hidden;
+}
+
 #addEvent:after {
   content: "";
   position: absolute;
