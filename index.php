@@ -223,11 +223,11 @@
 		  </tbody>
 		</table>
 	</div>
-	<script src="add_event.js"></script>
+	<script src="universal.js"></script>
 	<script src="get_events.js"></script>
 	<script src="signup_event.js"></script>
-	<script src="cancel_signup_event.js"></script>
 	<?php if ($logged_in){ ?>
+		<script src="add_event.js"></script>
 		<script src="schedule.js"></script>
 	<?php } ?>
 </body>

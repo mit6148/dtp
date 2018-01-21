@@ -13,10 +13,8 @@ $.ajax({
 ;
 
 function populateTable(events) {
-	console.log(events);
-	events.sort(function(a,b) {
-		return parseInt(a.start_time) - parseInt(b.start_time);
-	})
+	//console.log(events);
+	events.sort(ByStartTime);
 	for (i in events){
 		addToSchedule(events[i]);
 	}

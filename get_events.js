@@ -1,15 +1,3 @@
-if (!String.prototype.format) {
-  String.prototype.format = function() {
-    var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) { 
-      return typeof args[number] != 'undefined'
-        ? args[number]
-        : match
-      ;
-    });
-  };
-}
-
 let events;
 
 $('#searchEvents').submit(function(event) {
@@ -46,6 +34,7 @@ $('#searchEvents').submit(function(event) {
         console.log(res);
         $('#events').html("");
         $('#eventsTable').show();
+        res.sort(ByStartTime);
         for (let i = 0; i < res.length; i++) {
             parseEvent(res[i]);
         }
