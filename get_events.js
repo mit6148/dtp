@@ -1,4 +1,4 @@
-let events;
+let searchResultEvents;
 
 $('#searchEvents').submit(function(event) {
     event.preventDefault();
@@ -38,7 +38,7 @@ $('#searchEvents').submit(function(event) {
         for (let i = 0; i < res.length; i++) {
             parseEvent(res[i]);
         }
-        events = res;
+        searchResultEvents = res;
     })
     .fail(console.log)
     ;
