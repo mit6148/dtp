@@ -48,9 +48,9 @@
   			<a class="item" id="scheduleLink">
 		    	My Schedule
 		 	</a>
-		 	<a class="item">
+		 	<!--<a class="item">
 		    	Profile
-		 	</a>
+		 	</a>-->
 			<div class="right menu">
 				<div class="item">
 			 		<div class="ui white button" id="addEvent">
@@ -212,5 +212,6 @@
 	<script src="get_events.js"></script>
 	<script src="signup_event.js"></script>
 	<script src="cancel_signup_event.js"></script>
+	<script src="schedule.js"></script>
 </body>
 </html>
