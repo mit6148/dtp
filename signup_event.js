@@ -15,7 +15,7 @@ function signup(event_id) {
               .transition('fade')
             ;
         });
-    eventButton(event_id,true);
+    eventButton('result_' + event_id,true);
     updateScheduleBody();
 	})
 	.fail(function() {
@@ -29,7 +29,7 @@ function signup(event_id) {
         });
     });
 }
-function cancel_signup(event_id, changeButtonState) {
+function cancel_signup(event_id) {
   $.ajax({
     type: 'POST',
     url: 'cancel_signup_event.php',
@@ -46,8 +46,8 @@ function cancel_signup(event_id, changeButtonState) {
               .transition('fade')
             ;
         });
-    if (changeButtonState){
-      eventButton(event_id,false);
+    if (event_id in searchResultEvents.map(function(a){return a.id;})){
+      eventButton('result_' + event_id,false);
     }
     updateScheduleBody();
   })
