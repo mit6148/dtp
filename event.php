@@ -38,7 +38,7 @@
 		$stmt->execute(array(
 			$user_sub
 		));
-		$results = []
+		$results = [];
 		$event_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($event_ids as $event_id) {
 			$results[] = get_eventinfo($db, $event_id[0]);
