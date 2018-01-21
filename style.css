@@ -67,3 +67,7 @@ body {
   transition-duration: 0.7s,  0.15s;
   transition-timing-function: ease;
 }
+
+#eventsTableContainer {
+	display: none;
+}

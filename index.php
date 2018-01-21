@@ -195,7 +195,7 @@
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
-	<div class="ui container" id="eventsTableContainer" hidden>
+	<div class="ui container hidden" id="eventsTableContainer">
 		<table class="ui table" id="eventsTable">
 			<thead>
 				<tr>

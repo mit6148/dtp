@@ -17,7 +17,7 @@ $('#searchEvents').submit(function(event) {
         $('#events').html("");
         $('#eventsTableContainer').show();
         if (res.length == 0){
-            $('$eventsTableContainer').append("No results returned :(");
+            $('#eventsTableContainer').append("No results returned :(");
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {
