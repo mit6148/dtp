@@ -184,6 +184,21 @@
 		<div class="ui center aligned header">
 	    	My Schedule
 	  	</div>
+	  	<table class="ui table" hidden="">
+			<thead>
+				<tr>
+					<th>Course</th>
+					<th>Assignment</th>
+					<th>Location</th>
+					<th>Date</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Owner</th>
+				</tr>
+			</thead>
+		  <tbody class="ui title" id="scheduleBody">
+		  </tbody>
+		</table>
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
@@ -212,6 +227,8 @@
 	<script src="get_events.js"></script>
 	<script src="signup_event.js"></script>
 	<script src="cancel_signup_event.js"></script>
-	<script src="schedule.js"></script>
+	<?php if ($logged_in){ ?>
+		<script src="schedule.js"></script>
+	<?php } ?>
 </body>
 </html>
