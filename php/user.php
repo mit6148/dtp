@@ -14,7 +14,7 @@
 		return $row;
 	}
 	function is_valid_login_uid($db, $login_uid) {
-		$db->query("DELETE FROM `logins` WHERE expire_time < UNIX_TIMESTAMP()");
+		login_cleanup($db);
 		$stmt = $db->prepare("SELECT * FROM logins WHERE uid = ?");
 		$stmt->execute(array($login_uid));
 		//$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -42,5 +42,8 @@
 			$results[] = get_eventinfo($db, $event_id[0]);
 		}
 		return $results;
+	}
+	function login_cleanup($db) {
+		$db->query("DELETE FROM `logins` WHERE expire_time < UNIX_TIMESTAMP()");
 	}
 ?>
