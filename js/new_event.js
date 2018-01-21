@@ -42,6 +42,7 @@ function addEventForm(event) {
               .transition('fade')
             ;
         });
+        updateScheduleBody();
         console.log(response);
     })
     .fail(function() {
