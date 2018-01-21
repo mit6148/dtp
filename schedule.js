@@ -13,7 +13,8 @@ function updateScheduleBody(){
 	;
 }
 function populateTable(events) {
-	console.log(events);
+	//console.log(events);
+	$('#scheduleBody').html('');
 	events.sort(ByStartTime);
 	for (i in events){
 		addToSchedule(events[i]);
