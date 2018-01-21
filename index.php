@@ -45,8 +45,8 @@
 	    My Classes
 	 	</a>-->
   	<?php if ($logged_in) { ?>
-  			<a class="item" onclick="$('#scheduleModal').modal('show');">
-		    	My Events
+  			<a class="item" id="scheduleLink">
+		    	My Schedule
 		 	</a>
 		 	<a class="item">
 		    	Profile
