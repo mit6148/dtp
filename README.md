@@ -10,11 +10,11 @@
 
 * Search events by course, assignment, location, and time
 
+* Add events to schedule
+
+* View schedule
+
 #### Features to implement (Features targeted for MVP are in bold):
-
-* **Add events to schedule**
-
-* **View schedule**
 
 * **Edit events**
 
