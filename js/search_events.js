@@ -14,10 +14,10 @@ $('#searchEvents').submit(function(event) {
     })
     .done(function(res) {
         console.log(res);
-        $('#events').html("");
-        $('#eventsTableContainer').show();
+        $('#events').html('');
+        $('#eventsTable').show();
         if (res.length == 0){
-            $('#eventsTableContainer').append("No results returned :(");
+            $('#events').append('<tr><td class="center">No results returned :(</td></tr>');
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {

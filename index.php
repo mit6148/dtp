@@ -171,7 +171,7 @@
 		  </div>
 		</form>
 	</div>
-	<div class="ui modal" id="scheduleModal">
+	<div class="ui modal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
 	    	My Schedule
@@ -195,8 +195,8 @@
 	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
-	<div class="ui container hidden" id="eventsTableContainer">
-		<table class="ui table" id="eventsTable">
+	<div class="ui container">
+		<table class="ui table" id="eventsTable" hidden>
 			<thead>
 				<tr>
 					<th>Course</th>
