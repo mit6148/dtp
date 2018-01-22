@@ -43,7 +43,7 @@
 	</script>
 </head>
 <body>
-	<div class="ui big secondary menu">
+	<div class="ui large secondary menu">
 	 	<!--<a class="item" href="index.php">
 	    Home
 	 	</a>-->
@@ -65,12 +65,12 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<div class="item icon" id="scheduleLink">
-			    	My Schedule
+				<a class="item icon" href="#" id="scheduleLink">
+			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
 		 		</div>
 				<a class="item icon" href="logout.php" id="logout">
-					Logout
+					Logout&nbsp;
 					<i class="sign out icon"></i>
 				</a>
 			</div>
@@ -84,7 +84,7 @@
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
 				<a class="item icon" href="#" id="login">
-					Login
+					Login&nbsp;
 					<i class="sign in icon"></i>
 				</a>
 			</div>

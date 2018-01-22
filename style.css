@@ -73,7 +73,7 @@ body {
 }
 
 #eventHeader {
-  font: 17px;
+  font-size: 17px;
 }
 
 .ui.accordion tbody.ui.content.active {
