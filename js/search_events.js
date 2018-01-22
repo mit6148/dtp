@@ -17,7 +17,9 @@ function searchEvents(event) {
     })
     .done(function(res) {
         console.log(res);
-        $('tbody').html('');
+        while ($('#eventsTable > *').length > 1){
+            $($('#eventsTable > *')[1]).remove();
+        }
         $('#eventsTable').show();
         if (res.length == 0){
             $('#eventsTable').append('<tr><td id="centerCell" colspan="' + ((logged_in) ? '8' : '7') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
