@@ -37,7 +37,6 @@ body {
 
 .clickable {
   overflow: hidden;
-  color: #0000ff;
 }
 
 .clickable:after {

@@ -55,7 +55,7 @@
 			<a class="item clickable" href="#" id="addEvent">
 		  		New Event&nbsp;
 				<i class="add icon"></i>
-			</div>
+			</a>
 		 	<!--<a class="item">
 		    	Profile
 		 	</a>-->
