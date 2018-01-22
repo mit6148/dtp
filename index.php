@@ -66,15 +66,15 @@
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
 				<div class="item">
-					<div class="ui white button" id="scheduleLink">
-			    	My Schedule
+					<div class="ui white button icon" id="scheduleLink">
+				    	My Schedule
+				    	<i class="checked calendar icon"></i>
 			 		</div>
 			 	</div>
-			 	<div class="item">
-					<a class="ui white button" href="logout.php" id="logout">
-						Logout
-					</a>
-				</div>
+				<a class="item icon" href="logout.php" id="logout">
+					Logout
+					<i class="sign out icon"></i>
+				</a>
 			</div>
 		<?php } else { ?>
 			<div class="right menu">
@@ -85,11 +85,10 @@
 					</div>
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-				<div class="item">
-					<a class="ui white button" href="#" id="login">
-						Logout
-					</a>
-				</div>
+				<a class="item icon" href="#" id="login">
+					Login
+					<i class="sign in icon"></i>
+				</a>
 			</div>
 			<script>
 				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
