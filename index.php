@@ -44,25 +44,16 @@
 </head>
 <body>
 	<div class="ui large secondary menu">
-	 	<!--<a class="item" href="index.php">
-	    Home
-	 	</a>-->
-	 	<!--Todo feature<a class="item">
-	    My Classes
-	 	</a>-->
-		<h1 class="item">dtp</h1>
+		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
-			<a class="item clickable" href="#" id="addEvent">
-		  		New Event&nbsp;
-				<i class="add icon"></i>
-			</a>
-		 	<!--<a class="item">
-		    	Profile
-		 	</a>-->
 			<div class="right menu">
 				<div class="item">
-					<?php echo $userinfo["given_name"]; ?>
+					Hi, <?php echo $userinfo["given_name"]; ?>.
 				</div>
+				<a class="item clickable" href="#" id="addEvent">
+		  			New Event&nbsp;
+					<i class="add icon"></i>
+				</a>
 				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
