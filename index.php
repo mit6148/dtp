@@ -71,9 +71,9 @@
 			 		</div>
 			 	</div>
 			 	<div class="item">
-					<div class="ui white button" href="logout.php" id="logout">
+					<a class="ui white button" href="logout.php" id="logout">
 						Logout
-					</div>
+					</a>
 				</div>
 			</div>
 		<?php } else { ?>
@@ -85,9 +85,11 @@
 					</div>
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-				<a class="item" id="login" href="#">
-					Login
-				</a>
+				<div class="item">
+					<a class="ui white button" href="#" id="login">
+						Logout
+					</a>
+				</div>
 			</div>
 			<script>
 				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
