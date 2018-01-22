@@ -70,7 +70,7 @@
 			    	My Schedule
 			 		</div>
 			 	</div>
-			 	<div>
+			 	<div class="item">
 					<div class="ui white button" href="logout.php" id="logout">
 						Logout
 					</div>
