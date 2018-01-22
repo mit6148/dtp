@@ -68,49 +68,49 @@ function viewEvent(id, owner) {
         data: {
             event_id: id,
         },
-	dataType: "json",
+        dataType: "json",
         cache: false,
     }).done(function(res) {
-        $('#viewModal').modal('show');
-        console.log(res);
+    $('#viewModal').modal('show');
+    console.log(res);
 	$('#participants').html('');
-        for (i in res.attendees) {
-            $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div");
-        }
+    for (i in res.attendees) {
+        $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div");
+    }
 	$('#randomInfo').html('');
-        $('#randomInfo').append("<div>{0}</div><div>{1}</div><div>{2}</div>".format(res.course, res.assignment, res.location));
-        if (owner) {
-            $('#editModal').show();
-            $('#editModal').off('click');
-            $('#editModal').on('click', function() {
-                $('#changeEventModal').modal('show');
-                $('#changeEventModal').off('submit');
-                $('#changeEventModal').on('submit', function(event) {
-                    event.preventDefault();
-                    const data = {
-                        event_id : id,
-                        'course' : $('input[name=change_course]').val(),
-                        'assignment' : $('input[name=change_assignment]').val(),
-                        'location' : $('input[name=change_location]').val(),
-                        'date' : $('input[name=change_date]').val(),
-                        'start_time' : $('input[name=change_start_time]').val(),
-                        'end_time' : $('input[name=change_end_time]').val(),
-                    };
-                    $.ajax({
-                        type : 'POST',
-                        cache : false,
-                        data : data,
-                        url : 'php/edit_event.php',
-                    }).done(function() {
-                        $('#changeEventModal').modal('hide');
-                        $('#viewModal').modal('hide');
-                        viewEvent(id, owner)
-                    });
+    $('#randomInfo').append("<div>{0}</div><div>{1}</div><div>{2}</div>".format(res.course, res.assignment, res.location));
+    if (owner) {
+        $('#editModal').show();
+        $('#editModal').off('click');
+        $('#editModal').on('click', function() {
+            $('#changeEventModal').modal('show');
+            $('#changeEventModal').off('submit');
+            $('#changeEventModal').on('submit', function(event) {
+                event.preventDefault();
+                const data = {
+                    event_id : id,
+                    'course' : $('input[name=change_course]').val(),
+                    'assignment' : $('input[name=change_assignment]').val(),
+                    'location' : $('input[name=change_location]').val(),
+                    'date' : $('input[name=change_date]').val(),
+                    'start_time' : $('input[name=change_start_time]').val(),
+                    'end_time' : $('input[name=change_end_time]').val(),
+                };
+                $.ajax({
+                    type : 'POST',
+                    cache : false,
+                    data : data,
+                    url : 'php/edit_event.php',
+                }).done(function() {
+                    $('#changeEventModal').modal('hide');
+                    $('#viewModal').modal('hide');
+                    viewEvent(id, owner);
                 });
             });
-        } else {
-            $('#editModal').hide();
-        }
+        });
+    } else {
+        $('#editModal').hide();
+    }
     }).fail(console.log);
 }
 
