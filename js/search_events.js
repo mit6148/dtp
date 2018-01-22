@@ -95,10 +95,10 @@ function viewEvent(id, owner) {
             let end_time = new Date(res.end_time * 1000);
             let end_hours = "0" + end_time.getHours();
             let end_minutes = "0" + end_time.getMinutes();
-            $('input[name=change_start_time]').val(end_hours.substr(-2) + ":" + end_minutes.substr(-2));
+            $('input[name=change_end_time]').val(end_hours.substr(-2) + ":" + end_minutes.substr(-2));
             let year = start_time.getFullYear();
             let month = "0" + (parseInt(start_time.getMonth()) + 1);
-            let day = "0" + start_time.getDay();
+            let day = "0" + start_time.getDate();
             $('input[name=change_date]').val(year + "-" + month.substr(-2) + "-" + day.substr(-2));
             $('#changeEventModal').on('submit', function(event) {
                 event.preventDefault();
