@@ -53,9 +53,9 @@
 		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
 				<div class="item">
-			 		<div class="ui blue button" id="addEvent">
+			 		<div class="ui blue button right labeled icon" id="addEvent">
 				  	New Event
-						<i class="add icon" id="addEventIcon"></i>
+						<i class="add icon"></i>
 					</div>
 				</div>
 		 	<!--<a class="item">
@@ -110,13 +110,13 @@
 				Down to PSET?
 			</h1>
 			<p class="ui">
-				Search a field!
+				Search by course, assignment, or location
 			</p>
 			<form class="ui form" id="searchEvents">
 				<div class="field">
 					<div class="three fields">
 						<div class="field">
-							<input placeholder="Search by Course" type="text" name="search_course">
+							<input placeholder="Course" type="text" name="search_course">
 						</div>
 						<div class="field">
 				  			<input placeholder="Assignment" type="text" name="search_assignment">
@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				<button class="ui blue center floated right labeled icon submit button">
-		      		Search for Study Events
+		      		Search
 		    		<i class="search icon"></i>
 		    	</button>
 			</form>
