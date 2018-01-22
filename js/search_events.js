@@ -88,7 +88,7 @@ function viewEvent(id, owner) {
                 $('#changeEventModal').on('submit', function(event) {
                     event.preventDefault();
                     const data = {
-                        id : id,
+                        event_id : id,
                         'course' : $('input[name=change_course]').val(),
                         'assignment' : $('input[name=change_assignment]').val(),
                         'location' : $('input[name=change_location]').val(),
