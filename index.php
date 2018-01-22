@@ -207,7 +207,7 @@
 	<div class="ui center aligned container" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
-		<table class="ui center aligned table styled accordion" id="eventsTable" hidden>
+		<table class="ui center aligned table styled fluid accordion" id="eventsTable" hidden>
 			<thead id="eventHeader">
 				<tr>
 					<th>Course</th>
