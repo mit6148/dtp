@@ -43,6 +43,10 @@ body {
   overflow: hidden;
 }
 
+#addEventIcon {
+  padding-left: 17px;
+}
+
 #addEvent:after {
   content: "";
   position: absolute;

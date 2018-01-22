@@ -1,5 +1,8 @@
-$('#searchEvents').submit(function(event) {
-    event.preventDefault();
+$('#searchEvents').submit(searchEvents);
+function searchEvents(event) {
+    if (event) {
+        event.preventDefault();
+    }
     let data = {
         course : $('[name="search_course"]').val(),
         assignment : $('[name="search_assignment"]').val(),
@@ -24,11 +27,11 @@ $('#searchEvents').submit(function(event) {
                 parseEvent(res[i]);
             }
         }
-        searchResultEvents = res;
+        searched = true;
     })
     .fail(console.log)
     ;
-});
+}
 function parseTime(date) {
     let hours;
     let day;
