@@ -190,6 +190,7 @@
 					<th>Date</th>
 					<th>Start Time</th>
 					<th>End Time</th>
+					<th>Attendees</th>
 					<th>Owner</th>
 					<th></th>
 				</tr>
