@@ -55,4 +55,11 @@
 			$event_del_stmt->execute($row);
 		}
 	}
+	function num_attending_event($db, $event_id) {
+		$stmt = $db->prepare("SELECT COUNT(*) FROM `signups` WHERE event_id = ?");
+		$stmt->execute(array(
+			$event_id
+		));
+		return $stmt->fetch();
+	}
 ?>
