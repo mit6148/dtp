@@ -210,6 +210,7 @@
 					<th>Date</th>
 					<th>Start Time</th>
 					<th>End Time</th>
+					<th>Attendees</th>
 					<th>Owner</th>
 					<?php if ($logged_in) {
 						echo "<th></th>";
