@@ -22,7 +22,7 @@ function searchEvents(event) {
         }
         $('#eventsTable').show();
         if (res.length == 0){
-            $('#eventsTable').append('<tr><td id="centerCell" colspan="' + ((logged_in) ? '8' : '7') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
+            $('#eventsTable').append('<tr><td id="centerCell" colspan="' + ((logged_in) ? '10' : '9') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {
@@ -57,7 +57,7 @@ function parseEvent(event) {
     let start_time = new Date(event.start_time * 1000);
     let start_date = (new Date(event.start_time * 1000)).toDateString().split(" ");
     let end_time = new Date(event.end_time * 1000);
-    $('#eventsTable').append(('<tbody onclick="viewEvent({8}, {9})"><tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td>' + ((logged_in) ? ((event.is_signed_up == "1") ? '<td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8})">Cancel<i class="remove icon"></i></button></td>' : '<td><button class="ui blue right labeled icon submit button" onclick="signup({8})">Signup<i class="add icon"></i></button></td>') : '') + '</tr></tbody>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id,event.owner_sub == sub));
+    $('#eventsTable').append(('<tbody><tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td><button class="ui green button" onclick="viewEvent({8}, {9})">View Details</button></td>' + ((logged_in) ? ((event.is_signed_up == "1") ? '<td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8})">Cancel<i class="remove icon"></i></button></td>' : '<td><button class="ui blue right labeled icon submit button" onclick="signup({8})">Signup<i class="add icon"></i></button></td>') : '') + '</tr></tbody>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id,event.owner_sub == sub));
 }
 
 function viewEvent(id, owner) {
@@ -75,7 +75,7 @@ function viewEvent(id, owner) {
     console.log(res);
 	$('#participants').html('');
     for (i in res.attendees) {
-        $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div");
+        $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div>");
     }
 	$('#randomInfo').html('');
     $('#randomInfo').append("<div>{0}</div><div>{1}</div><div>{2}</div>".format(res.course, res.assignment, res.location));
