@@ -35,7 +35,10 @@
 		$event_ids = $stmt->fetchAll(PDO::FETCH_NUM);
 		$results = array();
 		foreach ($event_ids as $event_id) {
-			$results[] = get_eventinfo($db, $event_id[0]);
+			$new_event = get_eventinfo($db, $event_id[0]);
+			if ($new_event["end_time"] > time()) {
+				$results[] = $new_event;
+			}
 		}
 		return $results;
 	}

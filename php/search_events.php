@@ -6,7 +6,7 @@
 	include("user.php");
 	include("event.php");
 
-	$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ?");
+	$stmt = $db->prepare("SELECT * FROM events WHERE course LIKE ? AND assignment LIKE ? AND location LIKE ? AND end_time > UNIX_TIMESTAMP()");
 	$stmt->execute(array(
 		"%" . $_GET["course"] . "%",
 		"%" . $_GET["assignment"] . "%",
