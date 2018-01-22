@@ -70,6 +70,11 @@ body {
 
 #eventsTableContainer {
 	display: none;
+  padding-bottom: 30px;
+}
+
+#eventHeader {
+  font: 17px;
 }
 
 .ui.accordion tbody.ui.content.active {
