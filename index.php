@@ -65,12 +65,10 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<div class="item">
-					<div class="ui white button icon" id="scheduleLink">
-				    	My Schedule
-				    	<i class="checked calendar icon"></i>
-			 		</div>
-			 	</div>
+				<div class="item icon" id="scheduleLink">
+			    	My Schedule
+			    	<i class="checked calendar icon"></i>
+		 		</div>
 				<a class="item icon" href="logout.php" id="logout">
 					Logout
 					<i class="sign out icon"></i>
