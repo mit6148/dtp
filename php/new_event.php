@@ -11,7 +11,6 @@
 	}
 	$sub = get_sub($db, $_COOKIE["login_uid"]);
 
-	event_cleanup($db);
 	$event_stmt = $db->prepare("INSERT INTO events (owner_sub, course, assignment, location, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)");
 
 	$start_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["start_time"]);

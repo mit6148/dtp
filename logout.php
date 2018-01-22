@@ -9,7 +9,6 @@
 		$uid = $_COOKIE["login_uid"];
 		$stmt->execute();
 	}
-	login_cleanup($db);
 	unset($_COOKIE["login_uid"]);
 	setcookie("login_uid", "", time()-3600);
 	header("Location: " . INDEX_URL);
