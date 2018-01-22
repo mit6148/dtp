@@ -17,7 +17,7 @@ $('#searchEvents').submit(function(event) {
         $('#events').html('');
         $('#eventsTable').show();
         if (res.length == 0){
-            $('#events').append('<tr><td colspan="' + ((logged_in) ? '8' : '7') + '"><div class="center">No results returned :(</div></td></tr>');
+            $('#events').append('<tr><td colspan="' + ((logged_in) ? '8' : '7') + '"><div class="center">No results returned :(</div><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
             //<button class="ui blue center floated icon submit button">Create Event</button>
         } else {
             res.sort(ByStartTime);
@@ -63,4 +63,10 @@ function eventButton(id, signed_up) {
     } else {
         $('#' + id).html('<button class="ui blue right labeled icon submit button" onclick="signup(' + id + ')">Signup<i class="add icon"></i></button>');
     }
+}
+function createEventFromSearch() {
+    $('[name="submit_course"]').val($('[name=search_course]'));
+    $('[name="submit_assignment"]').val($('[name=search_assignment]'));
+    $('[name="submit_location"]').val($('[name=search_location]'));
+    $('#submitEventModal').modal('show');
 }
