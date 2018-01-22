@@ -65,10 +65,10 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<a class="active-item" id="scheduleLink">
+				<a class="active item" id="scheduleLink">
 		    	My Schedule
 		 		</a>
-				<a class="active-item" href="logout.php" id="logout">
+				<a class="active item" href="logout.php" id="logout">
 					Logout
 				</a>
 			</div>
