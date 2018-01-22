@@ -1,4 +1,4 @@
-$('#addEvent').on('click', function() {
+$('#scheduleLink').on('click', function() {
     $('#submitEventModal').modal('show');
 });
 
