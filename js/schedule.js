@@ -15,6 +15,9 @@ function updateScheduleBody(){
 function populateTable(events) {
 	//console.log(events);
 	$('#scheduleBody').html('');
+	if (events.length === 0) {
+		$('#scheduleBody').html('<tr><td id="centerCell2" colspan="9">No events to show :(</td></tr>');
+	}
 	events.sort(ByStartTime);
 	for (i in events){
 		addToSchedule(events[i]);

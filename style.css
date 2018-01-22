@@ -21,6 +21,10 @@ body {
   text-align: center;
 }
 
+#centerCell2 {
+  text-align: center;
+}
+
 .modal {
   padding: 0 25px 15px 25px;
 }
