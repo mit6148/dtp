@@ -57,25 +57,28 @@ function parseEvent(event) {
     let start_time = new Date(event.start_time * 1000);
     let start_date = (new Date(event.start_time * 1000)).toDateString().split(" ");
     let end_time = new Date(event.end_time * 1000);
-    $('#eventsTable').append(('<tbody onclick="editEvent({8}, {10})"><tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td>' + ((logged_in) ? ((event.is_signed_up == "1") ? '<td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8})">Cancel<i class="remove icon"></i></button></td>' : '<td><button class="ui blue right labeled icon submit button" onclick="signup({8})">Signup<i class="add icon"></i></button></td>') : '') + '</tr></tbody>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id,event.owner_sub == sub));
+    $('#eventsTable').append(('<tbody onclick="viewEvent({8}, {9})"><tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td>' + ((logged_in) ? ((event.is_signed_up == "1") ? '<td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8})">Cancel<i class="remove icon"></i></button></td>' : '<td><button class="ui blue right labeled icon submit button" onclick="signup({8})">Signup<i class="add icon"></i></button></td>') : '') + '</tr></tbody>').format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id,event.owner_sub == sub));
 }
 
-function editEvent(id, owner) {
+function viewEvent(id, owner) {
     console.log("Editing " + id);
     $.ajax({
         type: 'GET',
         url: 'php/get_event_details.php',
         data: {
-            id: id,
+            event_id: id,
         },
+	dataType: "json",
         cache: false,
     }).done(function(res) {
         $('#viewModal').modal('show');
         console.log(res);
+	$('#participants').html('');
         for (i in res.attendees) {
-            $('#participants').append("<div class='item'>" + res.attendees[i] + "</div");
+            $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div");
         }
-        $('#randomInfo').append("<div>{0}</div><div>{1}</div><div>{2}</div>", res.course, res.assignment, res.location);
+	$('#randomInfo').html('');
+        $('#randomInfo').append("<div>{0}</div><div>{1}</div><div>{2}</div>".format(res.course, res.assignment, res.location));
         if (owner) {
             $('#editModal').show();
             $('#editModal').off('click');
@@ -101,7 +104,7 @@ function editEvent(id, owner) {
                     }).done(function() {
                         $('#changeEventModal').modal('hide');
                         $('#viewModal').modal('hide');
-                        editEvent(id, owner)
+                        viewEvent(id, owner)
                     });
                 });
             });
