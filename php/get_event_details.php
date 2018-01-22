@@ -16,11 +16,11 @@
 	$attendees_stmt->execute(array(
 		$_GET["event_id"]
 	));
-	$attendee_subs = $attendees_stmt->fetchAll(PDO:FETCH_NUM);
+	$attendee_subs = $attendees_stmt->fetchAll(PDO::FETCH_NUM);
 	foreach ($attendee_subs as $attendee_sub) {
 		$attendee_info = get_userinfo($db, $attendee_sub[0]);
 		$result["attendees"][]=array(
-			"name"=>$attendee_info["name"];
+			"name"=>$attendee_info["name"]
 		);
 	}
 
