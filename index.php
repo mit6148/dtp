@@ -248,6 +248,7 @@
 					<th>Attendees</th>
 					<th>Owner</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 		  <tbody class="ui title" id="scheduleBody">
@@ -268,6 +269,7 @@
 					<th>End Time</th>
 					<th>Attendees</th>
 					<th>Owner</th>
+					<th></th>
 					<?php if ($logged_in) {
 						echo "<th></th>";
 					}?>

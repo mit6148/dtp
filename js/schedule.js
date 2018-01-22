@@ -16,7 +16,7 @@ function populateTable(events) {
 	//console.log(events);
 	$('#scheduleBody').html('');
 	if (events.length === 0) {
-		$('#scheduleBody').html('<tr><td id="centerCell2" colspan="9">No events to show :(</td></tr>');
+		$('#scheduleBody').html('<tr><td id="centerCell2" colspan="10">No events to show :(</td></tr>');
 	}
 	events.sort(ByStartTime);
 	for (i in events){
@@ -27,6 +27,6 @@ function addToSchedule(event) {
     let start_time = new Date(event.start_time * 1000);
     let start_date = (new Date(event.start_time * 1000)).toDateString().split(" ");
     let end_time = new Date(event.end_time * 1000);
-    $('#scheduleBody').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8});">Cancel<i class="remove icon"></i></button></td></tr>'.format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id));
+    $('#scheduleBody').append('<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td><td>{7}</td><td><button class="ui green button" onclick="viewEvent({8}, {9})">View Details</button></td><td><button class="ui black right labeled icon cancel button" onclick="cancel_signup({8});">Cancel<i class="remove icon"></i></button></td></tr>'.format(event.course, event.assignment, event.location, start_date[0] + " " + start_date[1] + " " + start_date[2], parseTime(start_time), parseTime(end_time), event.num_attending_event, (event.owner_sub == sub) ? 'You' : ('<a href="mailto:' + event.owner_email + '">' + event.owner_name + '</a>'), event.id, (event.owner_sub == sub)));
 }
 updateScheduleBody();
