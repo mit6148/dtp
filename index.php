@@ -48,7 +48,7 @@
   	<?php if ($logged_in) { ?>
 			<div class="right menu">
 				<div class="item">
-					Hi, <?php echo $userinfo["given_name"]; ?>.
+					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
 				</div>
 				<a class="item clickable" href="#" id="addEvent">
 		  			New Event&nbsp;
@@ -99,10 +99,10 @@
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
-				Down to PSET?
+				down to pset?
 			</h1>
 			<p class="ui">
-				Search by course, assignment, or location
+				Search by course, assignment, or location...
 			</p>
 			<form class="ui form" id="searchEvents">
 				<div class="field">
