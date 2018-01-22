@@ -52,12 +52,10 @@
 	 	</a>-->
 		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
-				<div class="item">
-			 		<div class="ui blue button right labeled icon" id="addEvent">
-				  	New Event
-						<i class="add icon"></i>
-					</div>
-				</div>
+			<a class="item clickable" href="#" id="addEvent">
+		  		New Event&nbsp;
+				<i class="add icon"></i>
+			</div>
 		 	<!--<a class="item">
 		    	Profile
 		 	</a>-->
@@ -65,11 +63,11 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<a class="item icon" href="#" id="scheduleLink">
+				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
 		 		</a>
-				<a class="item icon" href="logout.php" id="logout">
+				<a class="item clickable" href="logout.php" id="logout">
 					Logout&nbsp;
 					<i class="sign out icon"></i>
 				</a>
@@ -83,7 +81,7 @@
 					</div>
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-				<a class="item icon" href="#" id="login">
+				<a class="item clickable" href="#" id="login">
 					Login&nbsp;
 					<i class="sign in icon"></i>
 				</a>
