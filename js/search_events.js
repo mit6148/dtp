@@ -17,7 +17,7 @@ function searchEvents(event) {
     })
     .done(function(res) {
         console.log(res);
-        $('#events').html('');
+        $('tbody').html('');
         $('#eventsTable').show();
         if (res.length == 0){
             $('#eventsTable').append('<tr><td id="centerCell" colspan="' + ((logged_in) ? '8' : '7') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
@@ -72,3 +72,6 @@ function createEventFromSearch() {
     $('[name="submit_location"]').val($('[name=search_location]').val());
     $('#submitEventModal').modal('show');
 }
+$(document).ready(function(){
+    $('.ui.accordion').accordion();
+});
