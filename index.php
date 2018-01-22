@@ -65,12 +65,16 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<a class="active item" id="scheduleLink">
-		    	My Schedule
-		 		</a>
-				<a class="active item" href="logout.php" id="logout">
-					Logout
-				</a>
+				<div class="item">
+					<div class="ui white button" id="scheduleLink">
+			    	My Schedule
+			 		</div>
+			 	</div>
+			 	<div>
+					<div class="ui white button" href="logout.php" id="logout">
+						Logout
+					</div>
+				</div>
 			</div>
 		<?php } else { ?>
 			<div class="right menu">
@@ -219,8 +223,8 @@
 					}?>
 				</tr>
 			</thead>
-		  <tbody class="ui title" id="events">
-		  </tbody>
+		 	<div id="events">
+		 	</div>
 		</table>
 	</div>
 	<script src="js/universal.js"></script>
