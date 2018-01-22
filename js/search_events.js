@@ -85,6 +85,21 @@ function viewEvent(id, owner) {
         $('#editModal').on('click', function() {
             $('#changeEventModal').modal('show');
             $('#changeEventModal').off('submit');
+            $('input[name=change_course]').val(res.course);
+            $('input[name=change_assginment]').val(res.assignment);
+            $('input[name=change_location]').val(res.location);
+            let start_time = new Date(res.start_time * 1000);
+            let start_hours = "0" + start_time.getHours();
+            let start_minutes = "0" + start_time.getMinutes();
+            $('input[name=change_start_time]').val(start_hours.substr(-2) + ":" + start_minutes.substr(-2));
+            let end_time = new Date(res.end_time * 1000);
+            let end_hours = "0" + end_time.getHours();
+            let end_minutes = "0" + end_time.getMinutes();
+            $('input[name=change_start_time]').val(end_hours.substr(-2) + ":" + end_minutes.substr(-2));
+            let year = start_time.getFullYear();
+            let month = "0" + (parseInt(start_time.getMonth()) + 1);
+            let day = "0" + start_time.getDay();
+            $('input[name=change_date]').val(year + "-" + month.substr(-2) + "-" + day.substr(-2));
             $('#changeEventModal').on('submit', function(event) {
                 event.preventDefault();
                 const data = {
