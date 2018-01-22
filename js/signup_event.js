@@ -16,7 +16,7 @@ function signup(event_id) {
               .transition('fade')
             ;
         });
-    eventButton(event_id,true);
+    searchEvents();
     updateScheduleBody();
 	})
 	.fail(function() {
@@ -48,10 +48,8 @@ function cancel_signup(event_id) {
               .transition('fade')
             ;
         });
-    if (searchResultEvents){
-      if (searchResultEvents.map(function(a){return parseInt(a.id)}).indexOf(event_id)!=-1){
-        eventButton(event_id,false);
-      }
+    if (searched){
+      searchEvents();
     }
     updateScheduleBody();
   })
