@@ -26,12 +26,12 @@
 		return $result;
 	}
 	function is_signed_up($db, $user_sub, $event_id) {
-		$stmt = $db->prepare("SELECT * FROM signups WHERE user_sub = ? AND event_id = ?");
+		$stmt = $db->prepare("SELECT COUNT(*) FROM signups WHERE user_sub = ? AND event_id = ?");
 		$stmt->execute(array(
 			$user_sub,
 			$event_id
 		));
-		return $stmt->rowCount() > 0;
+		return $stmt->fetch(PDO::FETCH_NUM)[0] > 0;
 	}
 	function get_signedup_events($db, $user_sub) {
 		$stmt = $db->prepare("SELECT event_id FROM signups WHERE user_sub = ?");
@@ -61,5 +61,15 @@
 			$event_id
 		));
 		return $stmt->fetch(PDO::FETCH_NUM)[0];
+	}
+	function append_events_details($db, $results) {
+		foreach ($results as $key => $row){
+			$owner_userinfo = get_userinfo($db, $row["owner_sub"]);
+			$results[$key]["owner_name"] = $owner_userinfo["name"];
+			$results[$key]["owner_email"] = $owner_userinfo["email"];
+			$results[$key]["is_signed_up"] = (is_signed_up($db, $requester_sub, $row["id"])) ? 1 : 0;
+			$results[$key]["num_attending_event"] = num_attending_event($db, $row["id"]);
+		}
+		return $results;
 	}
 ?>

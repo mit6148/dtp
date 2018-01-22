@@ -17,13 +17,14 @@
 
 	$requester_sub = get_sub($db, $_COOKIE["login_uid"]);
 
-	foreach ($results as $key => $row) {
+	/*foreach ($results as $key => $row) {
 		$owner_userinfo = get_userinfo($db, $row["owner_sub"]);
 		$results[$key]["owner_name"] = $owner_userinfo["name"];
 		$results[$key]["owner_email"] = $owner_userinfo["email"];
 		$results[$key]["is_signed_up"] = (is_signed_up($db, $requester_sub, $row["id"])) ? 1 : 0;
 		$results[$key]["num_attending_event"] = num_attending_event($db, $row["id"]);
-	}
+	}*/
+	$results = append_events_details($db, $results);
 
 	echo json_encode($results);
 ?>
