@@ -24,7 +24,7 @@
 		$results[$key]["is_signed_up"] = (is_signed_up($db, $requester_sub, $row["id"])) ? 1 : 0;
 		$results[$key]["num_attending_event"] = num_attending_event($db, $row["id"]);
 	}*/
-	$results = append_events_details($db, $results);
+	$results = append_events_details($db, $results, $requester_sub);
 
 	echo json_encode($results);
 ?>

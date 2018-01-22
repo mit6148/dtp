@@ -15,13 +15,9 @@
 	}
 	function is_valid_login_uid($db, $login_uid) {
 		login_cleanup($db);
-		$stmt = $db->prepare("SELECT * FROM logins WHERE uid = ?");
+		$stmt = $db->prepare("SELECT EXISTS(SELECT * FROM logins WHERE uid = ?)");
 		$stmt->execute(array($login_uid));
-		//$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-		if ($stmt->rowCount() > 0) {
-			return true;
-		}
-		return false;
+		return $stmt->fetch(PDO::FETCH_NUM)[0] == "1";
 	}
 	function get_user_owned_events($db, $sub) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE owner_sub = ?");
