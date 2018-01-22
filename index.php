@@ -81,7 +81,7 @@
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
 				<a class="item" id="login" href="#">
-					Log In
+					Login
 				</a>
 			</div>
 			<script>
