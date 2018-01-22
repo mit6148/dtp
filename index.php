@@ -65,10 +65,10 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<div class="item icon" id="scheduleLink">
-			    	My Schedule
+				<a class="item" id="scheduleLink">
+			    	<div>My Schedule</div>
 			    	<i class="checked calendar icon"></i>
-		 		</div>
+		 		</a>
 				<a class="item icon" href="logout.php" id="logout">
 					Logout
 					<i class="sign out icon"></i>
@@ -180,12 +180,74 @@
 		  </div>
 		</form>
 	</div>
+	<div class="ui modal" id="viewModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+	    View Event
+	  </div>
+	  <div class="ui header">
+	  	Participants
+	  </div>
+	  <div class="ui bulleted list" id="participants">
+
+	  </div>
+	  <div id="randomInfo">
+
+	  </div>
+		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
+	  	Edit My Event
+	  	<i class="edit icon"></i>
+	  </button>
+	</div>
+	<div class="ui modal" id="changeEventModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+	    Editing Event
+	  </div>
+	 	<form class="ui form" id="changeEvent">
+			<div class="field">
+				<div class="three fields">
+					<div class="field">
+						<input placeholder="Course" type="text" name="change_course" required>
+					</div>
+					<div class="field">
+			  		<input placeholder="Assignment" type="text" name="change_assignment" required>
+			  	</div>
+			  	<div class="field">
+			  		<input placeholder="Location" type="text" name="change_location" required>
+			  	</div>
+				</div>
+			</div>
+			<div class="field">
+				<div class="three fields" class="center">
+					<div class="field">
+						<input placeholder="Date" type="date" name="change_date" required>
+					</div>
+					<div class="field">
+				  	<input placeholder="Start Time" type="time" name="change_start_time" required>
+				  </div>
+				  <div class="field">
+				  	<input placeholder="End Time" type="time" name="change_end_time" required>
+				  </div>
+				</div>
+			</div>
+			<div class="actions">
+				<button class="ui green right floated right labeled icon submit button">
+		      Make Changes
+		      <i class="checkmark icon"></i>
+		    </button>
+		    <div class="ui black right floated deny button">
+		      Cancel
+		    </div>
+		  </div>
+		</form>
+	</div>
 	<div class="ui modal" id="scheduleModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
-	    	My Schedule
-	  	</div>
-	  	<table class="ui table">
+	    My Schedule
+	  </div>
+	  <table class="ui table">
 			<thead>
 				<tr>
 					<th>Course</th>
@@ -206,7 +268,7 @@
 	<div class="ui center aligned container" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
-		<table class="ui center aligned table styled fluid accordion" id="eventsTable" hidden>
+		<table class="ui center aligned structured structured table" id="eventsTable" hidden>
 			<thead id="eventHeader">
 				<tr>
 					<th>Course</th>
