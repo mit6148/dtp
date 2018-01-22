@@ -75,3 +75,7 @@ body {
 #eventsTableContainer {
 	display: none;
 }
+
+.ui.accordion tbody.ui.content.active {
+  display: table-row-group;
+}
