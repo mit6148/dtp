@@ -223,8 +223,6 @@
 					}?>
 				</tr>
 			</thead>
-		 	<div id="events">
-		 	</div>
 		</table>
 	</div>
 	<script src="js/universal.js"></script>
