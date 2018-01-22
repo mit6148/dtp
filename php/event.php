@@ -60,6 +60,6 @@
 		$stmt->execute(array(
 			$event_id
 		));
-		return $stmt->fetch();
+		return $stmt->fetch(PDO::FETCH_NUM)[0];
 	}
 ?>

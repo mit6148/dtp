@@ -22,6 +22,7 @@
 		$results[$key]["owner_name"] = $owner_userinfo["name"];
 		$results[$key]["owner_email"] = $owner_userinfo["email"];
 		$results[$key]["is_signed_up"] = (is_signed_up($db, $requester_sub, $row["id"])) ? 1 : 0;
+		$results[$key]["num_attending_event"] = num_attending_event($db, $row["id"]);
 	}
 
 	echo json_encode($results);
