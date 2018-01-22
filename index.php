@@ -68,7 +68,7 @@
 				<a class="item icon" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
-		 		</div>
+		 		</a>
 				<a class="item icon" href="logout.php" id="logout">
 					Logout&nbsp;
 					<i class="sign out icon"></i>
