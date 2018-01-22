@@ -25,9 +25,6 @@ body {
   padding: 0 25px 15px 25px;
 }
 
-#scheduleLink {
-  margin-left: -25px;
-}
 
 #login, #logout {
   margin-right: 26px;
