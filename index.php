@@ -171,7 +171,7 @@
 		  </div>
 		</form>
 	</div>
-	<div class="ui modal">
+	<div class="ui modal" id="scheduleModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
 	    	My Schedule
