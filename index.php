@@ -52,21 +52,22 @@
 	 	</a>-->
 		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
-  			<a class="item" id="scheduleLink">
-		    	My Schedule
-		 	</a>
+				<div class="item">
+			 		<div class="ui white button" id="addEvent">
+				  	New Event
+						<i class="add icon" id="addEventIcon"></i>
+					</div>
+				</div>
 		 	<!--<a class="item">
 		    	Profile
 		 	</a>-->
 			<div class="right menu">
 				<div class="item">
-			 		<div class="ui white button" id="addEvent">
-				  	New Event
-					</div>
-				</div>
-				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
+				<a class="item" id="scheduleLink">
+		    	My Schedule
+		 		</a>
 				<a class="item" href="logout.php" id="logout">
 					Logout
 				</a>
