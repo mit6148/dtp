@@ -8,14 +8,16 @@
 
 	$user_sub = get_sub($db, $_COOKIE["login_uid"]);
 
-	$update_stmt = $db->prepare("UPDATE events SET course = ?, assignment = ?, location = ?, date = ?, start_time = ?, end_time = ? WHERE event_id = ? AND owner_sub = ?");
+	$start_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["start_time"]);
+	$end_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["end_time"]);
+
+	$update_stmt = $db->prepare("UPDATE events SET course = ?, assignment = ?, location = ?, start_time = ?, end_time = ? WHERE id = ? AND owner_sub = ?");
 	$update_stmt->execute(array(
 		$_POST["course"],
 		$_POST["assignment"],
 		$_POST["location"],
-		$_POST["date"],
-		$_POST["start_time"],
-		$_POST["end_time"],
+		date_timestamp_get($start_datetime),
+		date_timestamp_get($end_datetime),
 		$_POST["event_id"],
 		$user_sub
 	));
