@@ -64,7 +64,9 @@
 				  	New Event
 					</div>
 				</div>
-				Hi, <?php echo $userinfo["given_name"]; ?>
+				<div class="item">
+					<?php echo $userinfo["given_name"]; ?>
+				</div>
 				<a class="item" href="logout.php">
 					Logout
 				</a>
