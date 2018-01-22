@@ -79,3 +79,9 @@ body {
 .ui.accordion tbody.ui.content.active {
   display: table-row-group;
 }
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}

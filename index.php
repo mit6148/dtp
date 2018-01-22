@@ -222,6 +222,7 @@
 			</thead>
 		</table>
 	</div>
+	<footer><i>dtp</i> is pre-alpha software. Please report any bugs to dtp (at) mit (dot) edu.</footer>
 	<script src="js/universal.js"></script>
 	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
