@@ -30,7 +30,7 @@ body {
   margin-left: -25px;
 }
 
-#login {
+#login, #logout {
   margin-right: 26px;
 }
 
