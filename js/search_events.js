@@ -17,7 +17,7 @@ $('#searchEvents').submit(function(event) {
         $('#events').html('');
         $('#eventsTable').show();
         if (res.length == 0){
-            $('#events').append('<tr><td class="center" colspan="' + ((logged_in) ? '8' : '7') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
+            $('#events').append('<tr><td class="centerCell" colspan="' + ((logged_in) ? '8' : '7') + '"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
             //<button class="ui blue center floated icon submit button">Create Event</button>
         } else {
             res.sort(ByStartTime);
