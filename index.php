@@ -53,7 +53,7 @@
 		<h1 class="item">dtp</h1>
   	<?php if ($logged_in) { ?>
 				<div class="item">
-			 		<div class="ui white button" id="addEvent">
+			 		<div class="ui blue button" id="addEvent">
 				  	New Event
 						<i class="add icon" id="addEventIcon"></i>
 					</div>
@@ -65,10 +65,10 @@
 				<div class="item">
 					<?php echo $userinfo["given_name"]; ?>
 				</div>
-				<a class="item" id="scheduleLink">
+				<a class="active-item" id="scheduleLink">
 		    	My Schedule
 		 		</a>
-				<a class="item" href="logout.php" id="logout">
+				<a class="active-item" href="logout.php" id="logout">
 					Logout
 				</a>
 			</div>
