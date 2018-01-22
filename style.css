@@ -35,11 +35,11 @@ body {
   margin-right: 5px;
 }
 
-#addEvent {
+.clickable {
   overflow: hidden;
 }
 
-#addEvent:after {
+.clickable:after {
   content: "";
   position: absolute;
   left: -50%;
@@ -59,7 +59,7 @@ body {
   );
 }
 
-#addEvent:hover:after {
+.clickable:hover:after {
   opacity: 1;
   top: -10px;
   left: 110%;
@@ -73,7 +73,7 @@ body {
 }
 
 #eventHeader {
-  font: 17px;
+  font-size: 17px;
 }
 
 .ui.accordion tbody.ui.content.active {

@@ -43,34 +43,23 @@
 	</script>
 </head>
 <body>
-	<div class="ui big secondary menu">
-	 	<!--<a class="item" href="index.php">
-	    Home
-	 	</a>-->
-	 	<!--Todo feature<a class="item">
-	    My Classes
-	 	</a>-->
-		<h1 class="item">dtp</h1>
+	<div class="ui large secondary menu">
+		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
-				<div class="item">
-			 		<div class="ui blue button right labeled icon" id="addEvent">
-				  	New Event
-						<i class="add icon"></i>
-					</div>
-				</div>
-		 	<!--<a class="item">
-		    	Profile
-		 	</a>-->
 			<div class="right menu">
 				<div class="item">
-					<?php echo $userinfo["given_name"]; ?>
+					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
 				</div>
-				<a class="item" id="scheduleLink">
-			    	<div>My Schedule</div>
+				<a class="item clickable" href="#" id="addEvent">
+		  			New Event&nbsp;
+					<i class="add icon"></i>
+				</a>
+				<a class="item clickable" href="#" id="scheduleLink">
+			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
 		 		</a>
-				<a class="item icon" href="logout.php" id="logout">
-					Logout
+				<a class="item clickable" href="logout.php" id="logout">
+					Logout&nbsp;
 					<i class="sign out icon"></i>
 				</a>
 			</div>
@@ -83,8 +72,8 @@
 					</div>
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-				<a class="item icon" href="#" id="login">
-					Login
+				<a class="item clickable" href="#" id="login">
+					Login&nbsp;
 					<i class="sign in icon"></i>
 				</a>
 			</div>
@@ -110,10 +99,10 @@
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
-				Down to PSET?
+				down to pset?
 			</h1>
 			<p class="ui">
-				Search by course, assignment, or location
+				Search by course, assignment, or location...
 			</p>
 			<form class="ui form" id="searchEvents">
 				<div class="field">
