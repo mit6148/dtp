@@ -32,7 +32,9 @@
 		<?php
 			if ($logged_in) {
 				echo "logged_in = true;";
-				echo "sub = '" . get_sub($db, $_COOKIE["login_uid"]) . "';";
+				$sub = get_sub($db, $_COOKIE["login_uid"]);
+				$userinfo = get_userinfo($db, $sub);
+				echo "sub = '" . $sub . "';";
 			} else {
 				echo "logged_in = false;";
 				echo "sub = ''";
@@ -62,6 +64,7 @@
 				  	New Event
 					</div>
 				</div>
+				Hi, <?php echo $userinfo["given_name"]; ?>
 				<a class="item" href="logout.php">
 					Logout
 				</a>
