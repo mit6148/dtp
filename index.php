@@ -46,7 +46,7 @@
 	<div class="ui large secondary menu">
 		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
-			<div class="right menu topMenu">
+			<div class="right menu">
 				<div class="item">
 					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
 				</div>
@@ -64,7 +64,7 @@
 				</a>
 			</div>
 		<?php } else { ?>
-			<div class="right menu topMenu">
+			<div class="right menu">
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">

@@ -83,11 +83,3 @@ body {
 .ui.accordion tbody.ui.content.active {
   display: table-row-group;
 }
-
-.topMenu {
-  margin-top: 3px;
-}
-
-.topMenu i {
-  padding-left: 9px;
-}
