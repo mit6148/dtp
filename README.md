@@ -49,3 +49,7 @@
 #### Risks:
 
 * Prejudice against working with people in attendance
+
+#### Citations
+
+* [https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format](https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format)
