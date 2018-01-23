@@ -32,24 +32,20 @@
 
 * Create and edit profile
 
-* Email notifications when events that fit certain criteria are created
-
 #### Back-End
 
-* php
+* PHP
 
-* mySQL
+* MySQL
 
 #### Front-End
 
 * jQuery
 
-* Semantics UI
+* Semantic UI
 
 #### Browser: Firefox and Chrome
 
 #### Risks:
-
-* Database becoming oversaturated with expired events
 
 * Prejudice against working with people in attendance
