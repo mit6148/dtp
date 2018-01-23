@@ -83,6 +83,7 @@ function viewEvent(id, owner) {
                     if (searched) {
                         searchEvents();
                     }
+		    updateScheduleBody();
                 });
             });
         });
@@ -105,5 +106,6 @@ function deleteEvent(event_id) {
         if (searched) {
             searchEvents();
         }
+	updateScheduleBody();
     }).fail(console.log);
 }

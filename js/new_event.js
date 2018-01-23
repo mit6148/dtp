@@ -44,7 +44,10 @@ function addEventForm(event) {
             ;
         });
         updateScheduleBody();
-        console.log(response);
+        //console.log(response);
+	if (searched) {
+		searchEvents();
+	}
     })
     .fail(function() {
         //$('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');

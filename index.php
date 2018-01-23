@@ -22,7 +22,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="ISO-8859-1">
 	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -221,15 +221,15 @@
 				</div>
 			</div>
 			<div class="actions">
-			<div class="ui red right floated deny button" id="changeEventModalDelete">
-		      Delete Event
-		    </div>
 			<button class="ui green right floated right labeled icon submit button">
 		      Make Changes
 		      <i class="checkmark icon"></i>
 		    </button>
 		    <div class="ui black right floated deny button">
 		      Cancel
+		    </div>
+			<div class="ui red right floated deny button" id="changeEventModalDelete">
+		      Delete Event
 		    </div>
 		  </div>
 		</form>

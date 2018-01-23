@@ -81,11 +81,11 @@
 		$stmt->execute(array(
 			$sub,
 			$event_id
-		)) or return false;
+		));
 		$delete_signups_stmt = $db->prepare("DELETE FROM signups WHERE event_id = ?");
 		$delete_signups_stmt->execute(array(
 			$event_id
-		)) or return false;
+		));
 		return true;
 	}
 ?>
