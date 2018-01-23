@@ -86,7 +86,7 @@ function viewEvent(id, owner) {
             $('#changeEventModal').modal('show');
             $('#changeEventModal').off('submit');
             $('input[name=change_course]').val(res.course);
-            $('input[name=change_assipnment]').val(res.assignment);
+            $('input[name=change_assignment]').val(res.assignment);
             $('input[name=change_location]').val(res.location);
             let start_time = new Date(res.start_time * 1000);
             let start_hours = "0" + start_time.getHours();

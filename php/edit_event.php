@@ -13,9 +13,9 @@
 
 	$update_stmt = $db->prepare("UPDATE events SET course = ?, assignment = ?, location = ?, start_time = ?, end_time = ? WHERE id = ? AND owner_sub = ?");
 	$update_stmt->execute(array(
-		$_POST["course"],
-		$_POST["assignment"],
-		$_POST["location"],
+		strip_tags($_POST["course"]),
+		strip_tags($_POST["assignment"]),
+		strip_tags($_POST["location"]),
 		date_timestamp_get($start_datetime),
 		date_timestamp_get($end_datetime),
 		$_POST["event_id"],

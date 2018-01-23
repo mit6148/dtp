@@ -17,9 +17,9 @@
 	$end_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["end_time"]);
 	$event_stmt->execute(array(
 		$sub,
-		$_POST["course"],
-		$_POST["assignment"],
-		$_POST["location"],
+		strip_tags($_POST["course"]),
+		strip_tags($_POST["assignment"]),
+		strip_tags($_POST["location"]),
 		date_timestamp_get($start_datetime),
 		date_timestamp_get($end_datetime)
 	));
