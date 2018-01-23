@@ -1,6 +1,6 @@
 
 function viewEvent(id, owner) {
-    console.log("Editing " + id);
+    //console.log("Editing " + id);
     $.ajax({
         type: 'GET',
         url: 'php/get_event_details.php',

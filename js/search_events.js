@@ -16,7 +16,7 @@ function searchEvents(event) {
         url : "php/search_events.php",
     })
     .done(function(res) {
-        console.log(res);
+        //console.log(res);
         while ($('#eventsTable > *').length > 1){
             $($('#eventsTable > *')[1]).remove();
         }
