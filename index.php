@@ -45,10 +45,10 @@
 <body>
 	<div class="ui large secondary menu">
 		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
-  	<?php if ($logged_in) { ?>
-			<div class="right menu">
+		<div class="right menu" id="topMenu">
+			<?php if ($logged_in) { ?>
 				<div class="item">
-					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
+					<?php echo $userinfo["given_name"]; ?><!--&nbsp;<i class="user icon"></i>-->
 				</div>
 				<a class="item clickable" href="#" id="addEvent">
 		  			New Event&nbsp;
@@ -62,9 +62,7 @@
 					Logout&nbsp;
 					<i class="sign out icon"></i>
 				</a>
-			</div>
 		<?php } else { ?>
-			<div class="right menu">
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
