@@ -221,7 +221,10 @@
 				</div>
 			</div>
 			<div class="actions">
-				<button class="ui green right floated right labeled icon submit button">
+			<div class="ui red right floated deny button" id="changeEventModalDelete">
+		      Delete Event
+		    </div>
+			<button class="ui green right floated right labeled icon submit button">
 		      Make Changes
 		      <i class="checkmark icon"></i>
 		    </button>

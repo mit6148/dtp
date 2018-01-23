@@ -14,7 +14,6 @@ function viewEvent(id, owner) {
         $('#participants').append("<div class='item'>" + res.attendees[i].name + "</div>");
     }
 	$('#randomInfo').html('');
-    //$('#randomInfo').append("<div>Course: {0}</div><div>{1}</div><div>{2}</div>".format(res.course, res.assignment, res.location));
     let start_time = new Date(res.start_time * 1000);
     let end_time = new Date(res.end_time * 1000);
     $('#viewModalTitle').text(res.course + " " + res.assignment);
@@ -58,9 +57,12 @@ function viewEvent(id, owner) {
             let month = "0" + (parseInt(start_time.getMonth()) + 1);
             let day = "0" + start_time.getDate();
             $('input[name=change_date]').val(year + "-" + month.substr(-2) + "-" + day.substr(-2));
+            $('#changeEventModalDelete').on('click', function() {
+                deleteEvent(res.id);
+            });
             $('#changeEventModal').on('submit', function(event) {
                 event.preventDefault();
-                const data = {
+                let data = {
                     event_id : id,
                     'course' : $('input[name=change_course]').val(),
                     'assignment' : $('input[name=change_assignment]').val(),
@@ -78,6 +80,9 @@ function viewEvent(id, owner) {
                     $('#changeEventModal').modal('hide');
                     $('#viewModal').modal('hide');
                     viewEvent(id, owner);
+                    if (searched) {
+                        searchEvents();
+                    }
                 });
             });
         });
@@ -85,5 +90,20 @@ function viewEvent(id, owner) {
         $('#editModal').hide();
     }
     $('#viewModal').modal('show');
+    }).fail(console.log);
+}
+function deleteEvent(event_id) {
+    $.ajax({
+        type : 'POST',
+        cache : false,
+        data : {
+            'event_id' : event_id
+        },
+        url : 'php/delete_event.php'
+    }).done(function(res) {
+        $('#changeEventModal').modal('hide');
+        if (searched) {
+            searchEvents();
+        }
     }).fail(console.log);
 }
