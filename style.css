@@ -82,3 +82,7 @@ body {
 .topMenu i {
   padding-left: 5px;
 }
+
+#viewModalBody {
+  margin-top: 5px;
+}
