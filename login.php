@@ -50,7 +50,7 @@
 						$userinfo["sub"],
 						time()+60*60*24*30
 					));
-					if ($state[1] == "persistent"){
+					if (isset($state[1])){
 						setcookie("login_uid", $login_uid, time()+60*60*24*90);
 					} else {
 						setcookie("login_uid", $login_uid);
