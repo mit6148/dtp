@@ -82,6 +82,10 @@
 			$sub,
 			$event_id
 		)) or return false;
-		return $stmt->rowCount() > 0;
+		$delete_signups_stmt = $db->prepare("DELETE FROM signups WHERE event_id = ?");
+		$delete_signups_stmt->execute(array(
+			$event_id
+		)) or return false;
+		return true;
 	}
 ?>
