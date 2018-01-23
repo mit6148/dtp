@@ -16,5 +16,5 @@ let searched = false;
 //$('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your request was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
 function message(div_id, messageType, headerText, bodyText) {
   $('#'+div_id).prepend('<div><div class="ui ' + messageType + ' compact message"><i class="close icon"></i><div class="header">' + headerText + '</div><p>' + bodyText + '</p></div></div>');
-  $("#" + div_id).delay(4000).hide();
+  $("#" + div_id + " > *").delay(4000).hide();
 }
