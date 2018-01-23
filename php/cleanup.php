@@ -7,4 +7,5 @@
 	include("event.php");
 
 	login_cleanup($db);
+	event_cleanup($db);
 ?>
