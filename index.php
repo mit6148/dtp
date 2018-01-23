@@ -171,7 +171,7 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-	  <div class="ui header" id="viewModalTitle"></div>
+	  <div class="ui center aligned header" id="viewModalTitle"></div>
 	  <div id="viewModalBody">
 	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
 	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
