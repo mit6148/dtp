@@ -8,5 +8,5 @@
 
 	$user_sub = get_sub($db, $_COOKIE["login_uid"]);
 
-	echo delete_event($db, $_POST["event_id"], $user_sub);
+	delete_event($db, $_POST["event_id"], $user_sub);
 ?>

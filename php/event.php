@@ -86,6 +86,5 @@
 		$delete_signups_stmt->execute(array(
 			$event_id
 		));
-		return true;
 	}
 ?>
