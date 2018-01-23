@@ -31,8 +31,8 @@ function viewEvent(id, owner) {
         if (res.attendees.length === 2) {
             attendeesString += ' and ' + res.attendees[1].name;
         } else {
-            for (let i = 1; i < res.attendees.length, i++) {
-                attendeesString += (i < (res.attendees.length - 1)) ? ', ' : ', and ' + res.attendees[i];
+            for (let i = 1; i < res.attendees.length; i++) {
+                attendeesString += ((i < (res.attendees.length - 1)) ? ', ' : ', and ') + res.attendees[i].name;
             }
         }
     }
