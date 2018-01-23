@@ -8,6 +8,7 @@
 				$user_sub,
 				$event_id
 			));
+			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 	}
 	function cancel_signup($db, $user_sub, $event_id) {
@@ -16,6 +17,7 @@
 			$user_sub,
 			$event_id
 		));
+		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	function get_eventinfo($db, $event_id) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
@@ -73,5 +75,17 @@
 			$results[$key]["num_attending_event"] = num_attending_event($db, $row["id"]);
 		}
 		return $results;
+	}
+	function delete_event($db, $event_id, $sub) {
+		$stmt = $db->prepare("DELETE FROM events WHERE owner_sub = ? AND id = ?");
+		$stmt->execute(array(
+			$sub,
+			$event_id
+		));
+		$delete_signups_stmt = $db->prepare("DELETE FROM signups WHERE event_id = ?");
+		$delete_signups_stmt->execute(array(
+			$event_id
+		));
+		return true;
 	}
 ?>

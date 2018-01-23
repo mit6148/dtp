@@ -22,7 +22,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="ISO-8859-1">
 	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -46,7 +46,7 @@
 	<div class="ui large secondary menu">
 		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
-			<div class="right menu">
+			<div class="right menu topMenu">
 				<div class="item">
 					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
 				</div>
@@ -64,7 +64,7 @@
 				</a>
 			</div>
 		<?php } else { ?>
-			<div class="right menu">
+			<div class="right menu topMenu">
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
@@ -174,14 +174,14 @@
 		<div class="ui center aligned header">
 	    View Event
 	  </div>
-	  <div class="ui header">
-	  	Participants
+	  <div class="ui header" id="viewModalTitle">
 	  </div>
-	  <div class="ui bulleted list" id="participants">
-
-	  </div>
-	  <div id="randomInfo">
-
+	  <div id="viewModalBody">
+	  	<p>Event created by <span id="viewModalOwner"></span></p>
+	  	<p>Location: <span id="viewModalLocation"></span></p>
+	  	<p>Date: <span id="viewModalDate"></span></p>
+	  	<p>Time: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
+	  	<p><span id="viewModalAttendees"></span> will be there.</p>
 	  </div>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
 	  	Edit My Event
@@ -221,12 +221,15 @@
 				</div>
 			</div>
 			<div class="actions">
-				<button class="ui green right floated right labeled icon submit button">
+			<button class="ui green right floated right labeled icon submit button">
 		      Make Changes
 		      <i class="checkmark icon"></i>
 		    </button>
 		    <div class="ui black right floated deny button">
 		      Cancel
+		    </div>
+			<div class="ui red right floated deny button" id="changeEventModalDelete">
+		      Delete Event
 		    </div>
 		  </div>
 		</form>
@@ -270,9 +273,7 @@
 					<th>Attendees</th>
 					<th>Owner</th>
 					<th></th>
-					<?php if ($logged_in) {
-						echo "<th></th>";
-					}?>
+					<th></th>
 				</tr>
 			</thead>
 		</table>
@@ -280,6 +281,7 @@
 	<script src="js/universal.js"></script>
 	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
+	<script src="js/view_event.js"></script>
 	<?php if ($logged_in){ ?>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
