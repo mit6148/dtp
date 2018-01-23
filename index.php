@@ -174,14 +174,14 @@
 		<div class="ui center aligned header">
 	    View Event
 	  </div>
-	  <div class="ui header">
-	  	Participants
+	  <div class="ui header" id="viewModalTitle">
 	  </div>
-	  <div class="ui bulleted list" id="participants">
-
-	  </div>
-	  <div id="randomInfo">
-
+	  <div id="viewModalBody">
+	  	<p>Event created by <span id="viewModalOwner"></span></p>
+	  	<p>Location: <span id="viewModalLocation"></span></p>
+	  	<p>Date: <span id="viewModalDate"></span></p>
+	  	<p>Time: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
+	  	<p><span id="viewModalAttendees"></span> will be there.</p>
 	  </div>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
 	  	Edit My Event
@@ -270,9 +270,7 @@
 					<th>Attendees</th>
 					<th>Owner</th>
 					<th></th>
-					<?php if ($logged_in) {
-						echo "<th></th>";
-					}?>
+					<th></th>
 				</tr>
 			</thead>
 		</table>
@@ -280,6 +278,7 @@
 	<script src="js/universal.js"></script>
 	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
+	<script src="js/view_event.js"></script>
 	<?php if ($logged_in){ ?>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
