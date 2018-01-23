@@ -171,16 +171,12 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-		<div class="ui center aligned header">
-	    View Event
-	  </div>
-	  <div class="ui header" id="viewModalTitle">
-	  </div>
+	  <div class="ui header" id="viewModalTitle"></div>
 	  <div id="viewModalBody">
-	  	<p>Event created by <span id="viewModalOwner"></span></p>
-	  	<p>Location: <span id="viewModalLocation"></span></p>
-	  	<p>Date: <span id="viewModalDate"></span></p>
-	  	<p>Time: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
+	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
+	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
+	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
+	  	<p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
 	  	<p><span id="viewModalAttendees"></span> will be there.</p>
 	  </div>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>

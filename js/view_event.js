@@ -16,7 +16,7 @@ function viewEvent(id, owner) {
 	$('#randomInfo').html('');
     let start_time = new Date(res.start_time * 1000);
     let end_time = new Date(res.end_time * 1000);
-    $('#viewModalTitle').text(res.course + " " + res.assignment);
+    $('#viewModalTitle').text(res.course + ": " + res.assignment);
     $('#viewModalOwner').text(res.owner_name);
     $('#viewModalLocation').text(res.location);
     $('#viewModalDate').text(start_time.toDateString());
