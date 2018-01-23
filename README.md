@@ -1,6 +1,6 @@
 # jaeyoung-jung-alvinzhu33-nikhilreddy6547-2018
 
-## Project: dtp (down to pset) (name subject to change)
+## Project: dtp (down to pset)
 
 #### Features implemented
 
@@ -14,11 +14,15 @@
 
 * View schedule
 
-#### Features to implement (Features targeted for MVP are in bold):
+* Edit events
 
-* **Edit events**
+* View number of people attending an event
 
-* **View number of people attending an event**
+* Email owner
+
+#### Features to implement:
+
+* Sign-up and log-in for non-MIT people
 
 * Google Calendar integration
 
@@ -29,3 +33,23 @@
 * Create and edit profile
 
 * Email notifications when events that fit certain criteria are created
+
+#### Back-End
+
+* php
+
+* mySQL
+
+#### Front-End
+
+* jQuery
+
+* Semantics UI
+
+#### Browser: Firefox and Chrome
+
+#### Risks:
+
+* Database becoming oversaturated with expired events
+
+* Prejudice against working with people in attendance
