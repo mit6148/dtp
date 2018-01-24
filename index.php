@@ -244,13 +244,13 @@
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="submit_date" required>
+						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="change_date" required>
 					</div>
 					<div class="field">
-						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_start_time" required>
+						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="change_start_time" required>
 				  </div>
 				  <div class="field">
-						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_end_time" required>
+						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="change_end_time" required>
 				  </div>
 				</div>
 			</div>
