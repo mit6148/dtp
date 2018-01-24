@@ -13,6 +13,5 @@
 		$ical_id,
 		$user_sub
 	));
-	$id = $stmt->fetch(PDO::FETCH_NUM)[0];
 	echo $ical_id;
 ?>
