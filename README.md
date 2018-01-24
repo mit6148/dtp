@@ -22,9 +22,9 @@
 
 * Google Calendar integration
 
-#### Features to implement:
-
 * Sign-up and log-in for non-MIT people
+
+#### Features to implement:
 
 * Invite to event by email
 
