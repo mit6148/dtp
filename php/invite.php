@@ -37,6 +37,7 @@
 		$header = "From: noreply\n";
 		$header .= "Content-Type: text/html; charset=ISO-8859-1";
 		mail($recipient_email, $subject, $body, $header);
+		echo "1";
 	}
 
 ?>
