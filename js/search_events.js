@@ -21,8 +21,10 @@ function searchEvents(event) {
             $($('#eventsTable > *')[1]).remove();
         }
         $('#eventsTable').show();
-        if (res.length === 0){
+        if (res.length === 0 && logged_in){
             $('#eventsTable').append('<tr><td id="centerCell" colspan="10"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
+        } else if (res.length === 0 && ! logged_in) {
+            $('#eventsTable').append('<tr><td id="centerCell" colspan="10"><p>No results returned. Sign in to create an event.</tr>');
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {
