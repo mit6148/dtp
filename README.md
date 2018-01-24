@@ -22,9 +22,9 @@
 
 * Google Calendar integration
 
-#### Features to implement:
-
 * Sign-up and log-in for non-MIT people
+
+#### Features to implement:
 
 * Invite to event by email
 
@@ -51,3 +51,7 @@
 #### Risks:
 
 * Prejudice against working with people in attendance
+
+#### Citations
+
+* [https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format](https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format)

@@ -25,7 +25,7 @@ function searchEvents(event) {
         }
         $('#eventsTable').show();
         if (res.length === 0){
-            $('#eventsTable').append('<tr><td id="centerCell" colspan="10"><p>No results returned :(</p><button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button></td></tr>');
+            $('#eventsTable').append('<tr><td id="centerCell" colspan="10"><p>No results returned :(</p>' + ((logged_in) ? '<button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button>' : '') + '</td></tr>');
         } else {
             res.sort(ByStartTime);
             for (let i = 0; i < res.length; i++) {

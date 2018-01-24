@@ -86,3 +86,7 @@ body {
 #viewModalBody {
   margin-top: 5px;
 }
+
+.ui.dropdown.selection {
+  min-width: 8em;
+}

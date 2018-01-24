@@ -1,5 +1,6 @@
 <?php
 	include("php/oidc.php");
+	include("php/google_oidc.php");
 	include("php/db.php");
 	include("php/user.php");
 
@@ -67,6 +68,12 @@
 		<?php } else { ?>
 			<div class="right menu topMenu">
 				<div class="ui item">
+					<select id="authMethod" class="ui dropdown">
+						<option value="mit">MIT</option>
+						<option value="google">Google</option>
+					</select>
+				</div>
+				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
 					 	<label>Stay logged in</label>
@@ -79,21 +86,30 @@
 				</a>
 			</div>
 			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
+				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
+				const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
 				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");
-				function updatePersistent() {
+				const authMethodSelect = $('#authMethod');
+				authMethodSelect.dropdown();
+				function updateHref() {
 					let href;
+					if (authMethodSelect.val() === 'mit') {
+						href = hrefPart1;
+					} else if (authMethodSelect.val() === 'google') {
+						href = googleHrefPart1;
+					}
 					if (persistentCheckbox.prop("checked")) {
-						href = hrefPart1 + ".persistent" + hrefPart2;
+						href += ".persistent" + hrefPart2;
 					} else {
-						href = hrefPart1 + hrefPart2;
+						href += hrefPart2;
 					}
 					loginButton.attr("href", href);
 				};
-				persistentCheckbox.on("click", updatePersistent);
-				updatePersistent();
+				authMethodSelect.on('change', updateHref);
+				persistentCheckbox.on("click", updateHref);
+				updateHref();
 			</script>
 		<?php } ?>
 	</div>
@@ -261,7 +277,7 @@
 			<?php echo $userinfo["name"]; ?>
 		</div>
 		<div>
-			<p>Kerberos: <?php echo $userinfo["kerberos"]; ?></p>
+			<?php if ($userinfo["kerberos"] != "") { echo "<p>Kerberos: " . $userinfo["kerberos"] . "</p>"; } ?>
 			<p>Email: <?php echo $userinfo["email"]; ?></p>
 			<p>Google Calendar URL: <div class="ui input"><input id="ical_id" type="text" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly size="60"></div>&nbsp;<button class="ui blue button" id="newIcalId">Request New Google Calendar URL</button></p>
 		</div>
