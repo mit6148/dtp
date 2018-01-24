@@ -8,7 +8,7 @@ function updateInvitations() {
 		url: 'php/get_invitations.php',
 		cache: false,
 		dataType: 'json'
-	}).done(populateInvitationsTable).fail(console.log);
+	}).done(populateInvitations).fail(console.log);
 }
 
 function populateInvitations(invitations) {
@@ -22,6 +22,9 @@ function populateInvitations(invitations) {
 	}
 }
 
-function addToInvitationsTable(event) {
-	$('#invitationsBody').append('You got an invitation.<br>');
+function addToInvitationsTable(invitation) {
+	$('#invitationsBody').append('You got an invitation from ' + invitation.inviter.given_name + '.<br>');
+	$('#invitationsBody').append('');
 }
+
+updateInvitations();

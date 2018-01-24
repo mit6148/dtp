@@ -95,6 +95,7 @@
 		$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($invitations as $i => $invitation) {
 			$invitations[$i] = array_merge(get_eventinfo($db, $invitation["event_id"]), $invitation);
+			$invitations[$i]["inviter"] = get_userinfo($db, $invitation["inviter_sub"]);
 		}
 		$invitations = append_events_details($db, $invitations);
 		return $invitations;
