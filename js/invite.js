@@ -1,5 +1,6 @@
 function inviteModal(eventId) {
 	$('#inviteModal').modal('show');
+	$('#inviteForm').off('submit');
 	$('#inviteForm').on('submit', function(jsEvent) {
 		jsEvent.preventDefault();
 		invite(eventId)
@@ -19,7 +20,7 @@ function invite(eventId) {
 		},
 		cache: false
 	}).done(function(res) {
-		//console.log(res);
+		console.log(res);
 		if (res === "2") {
 			message('messages', 'error', 'Error', 'That user has already received an invitation for that event.');
 		} else if (res === "1") {
