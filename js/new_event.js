@@ -3,7 +3,9 @@ $('#addEvent').on('click', function() {
 });
 
 $('#submitEvent').submit(addEventForm);
-
+$('select').dropdown({
+    allowAdditions: true,
+});
 function addEventForm(event) {
     event.preventDefault();
     let available_date;

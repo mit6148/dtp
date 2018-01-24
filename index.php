@@ -158,7 +158,13 @@
 			  		<input placeholder="Assignment" type="text" name="submit_assignment" required>
 			  	</div>
 			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="submit_location" required>
+			  		<select ui="ui fluid search dropdown" placeholder="Location" type="text" name="submit_location" required>
+			  			<option>Next 5W Lounge</option>
+			  			<option>TFL (Next)</option>
+			  			<option>Burton-Connor</option>
+			  			<option>Student Center 3rd Floor</option>
+			  			<option>Simmons</option>
+			  		</select>
 			  	</div>
 				</div>
 			</div>
@@ -216,7 +222,13 @@
 			  		<input placeholder="Assignment" type="text" name="change_assignment" required>
 			  	</div>
 			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="change_location" required>
+			  		<select ui="ui fluid search dropdown" placeholder="Location" type="text" name="change_location" required>
+			  			<option>Next 5W Lounge</option>
+			  			<option>TFL (Next)</option>
+			  			<option>Burton-Connor</option>
+			  			<option>Student Center 3rd Floor</option>
+			  			<option>Simmons</option>
+			  		</select>
 			  	</div>
 				</div>
 			</div>
