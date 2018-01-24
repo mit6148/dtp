@@ -1,5 +1,6 @@
 <?php
 	include("php/oidc.php");
+	include("php/google_oidc.php");
 	include("php/db.php");
 	include("php/user.php");
 
@@ -66,6 +67,20 @@
 			</div>
 		<?php } else { ?>
 			<div class="right menu topMenu">
+				<div class="inline fields">
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input name="loginType" id="MIT" checked type="radio">
+							<label>MIT</label>
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui radio checkbox">
+							<input name="loginType" id="Google" checked type="radio">
+							<label>Google</label>
+						</div>
+					</div>
+				</div>
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
@@ -79,20 +94,30 @@
 				</a>
 			</div>
 			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
+				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
+				const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
 				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");
-				function updatePersistent() {
+				const mitCheckbox = $('#MIT');
+				const googleCheckbox = $('#Google');
+				function updateHref() {
 					let href;
+					if (mitCheckbox.prop('checked')) {
+						href = hrefPart1;
+					} else if (googleCheckbox.prop('checked')) {
+						href = googleHrefPart1;
+					}
 					if (persistentCheckbox.prop("checked")) {
-						href = hrefPart1 + ".persistent" + hrefPart2;
+						href += ".persistent" + hrefPart2;
 					} else {
-						href = hrefPart1 + hrefPart2;
+						href += hrefPart2;
 					}
 					loginButton.attr("href", href);
 				};
-				persistentCheckbox.on("click", updatePersistent);
+				mitCheckbox.on('click', updateHref);
+				googleCheckbox.on('click', updateHref);
+				persistentCheckbox.on("click", updateHref);
 				updatePersistent();
 			</script>
 		<?php } ?>
