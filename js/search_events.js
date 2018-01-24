@@ -5,7 +5,6 @@ $('#searchEvents').keyup(function() {
 $('.ui.dropdown').dropdown({
     allowAdditions: true,
 });
-$('[name=search_location').on('DOMSubtreeModified', function() {$('#searchEvents').submit();});
 function searchEvents(event) {
     if (event) {
         event.preventDefault();
