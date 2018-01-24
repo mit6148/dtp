@@ -80,36 +80,41 @@
 					</div>
 				</div>
 				<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
+				<div class="ui item">
+					<label>Log-in with:</label>
+				</div>
 				<a class="item clickable" href="#" id="login">
-					Login&nbsp;
-					<i class="sign in icon"></i>
+					MIT
+				</a>
+				<a class="item clickable" href="#" id="loginGoogle">
+					Google
 				</a>
 			</div>
 			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
-				const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");
-				const authMethodSelect = $('#authMethod');
 				authMethodSelect.dropdown();
 				function updateHref() {
-					let href;
-					if (authMethodSelect.val() === 'mit') {
-						href = hrefPart1;
-					} else if (authMethodSelect.val() === 'google') {
-						href = googleHrefPart1;
-					}
+					let href = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
 					if (persistentCheckbox.prop("checked")) {
 						href += ".persistent" + hrefPart2;
 					} else {
 						href += hrefPart2;
 					}
-					loginButton.attr("href", href);
+					$("#login").attr("href", href);
 				};
-				authMethodSelect.on('change', updateHref);
+				function updateGoogleHref() {
+					let href = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
+					if (persistentCheckbox.prop("checked")) {
+						href += ".persistent" + hrefPart2;
+					} else {
+						href += hrefPart2;
+					}
+					$("#loginGoogle").attr("href", href);
+				};
 				persistentCheckbox.on("click", updateHref);
 				updateHref();
+				updateGoogleHref();
 			</script>
 		<?php } ?>
 	</div>
