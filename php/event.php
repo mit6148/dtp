@@ -88,7 +88,7 @@
 		));
 	}
 	function get_invitations($db, $kerberos) {
-		$stmt = $db->prepare("SELECT * FROM invitations WHERE kerberos = ?");
+		$stmt = $db->prepare("SELECT * FROM invitations WHERE kerberos = ? AND dismissed = 0");
 		$stmt->execute(array(
 			$kerberos
 		));
