@@ -1,5 +1,5 @@
 <?php
-	require_once __DIR__ . "vendor/autoload.php";
+	require_once __DIR__ . "/vendor/autoload.php";
 
 	include("db.php");
 	include("user.php");
@@ -11,7 +11,7 @@
 	$get_sub_stmt->execute(array(
 		$_GET["id"]
 	));
-	$user_sub = get_sub_stmt->fetch(PDO::FETCH_NUM)[0];
+	$user_sub = $get_sub_stmt->fetch(PDO::FETCH_NUM)[0];
 
 	$events = get_user_signedup_events($db, $user_sub);
 	$events = append_events_details($db, $events);
