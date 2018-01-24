@@ -297,10 +297,16 @@
 		<div class="ui center aligned header">
 			<?php echo $userinfo["name"]; ?>
 		</div>
-		<div>
-			<?php if ($userinfo["kerberos"] != "") { echo "<p>Kerberos: " . $userinfo["kerberos"] . "</p>"; } ?>
-			<p>Email: <?php echo $userinfo["email"]; ?></p>
-			<p>Google Calendar URL: <div class="ui input"><input id="ical_id" type="text" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly size="60"></div>&nbsp;<button class="ui blue button" id="newIcalId">Request New Google Calendar URL</button></p>
+		<div style="margin-top:14px">
+			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
+			<p><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
+			<p><b>Google Calendar URL</b>:
+			<div class="ui input">
+				<div class="ui action input">
+					<input id="ical_id" type="text" readonly size="60" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+					<button class="ui blue button" id="newIcalId">Request New URL</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="ui center aligned container" id="messages">
