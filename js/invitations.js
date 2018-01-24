@@ -24,8 +24,14 @@ function populateInvitations(invitations) {
 
 function addToInvitationsTable(invitation) {
 	console.log(invitation);
-	$('#invitationsBody').append('You got an invitation from ' + invitation.inviter.given_name + '.<br>');
-	$('#invitationsBody').append('');
+	$('#invitationsBody').append('<p>Invitation from ' + invitation.inviter.given_name + '.</p>');
+	$('#invitationsBody').append('<p>' + invitation.course + ': ' + invitation.assignment + '</p>');
+	$('#invitationsBody').append('<p>Location: ' + invitation.location + '</p>');
+	let start_time = new Date(invitation.start_time * 1000);
+    let start_date = new Date(invitation.start_time * 1000).toDateString();
+    let end_time = new Date(invitation.end_time * 1000);
+	$('#invitationsBody').append('<p>Date: ' + start_date + '</p>');
+	$('#invitationsBody').append('<p>Time: ' + parseTime(start_time) + ' to ' + parseTime(end_time) + '</p>');
 }
 
 updateInvitations();
