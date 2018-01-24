@@ -150,7 +150,7 @@
 	  </div>
 	  <form class="ui form" id="submitEvent">
 			<div class="field">
-				<div class="three fields">
+				<div class="three fields" style="margin-top:14px">
 					<div class="field">
 						<input placeholder="Course" type="text" name="submit_course" required>
 					</div>
@@ -165,13 +165,13 @@
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="submit_date" required>
+						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="submit_date" required>
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="submit_start_time" required>
+						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="submit_end_time" required>
+						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_end_time" required>
 				  </div>
 				</div>
 			</div>
@@ -223,13 +223,13 @@
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="change_date" required>
+						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="submit_date" required>
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="change_start_time" required>
+						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="change_end_time" required>
+						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_end_time" required>
 				  </div>
 				</div>
 			</div>
