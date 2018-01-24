@@ -10,7 +10,7 @@ function invite(event) {
 		type: 'POST',
 		url: 'php/invite.php',
 		data: {
-			'invitee_kerberos': invitee_kerberos
+			'invitee_kerberos': invitee_kerberos.val()
 		},
 		cache: false
 	}).done(function(res) {

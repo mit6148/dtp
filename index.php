@@ -367,6 +367,7 @@
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
 		<script src="js/invitations.js"></script>
+		<script src="js/invite.js"></script>
 	<?php } ?>
 </body>
 </html>

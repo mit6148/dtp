@@ -35,7 +35,10 @@ function viewEvent(id, owner) {
             }
         }
     }
-    $('#viewModalAttendees').text(attendeesString);
+    $('#inviteButton').off('click');
+    $('#inviteButton').on('click', function() {
+		console.log(res.id);
+    });
     if (owner) {
         $('#editModal').show();
         $('#editModal').off('click');
