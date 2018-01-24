@@ -12,15 +12,7 @@
 	$stmt->execute(array(
 		$userinfo["kerberos"]
 	));
-	$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($invitations as $i => $invitation) {
-		$invitations[$i]["event"] = get_eventinfo($db, $invitation["event_id"]);
-                $owner_userinfo = get_userinfo($db, $invitations[$i]["event"]["owner_sub"]);
-                $invitations[$i]["event"]["owner_name"] = $owner_userinfo["name"];
-                $invitations[$i]["event"]["owner_email"] = $owner_userinfo["email"];
-                $invitations[$i]["event"]["num_attending_event"] = num_attending_event($db, $invitations[$i]["event"]["id"]);
-	}
-
+	$invitations = get_invitations($db, $userinfo["kerberos"]);
 	header("Content-Type: application/json");
 	echo json_encode($invitations);
 ?>

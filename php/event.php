@@ -87,4 +87,16 @@
 			$event_id
 		));
 	}
+	function get_invitations($db, $kerberos) {
+		$stmt = $db->prepare("SELECT * FROM invitations WHERE kerberos = ?");
+		$stmt->execute(array(
+			$kerberos
+		));
+		$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($invitations as $i => $invitation) {
+			$invitations[$i] = array_merge(get_eventinfo($db, $invitation["event_id"]), $invitation);
+		}
+		$invitations = append_events_details($db, $invitations);
+		return $invitations;
+	}
 ?>

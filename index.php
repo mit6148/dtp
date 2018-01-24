@@ -56,6 +56,13 @@
 		  			New Event&nbsp;
 					<i class="add icon"></i>
 				</a>
+				<div class="item ui dropdown">
+					<div class="text">Invitations</div>
+					<i class="mail outline"></i>
+					<div class="menu">
+						<div class="item">6.0001 pset 1</div>
+					</div>
+				</div>
 				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
