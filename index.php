@@ -56,12 +56,9 @@
 		  			New Event&nbsp;
 					<i class="add icon"></i>
 				</a>
-				<div class="item ui dropdown">
+				<a class="item clickable" href="#" id="invitations">
 					<div class="text">Invitations</div>
-					<i class="mail outline"></i>
-					<div class="menu">
-						<div class="item">6.0001 pset 1</div>
-					</div>
+					<i class="mail outline icon"></i>
 				</div>
 				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
@@ -292,6 +289,15 @@
 		  </tbody>
 		</table>
 	</div>
+	<div class="ui modal" id="invitationsModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+		    Invitations
+		</div>
+		<div id="invitationsBody">
+			
+		</div>
+	</div>
 	<div class="ui modal" id="userinfoModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
@@ -337,6 +343,7 @@
 	<?php if ($logged_in){ ?>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
+		<script src="js/invitations.js"></script>
 	<?php } ?>
 </body>
 </html>
