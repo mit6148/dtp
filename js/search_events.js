@@ -2,6 +2,7 @@ $('#searchEvents').submit(searchEvents);
 $('#searchEvents').keyup(function() {
     $('#searchEvents').submit();
 });
+$('[name=search_location]').change($('#searchEvents').submit);
 $('.ui.dropdown').dropdown({
     allowAdditions: true,
 });
