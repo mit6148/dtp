@@ -11,7 +11,7 @@
 		die("Not logged in");
 	}
 
-	$find_stmt = $db->prepare("SELECT EXISTS(SELECT * FROM invites WHERE kerberos = ? AND event_id = ?)");
+	$find_stmt = $db->prepare("SELECT EXISTS(SELECT * FROM invitations WHERE kerberos = ? AND event_id = ?)");
 	$find_stmt->execute(array(
 		$_POST["invitee_kerberos"],
 		$_POST["event_id"]
@@ -23,7 +23,7 @@
 	if ($exists == 1) {
 		echo "2";
 	} else {
-		$stmt = $db->prepare("INSERT INTO invites (kerberos, event_id, inviter_sub, invite_time) VALUES (?, ?, ?, UNIX_TIMESTAMP())");
+		$stmt = $db->prepare("INSERT INTO invitations (kerberos, event_id, inviter_sub, invite_time) VALUES (?, ?, ?, UNIX_TIMESTAMP())");
 		$stmt->execute(array(
 			$_POST["invitee_kerberos"],
 			$_POST["event_id"],

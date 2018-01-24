@@ -59,7 +59,7 @@
 				<a class="item clickable" href="#" id="invitations">
 					<div class="text">Invitations</div>
 					<i class="mail outline icon"></i>
-				</div>
+				</a>
 				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>

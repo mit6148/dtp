@@ -23,6 +23,7 @@ function populateInvitations(invitations) {
 }
 
 function addToInvitationsTable(invitation) {
+	console.log(invitation);
 	$('#invitationsBody').append('You got an invitation from ' + invitation.inviter.given_name + '.<br>');
 	$('#invitationsBody').append('');
 }
