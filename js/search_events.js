@@ -1,4 +1,7 @@
 $('#searchEvents').submit(searchEvents);
+$('#searchEvents').keyup(function() {
+    $('#searchEvents').submit();
+});
 function searchEvents(event) {
     if (event) {
         event.preventDefault();
