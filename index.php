@@ -31,20 +31,21 @@
 	<script>
 		<?php
 			if ($logged_in) {
-				echo "logged_in = true;";
+				echo "const logged_in = true;";
 				$sub = get_sub($db, $_COOKIE["login_uid"]);
 				$userinfo = get_userinfo($db, $sub);
-				echo "sub = '" . $sub . "';";
+				echo "const sub = '" . $sub . "';";
 			} else {
-				echo "logged_in = false;";
-				echo "sub = ''";
+				echo "const logged_in = false;";
+				echo "const sub = '';";
 			}
+			echo "const index_url = '" . INDEX_URL . "';";
 		?>
 	</script>
 </head>
 <body>
 	<div class="ui large secondary menu">
-		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
+		<a href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
 			<div class="right menu topMenu">
 				<a class="item clickable" href="#" id="viewUserinfoModal">
@@ -260,7 +261,9 @@
 			<?php echo $userinfo["name"]; ?>
 		</div>
 		<div>
-			Google Calendar URL: <input type="text" value="<?php echo INDEX_URL . "/php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly>
+			<p>Kerberos: <?php echo $userinfo["kerberos"]; ?></p>
+			<p>Email: <?php echo $userinfo["email"]; ?></p>
+			<p>Google Calendar URL: <div class="ui input"><input id="ical_id" type="text" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly size="60"></div>&nbsp;<button class="ui blue button" id="newIcalId">Request New Google Calendar URL</button></p>
 		</div>
 	</div>
 	<div class="ui center aligned container" id="messages">

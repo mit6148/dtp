@@ -18,6 +18,7 @@
 
 	foreach ($events as $event) {
 		$new_event = new \Eluceo\iCal\Component\Event();
+		$new_event->setUseTimezone(true);
 		$start_datetime = new DateTime();
 		$start_datetime->setTimestamp($event["start_time"]);
 		$end_datetime = new DateTime();
@@ -25,6 +26,7 @@
 		$new_event->setDtStart($start_datetime);
 		$new_event->setDtEnd($end_datetime);
 		$new_event->setSummary($event["course"] . " " . $event["assignment"]);
+		$new_event->setLocation($event["location"]);
 		$cal->addComponent($new_event);
 	}
 	header("Content-type: text/calendar");
