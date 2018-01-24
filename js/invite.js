@@ -1,16 +1,21 @@
-$('#inviteButton').on('click', function() {
+function inviteModal(eventId) {
 	$('#inviteModal').modal('show');
-})
-$('#inviteForm').on('submit', invite);
+	$('#inviteForm').on('submit', function(jsEvent) {
+		jsEvent.preventDefault();
+		invite(eventId)
+	});
+}
 
-function invite(event) {
-	event.preventDefault();
+
+
+function invite(eventId) {
 	let invitee_kerberos = $('#inviteFormKerberos');
 	$.ajax({
 		type: 'POST',
 		url: 'php/invite.php',
 		data: {
-			'invitee_kerberos': invitee_kerberos.val()
+			'invitee_kerberos': invitee_kerberos.val(),
+			'event_id': eventId
 		},
 		cache: false
 	}).done(function(res) {
