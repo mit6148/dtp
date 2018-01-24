@@ -3,8 +3,8 @@ $('#addEvent').on('click', function() {
 });
 
 $('#submitEvent').submit(addEventForm);
-$('select').dropdown({
-    allowAdditions: true,
+$('.ui.dropdown').dropdown({
+    allowAdditions: true
 });
 function addEventForm(event) {
     event.preventDefault();
