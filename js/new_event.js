@@ -9,7 +9,7 @@ function addEventForm(event) {
     var input = {
         'course' : $('input[name=submit_course]').val(),
         'assignment' : $('input[name=submit_assignment]').val(),
-        'location' : $('input[name=submit_location]').val(),
+        'location' : $('[name=submit_location]').val(),
         'date' : $('input[name=submit_date]').val(),
         'start_time' : $('input[name=submit_start_time]').val(),
         'end_time' : $('input[name=submit_end_time]').val(),
