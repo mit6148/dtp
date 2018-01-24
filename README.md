@@ -20,11 +20,11 @@
 
 * Email owner
 
+* Google Calendar integration
+
 #### Features to implement:
 
 * Sign-up and log-in for non-MIT people
-
-* Google Calendar integration
 
 * Invite to event by email
 
@@ -37,6 +37,8 @@
 * PHP
 
 * MySQL
+
+* [eluceo\iCal](https://github.com/markuspoerschke/iCal)
 
 #### Front-End
 

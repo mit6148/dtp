@@ -24,5 +24,6 @@
 		);
 	}
 
-	echo json_encode($result)
+	header("Content-type: application/json");
+	echo json_encode($result);
 ?>
