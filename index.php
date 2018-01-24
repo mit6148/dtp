@@ -131,7 +131,7 @@
 				  			<input placeholder="Assignment" type="text" name="search_assignment">
 				  		</div>
 					  	<div class="field">
-					  		<select class="ui fluid search dropdown" name="search_location" required>
+					  		<select class="ui fluid search dropdown" name="search_location">
 					  			<option value="">Location</option>
 					  			<option>Next 5W Lounge</option>
 					  			<option>TFL (Next)</option>
@@ -165,7 +165,7 @@
 			  		<input placeholder="Assignment" type="text" name="submit_assignment" required>
 			  	</div>
 			  	<div class="field">
-			  		<select class="ui fluid search dropdown" name="submit_location" required>
+			  		<select class="ui fluid search dropdown" name="submit_location">
 			  			<option value="">Location</option>
 			  			<option>Next 5W Lounge</option>
 			  			<option>TFL (Next)</option>
@@ -230,7 +230,7 @@
 			  		<input placeholder="Assignment" type="text" name="change_assignment" required>
 			  	</div>
 			  	<div class="field">
-			  		<select class="ui fluid search dropdown" name="change_location" required>
+			  		<select class="ui fluid search dropdown" name="change_location">
 			  			<option value="">Location</option>
 			  			<option>Next 5W Lounge</option>
 			  			<option>TFL (Next)</option>
