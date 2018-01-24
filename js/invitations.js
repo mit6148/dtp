@@ -27,7 +27,7 @@ function populateInvitations(invitations) {
 function addToInvitationsTable(invitation) {
 	console.log(invitation);
 	str = "";
-	str += '<div class="ui segments">Invitation from: ' + invitation.inviter.given_name + '<div class="ui right floated failure button">Delete</div><div class="ui right floated success button">Accept</div>';
+	str += '<div class="ui segments">Invitation from: ' + invitation.inviter.name + '<div class="ui right floated failure button">Delete</div><div class="ui right floated success button">Accept</div>';
 	str += '<div class="ui horizontal segment"><div class="ui segment"> Course: ' + invitation.course + '</div><div class="ui segment"> Assignment: ' + invitation.assignment + '</div><div class="ui segment"> Location: '+ invitation.location + '</div></div>';
 	let start_time = new Date(invitation.start_time * 1000);
     let start_date = new Date(invitation.start_time * 1000).toDateString();

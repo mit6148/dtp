@@ -32,7 +32,7 @@
 		$sender_userinfo = get_userinfo($db, $sub);
 		$eventinfo = get_eventinfo($db, $_POST["event_id"]);
 		$recipient_email = $_POST["invitee_kerberos"] . "@mit.edu";
-		$subject = $sender_userinfo["given_name"] . " invited you to work on " . $eventinfo["course"] . ": " . $eventinfo["assignment"];
+		$subject = $sender_userinfo["name"] . " invited you to work on " . $eventinfo["course"] . ": " . $eventinfo["assignment"];
 		$body = '<a href="' . INDEX_URL . '">Click here to login and view your invitation.</a>';
 		$header = "From: noreply\n";
 		$header .= "Content-Type: text/html; charset=ISO-8859-1";
