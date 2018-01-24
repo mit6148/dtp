@@ -1,4 +1,4 @@
-<pre><?php
+<?php
 	//GET: sub, event_id, invitee_kerberos
 	//returns: 1 if successful, 2 if already invited
 
@@ -12,7 +12,7 @@
 		$_GET["invitee_kerberos"],
 		$_GET["event_id"]
 	));
-	$exists = $find_stmt->fetch(PDO::FETCH_NUM)[0]
+	$exists = $find_stmt->fetch(PDO::FETCH_NUM)[0];
 
 	if ($exists == 1) {
 		echo "2";
@@ -34,6 +34,7 @@
 		echo $body;
 		echo $header;
 		echo "1";
+		mail($recipient_email, $subject, $body, $header);
 	}
 
-?></pre>
+?>
