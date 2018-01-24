@@ -47,9 +47,9 @@
 		<a href="https://jungj.scripts.mit.edu/dtp/"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
 			<div class="right menu topMenu">
-				<div class="item">
-					Hi, <?php echo $userinfo["given_name"]; ?>.<!--&nbsp;<i class="user icon"></i>-->
-				</div>
+				<a class="item clickable" href="#" id="viewUserinfoModal">
+					<?php echo $userinfo["given_name"]; ?>&nbsp;<i class="user icon"></i>
+				</a>
 				<a class="item clickable" href="#" id="addEvent">
 		  			New Event&nbsp;
 					<i class="add icon"></i>
@@ -254,6 +254,15 @@
 		  </tbody>
 		</table>
 	</div>
+	<div class="ui modal" id="userinfoModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+			<?php echo $userinfo["name"]; ?>
+		</div>
+		<div>
+			Google Calendar URL: <input type="text" value="<?php echo INDEX_URL . "/php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly>
+		</div>
+	</div>
 	<div class="ui center aligned container" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
@@ -278,6 +287,7 @@
 	<script src="js/search_events.js"></script>
 	<script src="js/signup_event.js"></script>
 	<script src="js/view_event.js"></script>
+	<script src="js/userinfo.js"></script>
 	<?php if ($logged_in){ ?>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
