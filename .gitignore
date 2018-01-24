@@ -1,2 +1,4 @@
 php/oidc.php
 php/db.php
+php/composer.*
+php/vendor/
