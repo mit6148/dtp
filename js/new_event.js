@@ -3,9 +3,6 @@ $('#addEvent').on('click', function() {
 });
 
 $('#submitEvent').submit(addEventForm);
-$('.ui.dropdown').dropdown({
-    allowAdditions: true
-});
 function addEventForm(event) {
     event.preventDefault();
     let available_date;

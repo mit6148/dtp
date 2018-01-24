@@ -2,6 +2,9 @@ $('#searchEvents').submit(searchEvents);
 $('#searchEvents').keyup(function() {
     $('#searchEvents').submit();
 });
+$('.ui.dropdown').dropdown({
+    allowAdditions: true,
+});
 function searchEvents(event) {
     if (event) {
         event.preventDefault();

@@ -131,14 +131,7 @@
 				  			<input placeholder="Assignment" type="text" name="search_assignment">
 				  		</div>
 					  	<div class="field">
-					  		<select class="ui fluid search dropdown" name="search_location">
-					  			<option value="">Location</option>
-					  			<option>Next 5W Lounge</option>
-					  			<option>TFL (Next)</option>
-					  			<option>Burton-Connor</option>
-					  			<option>Student Center 3rd Floor</option>
-					  			<option>Simmons</option>
-					  		</select>
+					  		<input placeholder="Location" type="text" name="search_location">
 					  	</div>
 					</div>
 				</div>
