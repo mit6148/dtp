@@ -28,12 +28,10 @@
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".$response["access_token"]));
 				$userinfo = curl_exec($ch);
 				$userinfo = json_decode($userinfo,true);
-				$stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
-				$stmt->bindParam(1, $userinfo["sub"]);
-				$stmt->execute();
-				$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+				$stmt = $db->prepare("SELECT EXISTS(SELECT * FROM users WHERE sub = ?)");
+				$stmt->execute(array($userinfo["sub"]));
 				if (isset($userinfo["preferred_username"]) && isset($userinfo["email"])) {
-					if ($stmt->rowCount() == 0) {
+					if ($stmt->fetch(PDO::FETCH_NUM)[0] == 0) {
 						$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name) VALUES (?, ?, ?, ?, ?)");
 						$insert_stmt->execute(array(
 							$userinfo["sub"],

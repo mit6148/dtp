@@ -67,19 +67,11 @@
 			</div>
 		<?php } else { ?>
 			<div class="right menu topMenu">
-				<div class="inline fields">
-					<div class="field">
-						<div class="ui radio checkbox">
-							<input name="loginType" id="MIT" checked type="radio">
-							<label>MIT</label>
-						</div>
-					</div>
-					<div class="field">
-						<div class="ui radio checkbox">
-							<input name="loginType" id="Google" checked type="radio">
-							<label>Google</label>
-						</div>
-					</div>
+				<div class="ui item">
+					<select id="authMethod" class="ui dropdown">
+						<option value="mit">MIT</option>
+						<option value="google">Google</option>
+					</select>
 				</div>
 				<div class="ui item">
 					<div class="ui toggle checkbox">
@@ -99,13 +91,13 @@
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
 				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");
-				const mitCheckbox = $('#MIT');
-				const googleCheckbox = $('#Google');
+				const authMethodSelect = $('#authMethod');
+				authMethodSelect.dropdown();
 				function updateHref() {
 					let href;
-					if (mitCheckbox.prop('checked')) {
+					if (authMethodSelect.val() === 'mit') {
 						href = hrefPart1;
-					} else if (googleCheckbox.prop('checked')) {
+					} else if (authMethodSelect.val() === 'google') {
 						href = googleHrefPart1;
 					}
 					if (persistentCheckbox.prop("checked")) {
@@ -115,10 +107,9 @@
 					}
 					loginButton.attr("href", href);
 				};
-				mitCheckbox.on('click', updateHref);
-				googleCheckbox.on('click', updateHref);
+				authMethodSelect.on('change', updateHref);
 				persistentCheckbox.on("click", updateHref);
-				updatePersistent();
+				updateHref();
 			</script>
 		<?php } ?>
 	</div>
@@ -286,7 +277,7 @@
 			<?php echo $userinfo["name"]; ?>
 		</div>
 		<div>
-			<p>Kerberos: <?php echo $userinfo["kerberos"]; ?></p>
+			<?php if ($userinfo["kerberos"] != "") { echo "<p>Kerberos: " . $userinfo["kerberos"] . "</p>"; } ?>
 			<p>Email: <?php echo $userinfo["email"]; ?></p>
 			<p>Google Calendar URL: <div class="ui input"><input id="ical_id" type="text" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly size="60"></div>&nbsp;<button class="ui blue button" id="newIcalId">Request New Google Calendar URL</button></p>
 		</div>
