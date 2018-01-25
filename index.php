@@ -246,26 +246,32 @@
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
-						<input placeholder="Course" type="text" name="change_course" required>
+						<label>Course</label>
+						<input type="text" name="change_course" required>
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="change_assignment" required>
-			  	</div>
-			  	<div class="field">
-			  		<input placehlder="Location" type="text" name="change_location" required>
-			  	</div>
+						<label>Assignment</label>
+				  		<input type="text" name="change_assignment" required>
+				  	</div>
+				  	<div class="field">
+						<label>Location</label>
+				  		<input type="text" name="change_location" required>
+				  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="change_date" required>
+						<label>Date</label>
+						<input type="date" name="change_date" required>
 					</div>
 					<div class="field">
-						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="change_start_time" required>
+						<label>Start Time</label>
+						<input type="text" name="change_start_time" required>
 				  </div>
 				  <div class="field">
-						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="change_end_time" required>
+				  		<label>End Time</label>
+						<input type="text" name="change_end_time" required>
 				  </div>
 				</div>
 			</div>
