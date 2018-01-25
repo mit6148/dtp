@@ -92,10 +92,14 @@
 		));
 		$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($invitations as $i => $invitation) {
-			$invitations[$i] = array_merge(get_eventinfo($db, $invitation["event_id"]), $invitation);
-			$invitations[$i]["inviter"] = get_userinfo($db, $invitation["inviter_sub"]);
+			$invitations[$i]["event"] = get_eventinfo($db, $invitation["event_id"]);
+			$inviter_info = get_userinfo($db, $invitation["inviter_sub"]);
+			$invitations[$i]["inviter"]["given_name"] = $inviter_info["given_name"];
+			$invitations[$i]["inviter"]["name"] = $inviter_info["name"];
+			$owner_userinfo = get_userinfo($db, $invitations[$i]["event"]["owner_sub"]);
+                        $invitations[$i]["event"]["owner_name"] = $owner_userinfo["name"];
+                        $invitations[$i]["event"]["owner_email"] = $owner_userinfo["email"];
 		}
-		$invitations = append_events_details($db, $invitations);
 		return $invitations;
 	}
 	function dismiss_invitation($db, $event_id, $sub) {

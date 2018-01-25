@@ -219,9 +219,12 @@
 		<div class="ui center aligned header">
 			Invite
 		</div>
-		<form class="ui form" id="inviteForm">
-			<div class="field">
+		<form class="ui form center" id="inviteForm">
+			<div class="ui right labeled input">
 				<input placeholder="Kerberos" type="text" id="inviteFormKerberos" required>
+				<div class="ui label">
+					@mit.edu
+				</div>
 			</div>
 			<div class="actions">
 			<button class="ui green right floated right labeled icon submit button">

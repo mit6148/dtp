@@ -90,3 +90,10 @@ body {
 .ui.dropdown.selection {
   min-width: 8em;
 }
+
+#messages {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
