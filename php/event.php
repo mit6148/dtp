@@ -100,4 +100,14 @@
 		$invitations = append_events_details($db, $invitations);
 		return $invitations;
 	}
+	function dismiss_invitation($db, $event_id, $sub) {
+		$get_kerb_stmt = $db->prepare("SELECT kerberos FROM users WHERE sub = ?");
+		$get_kerb_stmt->execute();
+		$kerberos = $get_kerb_stmt->fetch(PDO::FETCH_ASSOC)["kerberos"];
+		$stmt = $db->prepare("UPDATE invitations SET dismissed = 1 WHERE kerberos = ? AND event_id = ?");
+		$stmt->execute(array(
+			$kerberos,
+			$event_id
+		));
+	}
 ?>
