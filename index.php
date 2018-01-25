@@ -207,14 +207,14 @@
 	  	<p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
 	  	<p><span id="viewModalAttendees"></span> will be there.</p>
 	  </div>
-	  	<button class="ui green right floated right labeled icon button" id="inviteButton">
-	  		Invite to this Event
-	  		<i class="mail icon"></i>
-	  	</button>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
 	  	Edit My Event
 	  	<i class="edit icon"></i>
 	  </button>
+	  	<button class="ui green right floated right labeled icon button" id="inviteButton">
+	  		Invite to this Event
+	  		<i class="mail icon"></i>
+	  	</button>
 	</div>
 	<div class="ui modal" id="inviteModal">
 		<div class="ui center aligned header">

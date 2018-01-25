@@ -1,4 +1,6 @@
-
+if (!logged_in) {
+	$('#inviteButton').hide();
+}
 function viewEvent(id, owner) {
     //console.log("Editing " + id);
     $.ajax({

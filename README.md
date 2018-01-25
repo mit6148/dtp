@@ -24,13 +24,15 @@
 
 * Sign-up and log-in for non-MIT people
 
-#### Features to implement:
-
 * Invite to event by email
 
-* Make event public/private
+#### Features to implement:
 
-* Create and edit profile
+* *Make event public/private*
+
+* *Create and edit profile*
+
+* Settings
 
 #### Back-End
 
