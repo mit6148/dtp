@@ -220,11 +220,8 @@
 			Invite
 		</div>
 		<form class="ui form center viewModalBody" id="inviteForm">
-			<div class="ui right labeled input">
-				<input placeholder="Kerberos" type="text" id="inviteFormKerberos" required>
-				<div class="ui label">
-					@mit.edu
-				</div>
+			<div class="ui input">
+				<input placeholder="Email" type="text" id="inviteFormEmail" required>
 			</div>
 			<div class="actions">
 			<button class="ui green right floated right labeled icon submit button">

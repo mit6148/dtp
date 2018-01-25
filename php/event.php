@@ -85,10 +85,10 @@
 			$event_id
 		));
 	}
-	function get_invitations($db, $kerberos) {
-		$stmt = $db->prepare("SELECT * FROM invitations WHERE kerberos = ? AND dismissed = 0");
+	function get_invitations($db, $email) {
+		$stmt = $db->prepare("SELECT * FROM invitations WHERE email = ? AND dismissed = 0");
 		$stmt->execute(array(
-			$kerberos
+			$email
 		));
 		$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($invitations as $i => $invitation) {
@@ -103,14 +103,14 @@
 		return $invitations;
 	}
 	function dismiss_invitation($db, $event_id, $sub) {
-		$get_kerb_stmt = $db->prepare("SELECT kerberos FROM users WHERE sub = ?");
+		$get_kerb_stmt = $db->prepare("SELECT email FROM users WHERE sub = ?");
 		$get_kerb_stmt->execute(array(
 			$sub
 		));
-		$kerberos = $get_kerb_stmt->fetch(PDO::FETCH_ASSOC)["kerberos"];
-		$stmt = $db->prepare("UPDATE invitations SET dismissed = 1 WHERE kerberos = ? AND event_id = ?");
+		$email = $get_kerb_stmt->fetch(PDO::FETCH_ASSOC)["email"];
+		$stmt = $db->prepare("UPDATE invitations SET dismissed = 1 WHERE email = ? AND event_id = ?");
 		$stmt->execute(array(
-			$kerberos,
+			$email,
 			$event_id
 		));
 	}
