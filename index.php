@@ -199,7 +199,7 @@
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
 	  <div class="ui center aligned header" id="viewModalTitle"></div>
-	  <div id="viewModalBody">
+	  <div class="viewModalBody">
 	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
 	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
 	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
@@ -220,8 +220,16 @@
 			Invite
 		</div>
 		<form class="ui form center viewModalBody" id="inviteForm">
+<<<<<<< HEAD
 			<div class="ui input">
 				<input placeholder="Email" type="text" id="inviteFormEmail" required>
+=======
+			<div class="ui right labeled input" style="padding-bottom:14px">
+				<input placeholder="Kerberos" type="text" id="inviteFormKerberos" required>
+				<div class="ui label">
+					@mit.edu
+				</div>
+>>>>>>> 5f12cd9236656b379ac7d3d62d9c35d3e9998644
 			</div>
 			<div class="actions">
 			<button class="ui green right floated right labeled icon submit button">
@@ -336,7 +344,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui center aligned container" id="messages">
+	<div class="center aligned" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
 		<table class="ui center aligned structured structured table" id="eventsTable" hidden>
