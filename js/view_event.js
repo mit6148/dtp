@@ -1,4 +1,6 @@
-
+if (!logged_in) {
+	$('#inviteButton').hide();
+}
 function viewEvent(id, owner) {
     //console.log("Editing " + id);
     $.ajax({
@@ -36,6 +38,10 @@ function viewEvent(id, owner) {
         }
     }
     $('#viewModalAttendees').text(attendeesString);
+    $('#inviteButton').off('click');
+    $('#inviteButton').on('click', function() {
+		inviteModal(res.id);
+    });
     if (owner) {
         $('#editModal').show();
         $('#editModal').off('click');

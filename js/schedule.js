@@ -16,7 +16,7 @@ function populateTable(events) {
 	//console.log(events);
 	$('#scheduleBody').html('');
 	if (events.length === 0) {
-		$('#scheduleBody').html('<tr><td id="centerCell2" colspan="10">No events to show :(</td></tr>');
+		$('#scheduleBody').html('<tr><td id="centerCell2" colspan="10">There are no events in your schedule. :(</td></tr>');
 	}
 	events.sort(ByStartTime);
 	for (i in events){

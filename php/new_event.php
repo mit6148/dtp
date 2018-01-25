@@ -28,4 +28,5 @@
 	$event_id = $row["LAST_INSERT_ID()"];
 
 	signup($db, $sub, $event_id);
+	echo $event_id;
 ?>

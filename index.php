@@ -1,5 +1,6 @@
 <?php
 	include("php/oidc.php");
+	include("php/google_oidc.php");
 	include("php/db.php");
 	include("php/user.php");
 
@@ -22,7 +23,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -55,6 +56,10 @@
 		  			New Event&nbsp;
 					<i class="add icon"></i>
 				</a>
+				<a class="item clickable" href="#" id="invitations">
+					<div class="text">Invitations</div>
+					<i class="mail outline icon"></i>
+				</a>
 				<a class="item clickable" href="#" id="scheduleLink">
 			    	My Schedule&nbsp;
 			    	<i class="checked calendar icon"></i>
@@ -66,6 +71,12 @@
 			</div>
 		<?php } else { ?>
 			<div class="right menu topMenu">
+				<div class="ui item">
+					<select id="authMethod" class="ui dropdown">
+						<option value="mit">MIT</option>
+						<option value="google">Google</option>
+					</select>
+				</div>
 				<div class="ui item">
 					<div class="ui toggle checkbox">
 					 	<input type="checkbox" id="persistent" checked="">
@@ -79,21 +90,30 @@
 				</a>
 			</div>
 			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=".CLIENT_ID."&response_type=code&scope=openid%20profile%20email&redirect_uri=".urlencode(LOGIN_PAGE_URL)."&state=".$state; ?>";
+				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
+				const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
 				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
 				const loginButton = $("#login");
 				const persistentCheckbox = $("#persistent");
-				function updatePersistent() {
+				const authMethodSelect = $('#authMethod');
+				authMethodSelect.dropdown();
+				function updateHref() {
 					let href;
+					if (authMethodSelect.val() === 'mit') {
+						href = hrefPart1;
+					} else if (authMethodSelect.val() === 'google') {
+						href = googleHrefPart1;
+					}
 					if (persistentCheckbox.prop("checked")) {
-						href = hrefPart1 + ".persistent" + hrefPart2;
+						href += ".persistent" + hrefPart2;
 					} else {
-						href = hrefPart1 + hrefPart2;
+						href += hrefPart2;
 					}
 					loginButton.attr("href", href);
 				};
-				persistentCheckbox.on("click", updatePersistent);
-				updatePersistent();
+				authMethodSelect.on('change', updateHref);
+				persistentCheckbox.on("click", updateHref);
+				updateHref();
 			</script>
 		<?php } ?>
 	</div>
@@ -132,30 +152,36 @@
 		<div class="ui center aligned header">
 	    Add A New Event
 	  </div>
-	  <form class="ui form" id="submitEvent">
+	  <form class="ui form viewModalBody" id="submitEvent">
 			<div class="field">
-				<div class="three fields">
+				<div class="three fields" style="margin-top:14px">
 					<div class="field">
-						<input placeholder="Course" type="text" name="submit_course" required>
+						<label>Course</label>
+						<input placeholder="18.02" type="text" name="submit_course" required>
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="submit_assignment" required>
-			  	</div>
-			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="submit_location" required>
-			  	</div>
+						<label>Assignment</label>
+				  		<input placeholder="PSet 3" type="text" name="submit_assignment" required>
+				  	</div>
+				  	<div class="field">
+						<label>Location</label>
+				  		<input placeholder="Next 5W Main Lounge"type="text" name="submit_location" required>
+				  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="submit_date" required>
+						<label>Date</label>
+						<input type="date" name="submit_date" required>
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="submit_start_time" required>
+						<label>Start Time</label>
+						<input type="time" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="submit_end_time" required>
+						<label>End Time</label>
+						<input type="time" name="submit_end_time" required>
 				  </div>
 				</div>
 			</div>
@@ -173,7 +199,7 @@
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
 	  <div class="ui center aligned header" id="viewModalTitle"></div>
-	  <div id="viewModalBody">
+	  <div class="viewModalBody">
 	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
 	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
 	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
@@ -184,36 +210,68 @@
 	  	Edit My Event
 	  	<i class="edit icon"></i>
 	  </button>
+	  	<button class="ui green right floated right labeled icon button" id="inviteButton">
+	  		Invite to this Event
+	  		<i class="mail icon"></i>
+	  	</button>
 	</div>
+	<div class="ui modal" id="inviteModal">
+		<div class="ui center aligned header">
+			Invite to this Event
+		</div>
+		<form class="ui form center viewModalBody" id="inviteForm">
+			<div class="ui input">
+				<div class="field">
+				<label>Invite by email (separate multiple emails with commas)</label>
+				<input size="70" type="email" multiple id="inviteFormEmail" required>
+				</div>
+			</div>
+			<div class="invite actions">
+			<button class="ui green right floated right labeled icon submit button">
+		    	Invite
+		    	<i class="checkmark icon"></i>
+		    </button>
+		    <button class="ui black right floated deny button">
+		      Cancel
+		    </button>
+		</div>
+	</form>
+</div>
 	<div class="ui modal" id="changeEventModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
 	    Editing Event
 	  </div>
-	 	<form class="ui form" id="changeEvent">
+	 	<form class="ui form viewModalBody" id="changeEvent">
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
-						<input placeholder="Course" type="text" name="change_course" required>
+						<label>Course</label>
+						<input type="text" name="change_course" required>
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="change_assignment" required>
-			  	</div>
-			  	<div class="field">
-			  		<input placeholder="Location" type="text" name="change_location" required>
-			  	</div>
+						<label>Assignment</label>
+				  		<input type="text" name="change_assignment" required>
+				  	</div>
+				  	<div class="field">
+						<label>Location</label>
+				  		<input type="text" name="change_location" required>
+				  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="date" name="change_date" required>
+						<label>Date</label>
+						<input type="date" name="change_date" required>
 					</div>
 					<div class="field">
-				  	<input placeholder="Start Time" type="time" name="change_start_time" required>
+						<label>Start Time</label>
+						<input type="text" name="change_start_time" required>
 				  </div>
 				  <div class="field">
-				  	<input placeholder="End Time" type="time" name="change_end_time" required>
+				  		<label>End Time</label>
+						<input type="text" name="change_end_time" required>
 				  </div>
 				</div>
 			</div>
@@ -236,7 +294,7 @@
 		<div class="ui center aligned header">
 	    My Schedule
 	  </div>
-	  <table class="ui table">
+	  <table class="ui table center aligned viewModalBody">
 			<thead>
 				<tr>
 					<th>Course</th>
@@ -255,18 +313,33 @@
 		  </tbody>
 		</table>
 	</div>
+	<div class="ui modal" id="invitationsModal">
+		<i class="close icon"></i>
+		<div class="ui center aligned header">
+		    Invitations
+		</div>
+		<div id="invitationsBody" class="viewModalBody">
+
+		</div>
+	</div>
 	<div class="ui modal" id="userinfoModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
 			<?php echo $userinfo["name"]; ?>
 		</div>
-		<div>
-			<p>Kerberos: <?php echo $userinfo["kerberos"]; ?></p>
-			<p>Email: <?php echo $userinfo["email"]; ?></p>
-			<p>Google Calendar URL: <div class="ui input"><input id="ical_id" type="text" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>" readonly size="60"></div>&nbsp;<button class="ui blue button" id="newIcalId">Request New Google Calendar URL</button></p>
+		<div class="viewModalBody">
+			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
+			<p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
+			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
+			<div class="ui input right action">
+				<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+				<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
+					<i class="copy icon"></i>
+				</button>
+			</div>
 		</div>
 	</div>
-	<div class="ui center aligned container" id="messages">
+	<div class="center aligned" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
 		<table class="ui center aligned structured structured table" id="eventsTable" hidden>
@@ -294,6 +367,8 @@
 	<?php if ($logged_in){ ?>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
+		<script src="js/invitations.js"></script>
+		<script src="js/invite.js"></script>
 	<?php } ?>
 </body>
 </html>

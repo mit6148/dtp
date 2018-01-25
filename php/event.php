@@ -8,7 +8,6 @@
 				$user_sub,
 				$event_id
 			));
-			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 	}
 	function cancel_signup($db, $user_sub, $event_id) {
@@ -17,7 +16,6 @@
 			$user_sub,
 			$event_id
 		));
-		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	function get_eventinfo($db, $event_id) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
@@ -84,6 +82,35 @@
 		));
 		$delete_signups_stmt = $db->prepare("DELETE FROM signups WHERE event_id = ?");
 		$delete_signups_stmt->execute(array(
+			$event_id
+		));
+	}
+	function get_invitations($db, $email) {
+		$stmt = $db->prepare("SELECT * FROM invitations WHERE email = ? AND dismissed = 0");
+		$stmt->execute(array(
+			$email
+		));
+		$invitations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($invitations as $i => $invitation) {
+			$invitations[$i]["event"] = get_eventinfo($db, $invitation["event_id"]);
+			$inviter_info = get_userinfo($db, $invitation["inviter_sub"]);
+			$invitations[$i]["inviter"]["given_name"] = $inviter_info["given_name"];
+			$invitations[$i]["inviter"]["name"] = $inviter_info["name"];
+			$owner_userinfo = get_userinfo($db, $invitations[$i]["event"]["owner_sub"]);
+                        $invitations[$i]["event"]["owner_name"] = $owner_userinfo["name"];
+                        $invitations[$i]["event"]["owner_email"] = $owner_userinfo["email"];
+		}
+		return $invitations;
+	}
+	function dismiss_invitation($db, $event_id, $sub) {
+		$get_kerb_stmt = $db->prepare("SELECT email FROM users WHERE sub = ?");
+		$get_kerb_stmt->execute(array(
+			$sub
+		));
+		$email = $get_kerb_stmt->fetch(PDO::FETCH_ASSOC)["email"];
+		$stmt = $db->prepare("UPDATE invitations SET dismissed = 1 WHERE email = ? AND event_id = ?");
+		$stmt->execute(array(
+			$email,
 			$event_id
 		));
 	}
