@@ -199,7 +199,7 @@
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
 	  <div class="ui center aligned header" id="viewModalTitle"></div>
-	  <div id="viewModalBody">
+	  <div class="viewModalBody">
 	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
 	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
 	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
@@ -220,7 +220,7 @@
 			Invite
 		</div>
 		<form class="ui form center viewModalBody" id="inviteForm">
-			<div class="ui right labeled input">
+			<div class="ui right labeled input" style="padding-bottom:14px">
 				<input placeholder="Kerberos" type="text" id="inviteFormKerberos" required>
 				<div class="ui label">
 					@mit.edu
