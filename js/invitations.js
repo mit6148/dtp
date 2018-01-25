@@ -14,9 +14,10 @@ function updateInvitations() {
 function populateInvitations(invitations) {
 	$('#invitationsBody').html('');
 	if (invitations.length === 0) {
-		$('#invitationsBody').html('<div class="ui center aligned segment">No invitations :(</div>');
+		$('#invitationsBody').html('<div class="ui center aligned segment">No invitations</div>');
 	} else {
 		$('#invitationsBody').html('<div class="ui center aligned segments" id="segBody"></div>');
+		window.setTimeout(function() {$('#invitations').transition('shake', '2000ms');}, 1000);
 	}
 	invitations.sort(ByStartTime);
 	for (i in invitations) {
