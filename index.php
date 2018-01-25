@@ -221,7 +221,8 @@
 		</div>
 		<form class="ui form center viewModalBody" id="inviteForm">
 			<div class="ui input">
-				<input placeholder="Email" type="text" id="inviteFormEmail" required>
+				<label>Invite by email (separate multiple emails with commas)</label>
+				<input placeholder="Email" type="email" multiple id="inviteFormEmail" required>
 			</div>
 			<div class="actions">
 			<button class="ui green right floated right labeled icon submit button">
