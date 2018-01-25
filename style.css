@@ -97,3 +97,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
+
+#invitationButtons {
+  margin-top: -11px;
+}
