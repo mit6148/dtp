@@ -327,7 +327,7 @@
 		</div>
 		<div class="viewModalBody">
 			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
-			<p><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
+			<p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
 			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
 			<div class="ui input right action">
 				<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
