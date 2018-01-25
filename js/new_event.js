@@ -26,18 +26,18 @@ function addEventForm(event) {
 	if (searched) {
 		searchEvents();
 	}
-    console.log("Launching viewEvent");
+    //console.log("Launching viewEvent");
     viewEvent(response, true);
     })
     .fail(function() {
         message('messages', 'error', 'Your request was not received by the server.', 'If the problem persists, contact a Network Adminstrator.');
-        $('.message .close').off('click');
+        /*$('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
               .closest('.message')
               .transition('fade')
             ;
-        });
+        });*/
     });
     $('#submitEventModal').modal('hide');
     $('#submitEvent').form('clear');
