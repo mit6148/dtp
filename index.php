@@ -217,14 +217,16 @@
 	</div>
 	<div class="ui modal" id="inviteModal">
 		<div class="ui center aligned header">
-			Invite
+			Invite to this Event
 		</div>
 		<form class="ui form center viewModalBody" id="inviteForm">
 			<div class="ui input">
+				<div class="field">
 				<label>Invite by email (separate multiple emails with commas)</label>
-				<input placeholder="Email" type="email" multiple id="inviteFormEmail" required>
+				<input size="70" type="email" multiple id="inviteFormEmail" required>
+				</div>
 			</div>
-			<div class="actions">
+			<div class="invite actions">
 			<button class="ui green right floated right labeled icon submit button">
 		    	Invite
 		    	<i class="checkmark icon"></i>

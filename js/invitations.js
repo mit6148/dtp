@@ -71,7 +71,7 @@ function dismissInvitation(event_id) {
 		if (searched) {
 			searchEvents();
 		}
-		message('messages', 'success', 'Invitation deleted', 'You have deleted the invitation.');
+		message('messages', 'success', 'Invitation dismissed', 'You have dismissed the invitation.');
 	}).fail(console.log);
 }
 

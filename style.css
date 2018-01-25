@@ -101,3 +101,7 @@ body {
 .invitationButton {
   margin-top: -11px;
 }
+
+.invite.actions {
+	padding-top: 10px;
+}
