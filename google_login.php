@@ -25,14 +25,15 @@
 			$id_token_body = json_decode(base64_decode($id_token[1]), true);
 				$stmt = $db->prepare("SELECT EXISTS(SELECT * FROM users WHERE sub = ?)");
 				$stmt->execute(array("google." . $id_token_body["sub"]));
-				if (isset($id_token_body["email"]) && isset($id_token_body["email"]) && isset($id_token_body["name"])) {
-					if ($stmt->fetch(PDO::FETCH_NUM) == 0) {
-						$insert_stmt = $db->prepare("INSERT INTO users (sub, email, name, given_name) VALUES (?, ?, ?, ?)");
+				if (isset($id_token_body["email"]) && isset($id_token_body["name"])) {
+					if ($stmt->fetch(PDO::FETCH_NUM)[0] == 0) {
+						$insert_stmt = $db->prepare("INSERT INTO users (sub, email, name, given_name, ical_id) VALUES (?, ?, ?, ?, ?)");
 						$insert_stmt->execute(array(
 							"google." . $id_token_body["sub"],
 							$id_token_body["email"],
 							$id_token_body["name"],
-							$id_token_body["given_name"]
+							$id_token_body["given_name"],
+                                                        md5($id_token_body["sub"] . (string) time() . (string) rand())
 						));
 					}
 					$login_stmt = $db->prepare("INSERT INTO logins (uid, sub, expire_time) VALUES (?, ?, ?)");
