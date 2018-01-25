@@ -10,12 +10,12 @@ function inviteModal(eventId) {
 
 
 function invite(eventId) {
-	let invitee_kerberos = $('#inviteFormKerberos');
+	let invitee_email = $('#inviteFormEmail');
 	$.ajax({
 		type: 'POST',
 		url: 'php/invite.php',
 		data: {
-			'invitee_kerberos': invitee_kerberos.val(),
+			'invitee_email': invitee_email.val(),
 			'event_id': eventId
 		},
 		cache: false
@@ -26,7 +26,7 @@ function invite(eventId) {
 		} else if (res === "1") {
 			message('messages', 'success', 'Invitation sent!', 'Your invitation has been sent.');
 		}
-		$('#inviteFormKerberos').val('');
+		$('#inviteFormEmail').val('');
 		$('#inviteModal').modal('hide');
 	}).fail(console.log);
 }
