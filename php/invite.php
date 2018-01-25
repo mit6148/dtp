@@ -35,7 +35,7 @@
 		$subject = $sender_userinfo["name"] . " invited you to work on " . $eventinfo["course"] . ": " . $eventinfo["assignment"];
 		$body = '<a href="' . INDEX_URL . '">Click here to login and view your invitation.</a>';
 		$header = "From: noreply\n";
-		$header .= "Content-Type: text/html; charset=ISO-8859-1";
+		$header .= "Content-Type: text/html; charset=utf-8";
 		mail($recipient_email, $subject, $body, $header);
 		echo "1";
 	}

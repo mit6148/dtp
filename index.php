@@ -23,7 +23,7 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<title>dtp</title>
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -156,33 +156,32 @@
 			<div class="field">
 				<div class="three fields" style="margin-top:14px">
 					<div class="field">
-						<input placeholder="Course" type="text" name="submit_course" required>
+						<label>Course</label>
+						<input placeholder="18.02" type="text" name="submit_course" required>
 					</div>
 					<div class="field">
-			  		<input placeholder="Assignment" type="text" name="submit_assignment" required>
-			  	</div>
-			  	<div class="field">
-			  		<select class="ui fluid search dropdown" name="submit_location">
-			  			<option value="">Location</option>
-			  			<option>Next 5W Lounge</option>
-			  			<option>TFL (Next)</option>
-			  			<option>Burton-Connor</option>
-			  			<option>Student Center 3rd Floor</option>
-			  			<option>Simmons</option>
-			  		</select>
-			  	</div>
+						<label>Assignment</label>
+				  		<input placeholder="PSet 3" type="text" name="submit_assignment" required>
+				  	</div>
+				  	<div class="field">
+						<label>Location</label>
+				  		<input placeholder="Next 5W Main Lounge"type="text" name="submit_location" required>
+				  	</div>
 				</div>
 			</div>
 			<div class="field">
 				<div class="three fields" class="center">
 					<div class="field">
-						<input placeholder="Date" type="text" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="submit_date" required>
+						<label>Date</label>
+						<input type="date" name="submit_date" required>
 					</div>
 					<div class="field">
-						<input placeholder="Start Time (hh:nn am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_start_time" required>
+						<label>Start Time</label>
+						<input type="time" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-						<input placeholder="End Time (hh:mm am/pm)" type="text" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}" name="submit_end_time" required>
+						<label>End Time</label>
+						<input type="time" name="submit_end_time" required>
 				  </div>
 				</div>
 			</div>
@@ -286,7 +285,7 @@
 		<div class="ui center aligned header">
 	    My Schedule
 	  </div>
-	  <table class="ui table">
+	  <table class="ui table center aligned">
 			<thead>
 				<tr>
 					<th>Course</th>
