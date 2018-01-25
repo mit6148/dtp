@@ -25,7 +25,7 @@ function populateInvitations(invitations) {
 }
 
 function addToInvitationsTable(invitation) {
-	console.log(invitation);
+	//console.log(invitation);
 	str = "";
 	str += '<div class="ui segment">Invitation from <b>' + invitation.inviter.name + '</b> for <b>' + invitation.event.course + '</b>: <b>' + invitation.event.assignment + '</b><div class="ui right floated red button" style="margin-top:-11px" onclick="dismissInvitation(' + invitation.event_id + ')">Dismiss</div><div class="ui right floated green button invitationButton" style="margin-top:-11px" onclick="acceptInvitation(' + invitation.event_id + ')">Accept</div></div><div class="ui segments">';
 	str += '<div class="ui horizontal segments"><div class="ui segment">Location: <b>'+ invitation.event.location + '</b></div></div>';
@@ -46,7 +46,7 @@ function acceptInvitation(event_id) {
 		},
 		cache: false
 	}).done(function(res){
-		console.log(res);
+		//console.log(res);
 		updateInvitations();
 		updateScheduleBody();
 		if (searched) {

@@ -20,7 +20,7 @@ function invite(eventId) {
 		},
 		cache: false
 	}).done(function(res) {
-		console.log(res);
+		//console.log(res);
 		if (res.indexOf("0") != -1) {
 			message('messages', 'error', 'Error', 'Some users have already received an invitation for that event.');
 		} else if (res.indexOf("1") != -1) {
