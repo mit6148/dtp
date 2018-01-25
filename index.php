@@ -152,7 +152,7 @@
 		<div class="ui center aligned header">
 	    Add A New Event
 	  </div>
-	  <form class="ui form" id="submitEvent">
+	  <form class="ui form viewModalBody" id="submitEvent">
 			<div class="field">
 				<div class="three fields" style="margin-top:14px">
 					<div class="field">
@@ -219,7 +219,7 @@
 		<div class="ui center aligned header">
 			Invite
 		</div>
-		<form class="ui form center" id="inviteForm">
+		<form class="ui form center viewModalBody" id="inviteForm">
 			<div class="ui right labeled input">
 				<input placeholder="Kerberos" type="text" id="inviteFormKerberos" required>
 				<div class="ui label">
@@ -242,7 +242,7 @@
 		<div class="ui center aligned header">
 	    Editing Event
 	  </div>
-	 	<form class="ui form" id="changeEvent">
+	 	<form class="ui form viewModalBody" id="changeEvent">
 			<div class="field">
 				<div class="three fields">
 					<div class="field">
@@ -288,7 +288,7 @@
 		<div class="ui center aligned header">
 	    My Schedule
 	  </div>
-	  <table class="ui table center aligned">
+	  <table class="ui table center aligned viewModalBody">
 			<thead>
 				<tr>
 					<th>Course</th>
@@ -312,8 +312,8 @@
 		<div class="ui center aligned header">
 		    Invitations
 		</div>
-		<div id="invitationsBody">
-			
+		<div id="invitationsBody" class="viewModalBody">
+
 		</div>
 	</div>
 	<div class="ui modal" id="userinfoModal">
@@ -321,7 +321,7 @@
 		<div class="ui center aligned header">
 			<?php echo $userinfo["name"]; ?>
 		</div>
-		<div style="margin-top:14px">
+		<div class="viewModalBody">
 			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
 			<p><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
 			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
