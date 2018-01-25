@@ -8,7 +8,6 @@
 				$user_sub,
 				$event_id
 			));
-			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 	}
 	function cancel_signup($db, $user_sub, $event_id) {
@@ -17,7 +16,6 @@
 			$user_sub,
 			$event_id
 		));
-		return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	function get_eventinfo($db, $event_id) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE id = ?");
@@ -102,7 +100,9 @@
 	}
 	function dismiss_invitation($db, $event_id, $sub) {
 		$get_kerb_stmt = $db->prepare("SELECT kerberos FROM users WHERE sub = ?");
-		$get_kerb_stmt->execute();
+		$get_kerb_stmt->execute(array(
+			$sub
+		));
 		$kerberos = $get_kerb_stmt->fetch(PDO::FETCH_ASSOC)["kerberos"];
 		$stmt = $db->prepare("UPDATE invitations SET dismissed = 1 WHERE kerberos = ? AND event_id = ?");
 		$stmt->execute(array(

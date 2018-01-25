@@ -322,12 +322,12 @@
 		<div style="margin-top:14px">
 			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
 			<p><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
-			<p><b>Google Calendar URL</b>:
-			<div class="ui input">
-				<div class="ui action input">
-					<input id="ical_id" type="text" readonly size="60" value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
-					<button class="ui blue button" id="newIcalId">Request New URL</button>
-				</div>
+			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
+			<div class="ui input right action">
+				<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+				<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
+					<i class="copy icon"></i>
+				</button>
 			</div>
 		</div>
 	</div>

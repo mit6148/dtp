@@ -11,6 +11,6 @@
 	}
 
 	$sub = get_sub($db, $_COOKIE["login_uid"]);
-	signup($db, $sub, $_POST["event_id"]);
 	dismiss_invitation($db, $_POST["event_id"], $sub);
+	signup($db, $sub, $_POST["event_id"]);
 ?>

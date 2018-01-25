@@ -32,13 +32,14 @@
 				$stmt->execute(array($userinfo["sub"]));
 				if (isset($userinfo["preferred_username"]) && isset($userinfo["email"])) {
 					if ($stmt->fetch(PDO::FETCH_NUM)[0] == 0) {
-						$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name) VALUES (?, ?, ?, ?, ?)");
+						$insert_stmt = $db->prepare("INSERT INTO users (sub, kerberos, email, name, given_name, ical_id) VALUES (?, ?, ?, ?, ?, ?)");
 						$insert_stmt->execute(array(
 							$userinfo["sub"],
 							$userinfo["preferred_username"],
 							$userinfo["email"],
 							$userinfo["name"],
-							$userinfo["given_name"]
+							$userinfo["given_name"],
+							md5($userinfo["sub"] . (string) time() . (string) rand())
 						));
 					}
 					$login_stmt = $db->prepare("INSERT INTO logins (uid, sub, expire_time) VALUES (?, ?, ?)");
