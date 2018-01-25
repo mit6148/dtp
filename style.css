@@ -98,6 +98,6 @@ body {
   transform: translateX(-50%);
 }
 
-#invitationButtons {
+.invitationButton {
   margin-top: -11px;
 }
