@@ -91,7 +91,7 @@ body {
   min-width: 8em;
 }
 
-#messages {
+.fixed.message {
   position: fixed;
   top: 30px;
   left: 50%;

@@ -339,7 +339,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="ui center aligned container" id="messages">
+	<div class="center aligned" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
 		<table class="ui center aligned structured structured table" id="eventsTable" hidden>
