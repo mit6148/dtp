@@ -35,6 +35,7 @@ function addEventForm(event) {
 	if (searched) {
 		searchEvents();
 	}
+    viewEvent(response, true);
     })
     .fail(function() {
         //$('#messages').prepend('<div class="ui error compact message"><i class="close icon"></i><div class="header">Your event was not received by the server.</div><p>If the problem persists, contact a Network Adminstrator.</p></div>');
