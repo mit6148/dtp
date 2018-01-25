@@ -345,7 +345,7 @@
 					<th>End Time</th>
 					<th>Attendees</th>
 					<th>Owner</th>
-					<th>Going?</th>
+					<th></th>
 					<th></th>
 				</tr>
 			</thead>
