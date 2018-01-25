@@ -28,12 +28,12 @@ function populateInvitations(invitations) {
 function addToInvitationsTable(invitation) {
 	console.log(invitation);
 	str = "";
-	str += '<div class="ui segments">Invitation from: ' + invitation.inviter.name + '<div class="ui right floated failure button">Delete</div><div class="ui right floated success button">Accept</div>';
-	str += '<div class="ui horizontal segment"><div class="ui segment"> Course: ' + invitation.course + '</div><div class="ui segment"> Assignment: ' + invitation.assignment + '</div><div class="ui segment"> Location: '+ invitation.location + '</div></div>';
+	str += '<div class="ui segments"><div class="ui segment">Invitation from: ' + invitation.inviter.name + '<div class="ui right floated red button">Delete</div><div class="ui right floated green button">Accept</div></div>';
+	str += '<div class="ui horizontal segments"><div class="ui segment"> Course: ' + invitation.course + '</div><div class="ui segment"> Assignment: ' + invitation.assignment + '</div><div class="ui segment"> Location: '+ invitation.location + '</div></div>';
 	let start_time = new Date(invitation.start_time * 1000);
     let start_date = new Date(invitation.start_time * 1000).toDateString();
     let end_time = new Date(invitation.end_time * 1000);
-	str += '<div class="ui horizontal segment"><div class="ui segment"> Date: ' + start_date + '</div><div class="ui segment"> Start Time: ' + parseTime(start_time) + '</div><div class="ui segment"> End Time: '+ parseTime(end_time) + '</div></div>';
+	str += '<div class="ui horizontal segments"><div class="ui segment"> Date: ' + start_date + '</div><div class="ui segment"> Start Time: ' + parseTime(start_time) + '</div><div class="ui segment"> End Time: '+ parseTime(end_time) + '</div></div>';
 	str += '</div>';
 	$('#segBody').append(str);
 }
