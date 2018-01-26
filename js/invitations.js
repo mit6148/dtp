@@ -27,7 +27,11 @@ function populateInvitations(invitations) {
 function addToInvitationsTable(invitation) {
 	//console.log(invitation);
 	str = "<div class='ui aligned segments'>";
+<<<<<<< HEAD
 	str += '<div class="ui segment">Invitation from <b>' + invitation.inviter.name + '</b> for <b>' + invitation.event.course + '</b>: <b>' + invitation.event.assignment + '</b><div class="ui right floated red button" style="margin-top:-11px;" onclick="dismissInvitation(' + invitation.event_id + ')">Dismiss</div><div class="ui right floated green button" style="margin-top:-11px;" onclick="acceptInvitation(' + invitation.event_id + ')">Accept</div></div><div class="ui segments">';
+=======
+	str += '<div class="ui clearing segment"><div class="ui floated disabled button invitationHeader">Invitation from <b>' + invitation.inviter.name + '</b> for <b>' + invitation.event.course + '</b>: <b>' + invitation.event.assignment + '</b></div><div class="ui right floated red button" onclick="dismissInvitation(' + invitation.event_id + ')">Dismiss</div><div class="ui right floated green button invitationButton" onclick="acceptInvitation(' + invitation.event_id + ')">Accept</div></div><div class="ui segments">';
+>>>>>>> 28ec4d734e05e5ce23c9ce6b9ac822ccd25de824
 	str += '<div class="ui horizontal segments"><div class="ui segment">Location: <b>'+ invitation.event.location + '</b></div></div>';
 	let start_time = new Date(invitation.event.start_time * 1000);
     let start_date = new Date(invitation.event.start_time * 1000).toDateString();

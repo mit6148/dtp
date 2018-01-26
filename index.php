@@ -206,7 +206,7 @@
 	  <div class="viewModalBody ui segments">
 	  	<div class="ui horizontal segments">
 			<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
-			<div class="ui segment"><p><b>Owner</b>: <span id="viewModalOwner"></span> (<a href="#" id="viewModalOwnerEmail"></a>)</p></div>
+			<div class="ui segment"><p><b>Owner</b>: <span id="viewModalOwnerInfo"></span></p></div>
 		</div>
 	  	<div class="ui horizontal segments">
 				<div class="ui segment"><p><b>Date</b>: <span id="viewModalDate"></span></p></div>
