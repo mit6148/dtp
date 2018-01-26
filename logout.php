@@ -8,7 +8,7 @@
 		$stmt = $db->prepare("DELETE FROM logins WHERE id = ?");
 		$stmt->execute(array($login_array[0]));
 	}
-	unset($_COOKIE["login_uid"]);
-	setcookie("login_uid", "", time()-3600);
+	unset($_COOKIE["login"]);
+	setcookie("login", "", time()-3600);
 	header("Location: " . INDEX_URL);
 ?>

@@ -14,7 +14,11 @@
 	));
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	$requester_sub = get_sub($db, $_COOKIE["login"]);
+	$requester_sub = false;
+
+	if (isset($_COOKIE["login"])) {
+		$requester_sub = get_sub($db, $_COOKIE["login"]);
+	}
 
 	if (!$requester_sub) {
 		$results = append_events_details($db, $results);
