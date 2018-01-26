@@ -29,12 +29,8 @@ function viewEvent(id, owner) {
         attendeesString = 'No one';
     } else {
         attendeesString = res.attendees[0].name;
-        if (res.attendees.length === 2) {
-            attendeesString += ' and ' + res.attendees[1].name;
-        } else {
-            for (let i = 1; i < res.attendees.length; i++) {
-                attendeesString += ((i < (res.attendees.length - 1)) ? ', ' : ', and ') + res.attendees[i].name;
-            }
+        for (let i = 1; i < res.attendees.length; i++) {
+            attendeesString += ', ' + res.attendees[i].name;
         }
     }
     $('#viewModalAttendees').text(attendeesString);
