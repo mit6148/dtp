@@ -2,10 +2,10 @@
 	include("php/google_oidc.php");
 	include("php/db.php");
 
-	if (!(isset($_COOKIE["session"])) {
+	if (!isset($_COOKIE["session"])) {
 		die("session cookie not set");
 	}
-	session = unserialize($_COOKIE["session"]);
+	$session = unserialize($_COOKIE["session"]);
 	$post_array = array(
 		"grant_type" => "authorization_code",
 		"code" => $_GET["code"],

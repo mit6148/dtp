@@ -202,13 +202,14 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-	  <div class="ui center aligned header" id="viewModalTitle"></div>
-	  <div class="viewModalBody">
-	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
-	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
-	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
-	  	<p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
-	  	<p><span id="viewModalAttendees"></span> will be there.</p>
+	  <div class="ui center aligned header"><span id="viewModalTitle"></span> by <span id="viewModalOwner"></span></div>
+	  <div class="viewModalBody ui segments">
+	  	<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
+	  	<div class="ui horizontal segments">
+				<div class="ui segment"><p><b>Date</b>: <span id="viewModalDate"></span></p></div>
+	  		<div class="ui segment"><p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p></div>
+			</div>
+	  	<div class="ui segment"><p><b>Attendees</b>: <span id="viewModalAttendees"></span></p></div>
 	  </div>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
 	  	Edit My Event
