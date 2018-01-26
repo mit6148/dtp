@@ -6,10 +6,12 @@
 	include("user.php");
 	include("event.php");
 
-	if (!is_valid_login_uid($db, $_COOKIE["login_uid"])) {
+
+	$sub = get_sub($db, $_COOKIE["login"]);
+
+	if (!$sub) {
 		die("Not logged in");
 	}
-	$sub = get_sub($db, $_COOKIE["login_uid"]);
 
 	$event_stmt = $db->prepare("INSERT INTO events (owner_sub, course, assignment, location, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)");
 

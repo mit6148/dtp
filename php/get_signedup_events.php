@@ -6,7 +6,11 @@
 	include("user.php");
 	include("event.php");
 
-	$requester_sub = get_sub($db, $_COOKIE["login_uid"]);
+
+	$requester_sub = get_sub($db, $_COOKIE["login"]);
+	if (!$requester_sub) {
+		die("Not logged in");
+	}
 	$results = get_user_signedup_events($db, $requester_sub);
 
 	/*foreach ($results as $key => $row) {

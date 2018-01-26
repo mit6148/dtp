@@ -7,14 +7,14 @@
 	include("user.php");
 	include("event.php");
 
-	if (!isset($_COOKIE["login_uid"])) {
-		die("Not logged in");
-	}
-
 	$emails = explode(',', $_POST["invitee_emails"]);
 
 
-	$sub = get_sub($db, $_COOKIE["login_uid"]);
+	$sub = get_sub($db, $_COOKIE["login"]);
+
+	if (!$sub) {
+		die("Not logged in");
+	}
 	foreach ($emails as $email){
 		$find_stmt = $db->prepare("SELECT EXISTS(SELECT * FROM invitations WHERE email = ? AND event_id = ?)");
 		$find_stmt->execute(array(

@@ -5,11 +5,14 @@
 	include("php/user.php");
 
 	$logged_in=false;
-	if (isset($_COOKIE["login_uid"])) {
-		$logged_in = is_valid_login_uid($db, $_COOKIE["login_uid"]);
-		if (!$logged_in) {
-			unset($_COOKIE["login_uid"]);
-			setcookie("login_uid", "", time() - 3600);
+	if (isset($_COOKIE["login"])) {
+		$sub = get_sub($db, $_COOKIE["login"]);
+		if ($sub) {
+			$logged_in = true;
+			$userinfo = get_userinfo($db, $sub);
+		} else {
+			unset($_COOKIE["login"]);
+			setcookie("login", "", time() - 3600);
 		}
 	}
 	if (!$logged_in) {
@@ -33,8 +36,6 @@
 		<?php
 			if ($logged_in) {
 				echo "const logged_in = true;";
-				$sub = get_sub($db, $_COOKIE["login_uid"]);
-				$userinfo = get_userinfo($db, $sub);
 				echo "const sub = '" . $sub . "';";
 			} else {
 				echo "const logged_in = false;";

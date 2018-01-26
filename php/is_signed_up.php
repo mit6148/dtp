@@ -6,6 +6,9 @@
 	include("user.php");
 	include("event.php");
 
-	$sub = get_sub($db, $_COOKIE["login_uid"]);
+	$sub = get_sub($db, $_COOKIE["login"]);
+	if (!$sub) {
+		die("Not logged in");
+	}
 	echo (is_signed_up($db, $sub, $_GET["event_id"])) ? 1 : 0;
 ?>

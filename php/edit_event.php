@@ -6,7 +6,12 @@
 	include("user.php");
 	include("event.php");
 
-	$user_sub = get_sub($db, $_COOKIE["login_uid"]);
+
+	$user_sub = get_sub($db, $_COOKIE["login"]);
+
+	if (!$user_sub) {
+		die("Not logged in");
+	}
 
 	$start_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["start_time"]);
 	$end_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["end_time"]);
