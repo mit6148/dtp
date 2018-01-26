@@ -332,15 +332,19 @@
 		<div class="ui center aligned header">
 			<?php echo $userinfo["name"]; ?>
 		</div>
-		<div class="viewModalBody">
-			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
-			<p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
-			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
-			<div class="ui input right action">
-				<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
-				<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
-					<i class="copy icon"></i>
-				</button>
+		<div class="viewModalBody ui segments">
+			<div class="ui horizontal segments">
+				<?php if ($userinfo["kerberos"] != "") { echo "<div class='ui segment'><p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p></div>"; } ?>
+				<div class="ui segment"><p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p></div>
+			</div>
+			<div class="ui segment">
+				<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
+				<div class="ui input right action">
+					<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+					<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
+						<i class="copy icon"></i>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
