@@ -267,11 +267,11 @@
 					</div>
 					<div class="field">
 						<label>Start Time</label>
-						<input type="text" name="change_start_time" required>
+						<input type="time" name="change_start_time" required>
 				  </div>
 				  <div class="field">
 				  		<label>End Time</label>
-						<input type="text" name="change_end_time" required>
+						<input type="time" name="change_end_time" required>
 				  </div>
 				</div>
 			</div>
