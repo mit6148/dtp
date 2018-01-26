@@ -14,12 +14,16 @@
 	));
 
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$requester_sub = false;
 
-	if (isset($_COOKIE["login_uid"])) {
-		$requester_sub = get_sub($db, $_COOKIE["login_uid"]);
-		$results = append_events_details($db, $results, $requester_sub);
-	} else {
+	if (isset($_COOKIE["login"])) {
+		$requester_sub = get_sub($db, $_COOKIE["login"]);
+	}
+
+	if (!$requester_sub) {
 		$results = append_events_details($db, $results);
+	} else {
+		$results = append_events_details($db, $results, $requester_sub);
 	}
 
 	header("Content-type: application/json");

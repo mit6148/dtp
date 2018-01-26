@@ -1,23 +1,21 @@
 <?php
 	//user functions library
 
-	function get_sub($db, $login_uid) {
-		$stmt = $db->prepare("SELECT sub FROM logins WHERE uid = ?");
-		$stmt->execute(array($login_uid));
+	function get_sub($db, $login) {
+		$login_array = unserialize($login);
+		$stmt = $db->prepare("SELECT * FROM logins WHERE id = ?");
+		$stmt->execute(array($login_array["id"]));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		return $row["sub"];
+		if (password_verify($login_array["pass"], $row["hash"])) {
+			return $row["sub"];
+		}
+		return false;
 	}
 	function get_userinfo($db, $sub) {
 		$stmt = $db->prepare("SELECT * FROM users WHERE sub = ?");
 		$stmt->execute(array($sub));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $row;
-	}
-	function is_valid_login_uid($db, $login_uid) {
-		login_cleanup($db);
-		$stmt = $db->prepare("SELECT EXISTS(SELECT * FROM logins WHERE uid = ?)");
-		$stmt->execute(array($login_uid));
-		return $stmt->fetch(PDO::FETCH_NUM)[0] == "1";
 	}
 	function get_user_owned_events($db, $sub) {
 		$stmt = $db->prepare("SELECT * FROM events WHERE owner_sub = ?");

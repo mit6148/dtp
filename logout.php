@@ -3,13 +3,12 @@
 	include("php/user.php");
 	include("php/oidc.php");
 
-	if (isset($_COOKIE["login_uid"])) {
-		$stmt = $db->prepare("DELETE FROM logins WHERE uid = ?");
-		$stmt->bindParam(1, $uid);
-		$uid = $_COOKIE["login_uid"];
-		$stmt->execute();
+	if (isset($_COOKIE["login"])) {
+		$login_array = unserialize($_COOKIE["login"]);
+		$stmt = $db->prepare("DELETE FROM logins WHERE id = ?");
+		$stmt->execute(array($login_array["id"]));
 	}
-	unset($_COOKIE["login_uid"]);
-	setcookie("login_uid", "", time()-3600);
+	unset($_COOKIE["login"]);
+	setcookie("login", "", time()-3600);
 	header("Location: " . INDEX_URL);
 ?>

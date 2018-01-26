@@ -5,18 +5,24 @@
 	include("php/user.php");
 
 	$logged_in=false;
-	if (isset($_COOKIE["login_uid"])) {
-		$logged_in = is_valid_login_uid($db, $_COOKIE["login_uid"]);
-		if (!$logged_in) {
-			unset($_COOKIE["login_uid"]);
-			setcookie("login_uid", "", time() - 3600);
+	if (isset($_COOKIE["login"])) {
+		$sub = get_sub($db, $_COOKIE["login"]);
+		if ($sub) {
+			$logged_in = true;
+			$userinfo = get_userinfo($db, $sub);
+		} else {
+			unset($_COOKIE["login"]);
+			setcookie("login", "", time() - 3600);
 		}
 	}
 	if (!$logged_in) {
 		$state = md5(rand());
 		$nonce = md5(rand());
-		setcookie("state", $state);
-		setcookie("nonce", $nonce);
+		$session = serialize(array(
+			"state" => $state,
+			"nonce" => $nonce
+		));
+		setcookie("session", $session);
 	}
 ?>
 
@@ -33,8 +39,6 @@
 		<?php
 			if ($logged_in) {
 				echo "const logged_in = true;";
-				$sub = get_sub($db, $_COOKIE["login_uid"]);
-				$userinfo = get_userinfo($db, $sub);
 				echo "const sub = '" . $sub . "';";
 			} else {
 				echo "const logged_in = false;";
@@ -129,13 +133,13 @@
 				<div class="field">
 					<div class="three fields">
 						<div class="field">
-							<input placeholder="Course" type="text" name="search_course">
+							<input placeholder="Course" type="text" maxlength="10" name="search_course">
 						</div>
 						<div class="field">
-				  			<input placeholder="Assignment" type="text" name="search_assignment">
+				  			<input placeholder="Assignment" type="text" maxlength="40" name="search_assignment">
 				  		</div>
 					  	<div class="field">
-					  		<input placeholder="Location" type="text" name="search_location">
+					  		<input placeholder="Location" type="text" maxlength="40" name="search_location">
 					  	</div>
 					</div>
 				</div>
@@ -157,15 +161,15 @@
 				<div class="three fields" style="margin-top:14px">
 					<div class="field">
 						<label>Course</label>
-						<input placeholder="18.02" type="text" name="submit_course" required>
+						<input placeholder="18.02" type="text" maxlength="10" name="submit_course" required>
 					</div>
 					<div class="field">
 						<label>Assignment</label>
-				  		<input placeholder="PSet 3" type="text" name="submit_assignment" required>
+				  		<input placeholder="PSet 3" type="text" maxlength="40" name="submit_assignment" required>
 				  	</div>
 				  	<div class="field">
 						<label>Location</label>
-				  		<input placeholder="Next 5W Main Lounge"type="text" name="submit_location" required>
+				  		<input placeholder="Next 5W Main Lounge"type="text" maxlength="40" name="submit_location" required>
 				  	</div>
 				</div>
 			</div>
@@ -198,13 +202,17 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-	  <div class="ui center aligned header" id="viewModalTitle"></div>
-	  <div class="viewModalBody">
-	  	<p><b>Organized by</b> <span id="viewModalOwner"></span></p>
-	  	<p><b>Location</b>: <span id="viewModalLocation"></span></p>
-	  	<p><b>Date</b>: <span id="viewModalDate"></span></p>
-	  	<p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p>
-	  	<p><span id="viewModalAttendees"></span> will be there.</p>
+	  <div class="ui center aligned header"><span id="viewModalTitle"></span></div>
+	  <div class="viewModalBody ui segments">
+	  	<div class="ui horizontal segments">
+			<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
+			<div class="ui segment"><p><b>Owner</b>: <span id="viewModalOwnerInfo"></span></p></div>
+		</div>
+	  	<div class="ui horizontal segments">
+				<div class="ui segment"><p><b>Date</b>: <span id="viewModalDate"></span></p></div>
+	  		<div class="ui segment"><p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p></div>
+			</div>
+	  	<div class="ui segment"><p><b>Attendees</b>: <span id="viewModalAttendees"></span></p></div>
 	  </div>
 		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
 	  	Edit My Event
@@ -247,15 +255,15 @@
 				<div class="three fields">
 					<div class="field">
 						<label>Course</label>
-						<input type="text" name="change_course" required>
+						<input type="text" name="change_course" maxlength="10" required>
 					</div>
 					<div class="field">
 						<label>Assignment</label>
-				  		<input type="text" name="change_assignment" required>
+				  		<input type="text" name="change_assignment" maxlength="40" required>
 				  	</div>
 				  	<div class="field">
 						<label>Location</label>
-				  		<input type="text" name="change_location" required>
+				  		<input type="text" name="change_location" maxlength="40" required>
 				  	</div>
 				</div>
 			</div>
@@ -301,10 +309,8 @@
 					<th>Assignment</th>
 					<th>Location</th>
 					<th>Date</th>
-					<th>Start Time</th>
-					<th>End Time</th>
+					<th>Time</th>
 					<th>Attendees</th>
-					<th>Owner</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -327,15 +333,19 @@
 		<div class="ui center aligned header">
 			<?php echo $userinfo["name"]; ?>
 		</div>
-		<div class="viewModalBody">
-			<?php if ($userinfo["kerberos"] != "") { echo "<p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p>"; } ?>
-			<p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p>
-			<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
-			<div class="ui input right action">
-				<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
-				<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
-					<i class="copy icon"></i>
-				</button>
+		<div class="viewModalBody ui segments">
+			<div class="ui horizontal segments">
+				<?php if ($userinfo["kerberos"] != "") { echo "<div class='ui segment'><p><b>Kerberos</b>: " . $userinfo["kerberos"] . "</p></div>"; } ?>
+				<div class="ui segment"><p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p></div>
+			</div>
+			<div class="ui segment">
+				<b>iCalendar URL</b> (for <a href="https://support.google.com/calendar/answer/37100">Google Calendar integration</a>):&nbsp;
+				<div class="ui input right action">
+					<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+					<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
+						<i class="copy icon"></i>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -349,10 +359,8 @@
 					<th>Assignment</th>
 					<th>Location</th>
 					<th>Date</th>
-					<th>Start Time</th>
-					<th>End Time</th>
+					<th>Time</th>
 					<th>Attendees</th>
-					<th>Owner</th>
 					<th></th>
 					<th></th>
 				</tr>

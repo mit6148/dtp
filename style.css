@@ -105,3 +105,14 @@ body {
 .invite.actions {
 	padding-top: 10px;
 }
+
+.ui.clearing.segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitationHeader {
+  opacity: 1 !important;
+  background: #FFF;
+}

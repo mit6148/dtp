@@ -19,7 +19,11 @@ function viewEvent(id, owner) {
     let start_time = new Date(res.start_time * 1000);
     let end_time = new Date(res.end_time * 1000);
     $('#viewModalTitle').text(res.course + ": " + res.assignment);
-    $('#viewModalOwner').text(res.owner_name);
+    if (owner) {
+	$('#viewModalOwnerInfo').text('You');
+    } else {
+	$('#viewModalOwnerInfo').html(res.owner_name + ' (<a href="mailto:' + res.owner_email + '">' + res.owner_email + '</a>)');
+    }
     $('#viewModalLocation').text(res.location);
     $('#viewModalDate').text(start_time.toDateString());
     $('#viewModalStartTime').text(parseTime(start_time));
@@ -29,12 +33,8 @@ function viewEvent(id, owner) {
         attendeesString = 'No one';
     } else {
         attendeesString = res.attendees[0].name;
-        if (res.attendees.length === 2) {
-            attendeesString += ' and ' + res.attendees[1].name;
-        } else {
-            for (let i = 1; i < res.attendees.length; i++) {
-                attendeesString += ((i < (res.attendees.length - 1)) ? ', ' : ', and ') + res.attendees[i].name;
-            }
+        for (let i = 1; i < res.attendees.length; i++) {
+            attendeesString += ', ' + res.attendees[i].name;
         }
     }
     $('#viewModalAttendees').text(attendeesString);
