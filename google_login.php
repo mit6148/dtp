@@ -2,9 +2,10 @@
 	include("php/google_oidc.php");
 	include("php/db.php");
 
-	if (!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))) {
-		echo("cookies not set");
+	if (!(isset($_COOKIE["session"])) {
+		die("session cookie not set");
 	}
+	session = unserialize($_COOKIE["session"]);
 	$post_array = array(
 		"grant_type" => "authorization_code",
 		"code" => $_GET["code"],
@@ -13,7 +14,7 @@
 		"client_secret" => GOOGLE_CLIENT_SECRET
 	);
 	$state = explode(".", $_GET["state"]);
-	if ($state[0] == $_COOKIE["state"]) {
+	if ($state[0] == $session["state"]) {
 		$ch = curl_init("https://www.googleapis.com/oauth2/v4/token");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_array));
@@ -45,8 +46,8 @@
 					));
 					$login_id = $db->lastInsertId();
 					$login = serialize(array(
-						$login_id,
-						$login_pass
+						"id" => $login_id,
+						"pass" => $login_pass
 					));
 					if (isset($state[1])){
 						setcookie("login", $login, time()+60*60*24*90);

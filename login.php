@@ -2,16 +2,17 @@
 	include("php/oidc.php");
 	include("php/db.php");
 
-	if (!(isset($_COOKIE["state"]) && isset($_COOKIE["nonce"]))) {
-		echo("cookies not set");
+	if (!(isset($_COOKIE["session"])) {
+		die("session cookie not set");
 	}
+	session = unserialize($_COOKIE["session"]);
 	$post_array = array(
 		"grant_type" => "authorization_code",
 		"code" => $_GET["code"],
 		"redirect_uri" => LOGIN_PAGE_URL
 	);
 	$state = explode(".", $_GET["state"]);
-	if ($state[0] == $_COOKIE["state"]) {
+	if ($state[0] == $session["state"]) {
 		$ch = curl_init("https://oidc.mit.edu/token");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_USERPWD,CLIENT_ID . ":" . CLIENT_SECRET);
@@ -22,7 +23,7 @@
 		if (isset($response["id_token"])) {
 			$id_token = explode(".", $response["id_token"]);
 			$id_token_body = json_decode(base64_decode($id_token[1]), true);
-			if ($_COOKIE["nonce"] == $id_token_body["nonce"]) {
+			if ($session["nonce"] == $id_token_body["nonce"]) {
 				$ch = curl_init("https://oidc.mit.edu/userinfo");
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".$response["access_token"]));
@@ -51,8 +52,8 @@
 					));
 					$login_id = $db->lastInsertId();
 					$login = serialize(array(
-						$login_id,
-						$login_pass
+						"id" => $login_id,
+						"pass" => $login_pass
 					));
 					if (isset($state[1])){
 						setcookie("login", $login, time()+60*60*24*90);

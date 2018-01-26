@@ -18,8 +18,11 @@
 	if (!$logged_in) {
 		$state = md5(rand());
 		$nonce = md5(rand());
-		setcookie("state", $state);
-		setcookie("nonce", $nonce);
+		$session = serialize(array(
+			"state" => $state,
+			"nonce" => $nonce
+		));
+		setcookie("session", $session);
 	}
 ?>
 
