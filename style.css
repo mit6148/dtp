@@ -111,3 +111,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.invitationHeader {
+  opacity: 1 !important;
+  background: #FFF;
+}
