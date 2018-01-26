@@ -338,7 +338,7 @@
 				<div class="ui segment"><p style="margin-bottom: 5px"><b>Email</b>: <?php echo $userinfo["email"]; ?></p></div>
 			</div>
 			<div class="ui segment">
-				<b>iCalendar URL</b> (for Google Calendar integration):&nbsp;
+				<b>iCalendar URL</b> (for <a href="https://support.google.com/calendar/answer/37100">Google Calendar integration</a>):&nbsp;
 				<div class="ui input right action">
 					<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
 					<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
