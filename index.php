@@ -202,9 +202,12 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-	  <div class="ui center aligned header"><span id="viewModalTitle"></span> by <span id="viewModalOwner"></span> (<span id="viewModalOwnerEmail"></span>)</div>
+	  <div class="ui center aligned header"><span id="viewModalTitle"></span></div>
 	  <div class="viewModalBody ui segments">
-	  	<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
+	  	<div class="ui horizontal segments">
+			<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
+			<div class="ui segment"><p><b>Owner</b>: <span id="viewModalOwner"></span> (<a href="#" id="viewModalOwnerEmail"></a>)</p></div>
+		</div>
 	  	<div class="ui horizontal segments">
 				<div class="ui segment"><p><b>Date</b>: <span id="viewModalDate"></span></p></div>
 	  		<div class="ui segment"><p><b>Time</b>: <span id="viewModalStartTime"></span> - <span id="viewModalEndTime"></span></p></div>
