@@ -19,9 +19,11 @@ function viewEvent(id, owner) {
     let start_time = new Date(res.start_time * 1000);
     let end_time = new Date(res.end_time * 1000);
     $('#viewModalTitle').text(res.course + ": " + res.assignment);
-    $('#viewModalOwner').text(res.owner_name);
-    $('#viewModalOwnerEmail').text(res.owner_email);
-    $('#viewModalOwnerEmail').attr("href", "mailto:" + res.owner_email);
+    if (owner) {
+	$('#viewModalOwnerInfo').text('You');
+    } else {
+	$('#viewModalOwnerInfo').html(res.owner_name + ' (<a href="mailto:' + res.owner_email + '">' + res.owner_email + '</a>)');
+    }
     $('#viewModalLocation').text(res.location);
     $('#viewModalDate').text(start_time.toDateString());
     $('#viewModalStartTime').text(parseTime(start_time));
