@@ -133,13 +133,13 @@
 				<div class="field">
 					<div class="three fields">
 						<div class="field">
-							<input placeholder="Course" type="text" name="search_course">
+							<input placeholder="Course" type="text" maxlength="10" name="search_course">
 						</div>
 						<div class="field">
-				  			<input placeholder="Assignment" type="text" name="search_assignment">
+				  			<input placeholder="Assignment" type="text" maxlength="40" name="search_assignment">
 				  		</div>
 					  	<div class="field">
-					  		<input placeholder="Location" type="text" name="search_location">
+					  		<input placeholder="Location" type="text" maxlength="40" name="search_location">
 					  	</div>
 					</div>
 				</div>
@@ -161,15 +161,15 @@
 				<div class="three fields" style="margin-top:14px">
 					<div class="field">
 						<label>Course</label>
-						<input placeholder="18.02" type="text" name="submit_course" required>
+						<input placeholder="18.02" type="text" maxlength="10" name="submit_course" required>
 					</div>
 					<div class="field">
 						<label>Assignment</label>
-				  		<input placeholder="PSet 3" type="text" name="submit_assignment" required>
+				  		<input placeholder="PSet 3" type="text" maxlength="40" name="submit_assignment" required>
 				  	</div>
 				  	<div class="field">
 						<label>Location</label>
-				  		<input placeholder="Next 5W Main Lounge"type="text" name="submit_location" required>
+				  		<input placeholder="Next 5W Main Lounge"type="text" maxlength="40" name="submit_location" required>
 				  	</div>
 				</div>
 			</div>
@@ -202,7 +202,7 @@
 	</div>
 	<div class="ui modal" id="viewModal">
 		<i class="close icon"></i>
-	  <div class="ui center aligned header"><span id="viewModalTitle"></span> by <span id="viewModalOwner"></span> (<span id="viewModalOwnerEmail">)</div>
+	  <div class="ui center aligned header"><span id="viewModalTitle"></span> by <span id="viewModalOwner"></span> (<span id="viewModalOwnerEmail"></span>)</div>
 	  <div class="viewModalBody ui segments">
 	  	<div class="ui segment"><p><b>Location</b>: <span id="viewModalLocation"></span></p></div>
 	  	<div class="ui horizontal segments">
@@ -252,15 +252,15 @@
 				<div class="three fields">
 					<div class="field">
 						<label>Course</label>
-						<input type="text" name="change_course" required>
+						<input type="text" name="change_course" maxlength="10" required>
 					</div>
 					<div class="field">
 						<label>Assignment</label>
-				  		<input type="text" name="change_assignment" required>
+				  		<input type="text" name="change_assignment" maxlength="40" required>
 				  	</div>
 				  	<div class="field">
 						<label>Location</label>
-				  		<input type="text" name="change_location" required>
+				  		<input type="text" name="change_location" maxlength="40" required>
 				  	</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ function viewEvent(id, owner) {
     let end_time = new Date(res.end_time * 1000);
     $('#viewModalTitle').text(res.course + ": " + res.assignment);
     $('#viewModalOwner').text(res.owner_name);
-    $('#viewModalOwner').text(res.owner_email);
+    $('#viewModalOwnerEmail').text(res.owner_email);
     $('#viewModalLocation').text(res.location);
     $('#viewModalDate').text(start_time.toDateString());
     $('#viewModalStartTime').text(parseTime(start_time));
