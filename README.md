@@ -28,10 +28,6 @@
 
 #### Features to implement:
 
-* *Make event public/private*
-
-* *Create and edit profile*
-
 * Settings
 
 #### Back-End
@@ -49,10 +45,6 @@
 * Semantic UI
 
 #### Browser: Firefox and Chrome
-
-#### Risks:
-
-* Prejudice against working with people in attendance
 
 #### Citations
 
