@@ -31,6 +31,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>dtp</title>
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -180,11 +181,11 @@
 						<input type="date" name="submit_date" required>
 					</div>
 					<div class="field">
-						<label>Start Time</label>
+						<label>Start Time (HH:MM AM/PM)</label>
 						<input type="time" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-						<label>End Time</label>
+						<label>End Time (HH:MM AM/PM)</label>
 						<input type="time" name="submit_end_time" required>
 				  </div>
 				</div>
