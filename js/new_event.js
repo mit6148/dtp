@@ -1,6 +1,9 @@
 $('#addEvent').on('click', function() {
     $('#submitEventModal').modal('show');
 });
+$('#addEventMobile').on('click', function() {
+    $('#submitEventModal').modal('show');
+});
 
 $('#submitEvent').submit(addEventForm);
 function addEventForm(event) {
