@@ -95,38 +95,11 @@
 					<i class="sign in icon"></i>
 				</a>
 			</div>
-			<script>
-				const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
-				const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
-				const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-				const loginButton = $("#login");
-				const persistentCheckbox = $("#persistent");
-				const authMethodSelect = $('#authMethod');
-				authMethodSelect.dropdown();
-				function updateHref() {
-					let href;
-					if (authMethodSelect.val() === 'mit') {
-						href = hrefPart1;
-					} else if (authMethodSelect.val() === 'google') {
-						href = googleHrefPart1;
-					}
-					if (persistentCheckbox.prop("checked")) {
-						href += ".persistent" + hrefPart2;
-					} else {
-						href += hrefPart2;
-					}
-					loginButton.attr("href", href);
-				};
-				authMethodSelect.on('change', updateHref);
-				persistentCheckbox.on("click", updateHref);
-				updateHref();
-			</script>
 		<?php } ?>
 	</div>
 </div>
 <div class="ui grid mobile only">
 	<div class="ui fluid large secondary menu">
-		<a href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
 		<div class="ui compact right menu topMenu">
 			<div class="ui simple dropdown item">
 				Menu <i class="dropdown icon"></i>
@@ -153,54 +126,69 @@
 								</a>
 		<?php } else { ?>
 									<div class="ui item">
-										<select id="authMethod" class="ui dropdown">
+										<select id="authMethodMobile" class="ui dropdown">
 											<option value="mit">MIT</option>
 											<option value="google">Google</option>
 										</select>
 									</div>
 									<div class="ui item">
 										<div class="ui toggle checkbox">
-										 	<input type="checkbox" id="persistent" checked="">
+										 	<input type="checkbox" id="persistentMobile" checked="">
 										 	<label>Stay logged in</label>
 										</div>
 									</div>
 									<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
-									<a class="item clickable" href="#" id="login">
+									<a class="item clickable" href="#" id="loginMobile">
 										Login&nbsp;
 										<i class="sign in icon"></i>
 									</a>
-									<script>
-										const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
-										const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
-										const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
-										const loginButton = $("#login");
-										const persistentCheckbox = $("#persistent");
-										const authMethodSelect = $('#authMethod');
-										authMethodSelect.dropdown();
-										function updateHref() {
-											let href;
-											if (authMethodSelect.val() === 'mit') {
-												href = hrefPart1;
-											} else if (authMethodSelect.val() === 'google') {
-												href = googleHrefPart1;
-											}
-											if (persistentCheckbox.prop("checked")) {
-												href += ".persistent" + hrefPart2;
-											} else {
-												href += hrefPart2;
-											}
-											loginButton.attr("href", href);
-										};
-										authMethodSelect.on('change', updateHref);
-										persistentCheckbox.on("click", updateHref);
-										updateHref();
-									</script>
 		<?php } ?>
 					</div>
 			</div>
 		</div>
 	</div>
 </div>
+<?php 
+	if (!$logged_in) {
+		<script>
+			const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
+			const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
+			const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+			const authMethodSelect = $('#authMethod');
+			const authMethodSelectMobile = $('#authMethodMobile');
+			const persistentCheckbox = $('#persistent');
+			const persistentCheckboxMobile = $('#persistentMobile');
+			const loginButton = $('#login');
+			const loginButtonMobile = $('#loginMobile');
+			function updateHref(loginButton, persistentCheckbox, authMethodSelect) {
+				let href;
+				if (authMethodSelect.val() === 'mit') {
+					href = hrefPart1;
+				} else if (authMethodSelect.val() === 'google') {
+					href = googleHrefPart1;
+				}
+				if (persistentCheckbox.prop("checked")) {
+					href += ".persistent" + hrefPart2;
+				} else {
+					href += hrefPart2;
+				}
+				loginButton.attr("href", href);
+			};
+			function updateHrefDesktop() {
+				updateHref(loginButton, persistentCheckbox, authMethodSelect);
+			}
+			function updateHrefMobile() {
+				updateHref(loginButtonMobile, persistentCheckboxMobile, authMethodSelectMobile);
+			}
+			authMethodSelect.addEventListener('change', updateHref);
+			persistentCheckbox.addEventListener('click', updateHref);
+			authMethodSelectMobile.addEventListener('change', updateHrefMobile);
+			persistentCheckboxMobile.addEventListener('click', updateHrefMobile);
+			updateHref();
+			updateHrefMobile();
+		</script>
+	}
+?>
 </div>
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
