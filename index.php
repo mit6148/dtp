@@ -149,7 +149,7 @@
 	</div>
 </div>
 <?php 
-	if (!$logged_in) {
+	if (!$logged_in) { ?>
 		<script>
 			const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
 			const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
@@ -180,14 +180,14 @@
 			function updateHrefMobile() {
 				updateHref(loginButtonMobile, persistentCheckboxMobile, authMethodSelectMobile);
 			}
-			authMethodSelect.addEventListener('change', updateHref);
-			persistentCheckbox.addEventListener('click', updateHref);
-			authMethodSelectMobile.addEventListener('change', updateHrefMobile);
-			persistentCheckboxMobile.addEventListener('click', updateHrefMobile);
-			updateHref();
+			authMethodSelect.on('change', updateHrefDesktop);
+			persistentCheckbox.on('click', updateHrefDesktop);
+			authMethodSelectMobile.on('change', updateHrefMobile);
+			persistentCheckboxMobile.on('click', updateHrefMobile);
+			updateHrefDesktop();
 			updateHrefMobile();
 		</script>
-	}
+	<?php }
 ?>
 </div>
 	<div class="ui center aligned container" id="containter">
