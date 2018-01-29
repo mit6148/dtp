@@ -139,4 +139,7 @@ body {
   #eventHeader, #scheduleHeader {
     display: none;
   }
+  #containter {
+    margin-bottom: 10px;
+  }
 }
