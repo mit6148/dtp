@@ -24,11 +24,11 @@ function searchEvents(event) {
     })
     .done(function(res) {
         //console.log(res);
-        while ($('#eventsTable > *').length > 1){
+        while ($('#eventsTable > *').length > 1) {
             $($('#eventsTable > *')[1]).remove();
         }
         $('#eventsTable').show();
-        if (res.length === 0){
+        if (res.length === 0) {
             $('#eventsTable').append('<tr><td id="centerCell" colspan="10"><p>No events found :(</p>' + ((logged_in) ? '<button class="ui blue center floated icon submit button" onclick="createEventFromSearch();">Create Event</button>' : '') + '</td></tr>');
         } else {
             res.sort(ByStartTime);
