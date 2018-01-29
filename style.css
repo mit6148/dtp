@@ -4,13 +4,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-@media screen and (min-width: 800px) {#containter {
-    height: 60%;
-    display: flex;
-    /* flex-direction: column;*/
-    align-items: center;
-    justify-content: center;
-}}
 
 .center {
   text-align: center;
@@ -118,28 +111,48 @@ body {
 }
 
 @media screen and (min-width: 800px) {
+
+  #containter {
+    height: 60%;
+    display: flex;
+    /* flex-direction: column;*/
+    align-items: center;
+    justify-content: center;
+  }
+
   #menubar {
     border: none;
     box-shadow: none;
     -webkit-box-shadow: none;
     margin-right: 20px;
   }
+
   .onlymobile {
     display: none;
   }
+
+  #ical_id {
+    width: 280px;
+  }
+
 }
 
 @media screen and (max-width: 800px) {
+
   #logo {
     display: none;
   }
+
   #menubar {
     margin-right: auto;
   }
+
   #eventHeader, #scheduleHeader {
     display: none;
   }
+
   #containter {
     margin-bottom: 10px;
   }
+
 }
