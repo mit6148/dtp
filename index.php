@@ -215,14 +215,14 @@
 			</div>
 	  	<div class="ui segment"><p><b>Attendees</b>: <span id="viewModalAttendees"></span></p></div>
 	  </div>
-		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
-	  	Edit My Event
-	  	<i class="edit icon"></i>
-	  </button>
 	  	<button class="ui green right floated right labeled icon button" id="inviteButton">
 	  		Invite to this Event
 	  		<i class="mail icon"></i>
 	  	</button>
+		<button class="ui blue right floated right labeled icon button" id="editModal" hidden>
+	  	Edit My Event
+	  	<i class="edit icon"></i>
+	  </button>
 	</div>
 	<div class="ui modal" id="inviteModal">
 		<div class="ui center aligned header">
