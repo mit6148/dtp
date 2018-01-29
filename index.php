@@ -31,7 +31,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>dtp</title>
-	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -50,7 +50,8 @@
 	</script>
 </head>
 <body>
-	<div class="ui large secondary menu">
+<div class="ui grid computer tablet only">
+	<div class="ui fluid large secondary menu">
 		<a href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
 			<div class="right menu topMenu">
@@ -122,6 +123,85 @@
 			</script>
 		<?php } ?>
 	</div>
+</div>
+<div class="ui grid mobile only">
+	<div class="ui fluid large secondary menu">
+		<a href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
+		<div class="ui compact right menu topMenu">
+			<div class="ui simple dropdown item">
+				Menu <i class="dropdown icon"></i>
+					<div class="menu">
+  	<?php if ($logged_in) { ?>
+								<a class="item clickable" href="#" id="viewUserinfoModal">
+									<?php echo $userinfo["given_name"]; ?>&nbsp;<i class="user icon"></i>
+								</a>
+								<a class="item clickable" href="#" id="addEvent">
+						  			New Event&nbsp;
+									<i class="add icon"></i>
+								</a>
+								<a class="item clickable" href="#" id="invitations">
+									Invitations
+									<i class="mail outline icon"></i>
+								</a>
+								<a class="item clickable" href="#" id="scheduleLink">
+							    	My Schedule&nbsp;
+							    	<i class="checked calendar icon"></i>
+						 		</a>
+								<a class="item clickable" href="logout.php" id="logout">
+									Logout&nbsp;
+									<i class="sign out icon"></i>
+								</a>
+		<?php } else { ?>
+									<div class="ui item">
+										<select id="authMethod" class="ui dropdown">
+											<option value="mit">MIT</option>
+											<option value="google">Google</option>
+										</select>
+									</div>
+									<div class="ui item">
+										<div class="ui toggle checkbox">
+										 	<input type="checkbox" id="persistent" checked="">
+										 	<label>Stay logged in</label>
+										</div>
+									</div>
+									<!--<input type="checkbox" id="persistent" value="Stay logged in" checked>-->
+									<a class="item clickable" href="#" id="login">
+										Login&nbsp;
+										<i class="sign in icon"></i>
+									</a>
+									<script>
+										const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
+										const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
+										const hrefPart2 = "<?php echo "&nonce=" . $nonce; ?>";
+										const loginButton = $("#login");
+										const persistentCheckbox = $("#persistent");
+										const authMethodSelect = $('#authMethod');
+										authMethodSelect.dropdown();
+										function updateHref() {
+											let href;
+											if (authMethodSelect.val() === 'mit') {
+												href = hrefPart1;
+											} else if (authMethodSelect.val() === 'google') {
+												href = googleHrefPart1;
+											}
+											if (persistentCheckbox.prop("checked")) {
+												href += ".persistent" + hrefPart2;
+											} else {
+												href += hrefPart2;
+											}
+											loginButton.attr("href", href);
+										};
+										authMethodSelect.on('change', updateHref);
+										persistentCheckbox.on("click", updateHref);
+										updateHref();
+									</script>
+		<?php } ?>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 	<div class="ui center aligned container" id="containter">
 		<div id="main">
 			<h1 class="ui header">
