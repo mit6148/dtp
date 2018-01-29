@@ -345,7 +345,7 @@
 			<div class="ui segment">
 				<b>iCalendar URL</b> (for <a href="https://support.google.com/calendar/answer/37100">Google Calendar integration</a>):&nbsp;
 				<div class="ui input right action">
-					<input id="ical_id" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+					<input id="ical_id" type="text" style="max-width: 400px" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
 					<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
 						<i class="copy icon"></i>
 					</button>
