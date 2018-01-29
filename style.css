@@ -4,17 +4,18 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-#containter {
+@media screen and (min-width: 800px) {#containter {
     height: 60%;
     display: flex;
     /* flex-direction: column;*/
     align-items: center;
     justify-content: center;
-}
+}}
 
 .center {
   text-align: center;
 }
+
 
 #centerCell {
   text-align: center;
@@ -29,9 +30,8 @@ body {
 }
 
 
-#login, #logout {
-  margin-right: 26px;
-}
+/*#login, #logout {
+}*/
 
 .ui.success.compact.message {
   margin-left: 5px;
@@ -115,4 +115,28 @@ body {
 .invitationHeader {
   opacity: 1 !important;
   background: #FFF;
+}
+
+@media screen and (min-width: 800px) {
+  #menubar {
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    margin-right: 20px;
+  }
+  .onlymobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #logo {
+    display: none;
+  }
+  #menubar {
+    margin-right: auto;
+  }
+  #eventHeader {
+    display: none;
+  }
 }
