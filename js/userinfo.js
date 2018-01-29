@@ -1,6 +1,9 @@
 $('#viewUserinfoModal').on('click', function() {
 	$('#userinfoModal').modal('show');
 });
+$('#viewUserinfoModalMobile').on('click', function() {
+	$('#userinfoModal').modal('show');
+});
 $('#newIcalId').on('click', function() {
 	$.ajax({
 		method : 'GET',

@@ -1,6 +1,9 @@
 $('#scheduleLink').on('click', function() {
 	$('#scheduleModal').modal('show');
 });
+$('#scheduleLinkMobile').on('click', function() {
+	$('#scheduleModal').modal('show');
+});
 function updateScheduleBody(){
 	$.ajax({
 		type: 'GET',

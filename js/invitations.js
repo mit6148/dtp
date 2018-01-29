@@ -1,6 +1,9 @@
 $('#invitations').on('click', function() {
 	$('#invitationsModal').modal('show');
 })
+$('#invitationsMobile').on('click', function() {
+	$('#invitationsModal').modal('show');
+})
 
 function updateInvitations() {
 	$.ajax({

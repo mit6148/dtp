@@ -105,22 +105,22 @@
 				Menu <i class="dropdown icon"></i>
 					<div class="menu">
   	<?php if ($logged_in) { ?>
-								<a class="item clickable" href="#" id="viewUserinfoModal">
+								<a class="item clickable" href="#" id="viewUserinfoModalMobile">
 									<?php echo $userinfo["given_name"]; ?>&nbsp;<i class="user icon"></i>
 								</a>
-								<a class="item clickable" href="#" id="addEvent">
+								<a class="item clickable" href="#" id="addEventMobile">
 						  			New Event&nbsp;
 									<i class="add icon"></i>
 								</a>
-								<a class="item clickable" href="#" id="invitations">
+								<a class="item clickable" href="#" id="invitationsMobile">
 									Invitations
 									<i class="mail outline icon"></i>
 								</a>
-								<a class="item clickable" href="#" id="scheduleLink">
+								<a class="item clickable" href="#" id="scheduleLinkMobile">
 							    	My Schedule&nbsp;
 							    	<i class="checked calendar icon"></i>
 						 		</a>
-								<a class="item clickable" href="logout.php" id="logout">
+								<a class="item clickable" href="logout.php" id="logoutMobile">
 									Logout&nbsp;
 									<i class="sign out icon"></i>
 								</a>
@@ -149,7 +149,7 @@
 	</div>
 </div>
 <?php 
-	if (!$logged_in) { ?>
+	if (!$logged_in) {
 		<script>
 			const hrefPart1 = "https://oidc.mit.edu/authorize?<?php	echo "client_id=" . CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(LOGIN_PAGE_URL) . "&state=" . $state; ?>";
 			const googleHrefPart1 = "https://accounts.google.com/o/oauth2/v2/auth?<?php echo "client_id=" . GOOGLE_CLIENT_ID . "&response_type=code&scope=openid%20profile%20email&redirect_uri=" . urlencode(GOOGLE_LOGIN_PAGE_URL) . "&state=" . $state;?>";
@@ -180,14 +180,14 @@
 			function updateHrefMobile() {
 				updateHref(loginButtonMobile, persistentCheckboxMobile, authMethodSelectMobile);
 			}
-			authMethodSelect.on('change', updateHrefDesktop);
-			persistentCheckbox.on('click', updateHrefDesktop);
-			authMethodSelectMobile.on('change', updateHrefMobile);
-			persistentCheckboxMobile.on('click', updateHrefMobile);
-			updateHrefDesktop();
+			authMethodSelect.addEventListener('change', updateHref);
+			persistentCheckbox.addEventListener('click', updateHref);
+			authMethodSelectMobile.addEventListener('change', updateHrefMobile);
+			persistentCheckboxMobile.addEventListener('click', updateHrefMobile);
+			updateHref();
 			updateHrefMobile();
 		</script>
-	<?php }
+	}
 ?>
 </div>
 	<div class="ui center aligned container" id="containter">
