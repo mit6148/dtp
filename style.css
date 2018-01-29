@@ -28,11 +28,6 @@ body {
   padding: 0 25px 15px 25px;
 }
 
-
-#login, #logout {
-  margin-right: 26px;
-}
-
 .ui.success.compact.message {
   margin-left: 5px;
   margin-right: 5px;
@@ -115,4 +110,8 @@ body {
 .invitationHeader {
   opacity: 1 !important;
   background: #FFF;
+}
+
+.ui.grid.computer.tablet.only {
+  margin-top: 0;
 }
