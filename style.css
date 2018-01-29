@@ -131,6 +131,10 @@ body {
     display: none;
   }
 
+  #ical_id {
+    width: 350px;
+  }
+
 }
 
 @media screen and (max-width: 800px) {

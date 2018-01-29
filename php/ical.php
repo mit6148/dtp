@@ -30,7 +30,7 @@
 		$cal->addComponent($new_event);
 	}
 	header("Content-type: text/calendar");
-	header("Content-Disposition: attachment; filename='cal.ics'");
+	header('Content-Disposition: attachment; filename="cal.ics"');
 
 	echo $cal->render();
 ?>
