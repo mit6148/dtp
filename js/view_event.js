@@ -109,11 +109,11 @@ function deleteEvent(event_id) {
         },
         url : 'php/delete_event.php'
     }).done(function(res) {
-	message('messages', 'success', 'Event deleted', 'You have deleted the event.');
         $('#changeEventModal').modal('hide');
         if (searched) {
             searchEvents();
         }
-	updateScheduleBody();
+        updateScheduleBody();
+        message('messages', 'success', 'Event deleted', 'You have deleted the event.');
     }).fail(console.log);
 }
