@@ -84,6 +84,10 @@
 		$delete_signups_stmt->execute(array(
 			$event_id
 		));
+		$delete_invitations_stmt = $db->prepare("DELETE FROM invitations WHERE event_id = ?");
+		$delete_invitations_stmt->execute(array(
+			$event_id
+		));
 	}
 	function get_invitations($db, $email) {
 		$stmt = $db->prepare("SELECT * FROM invitations WHERE email = ? AND dismissed = 0");

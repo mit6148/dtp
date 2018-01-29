@@ -25,7 +25,7 @@
 		$end_datetime->setTimestamp($event["end_time"]);
 		$new_event->setDtStart($start_datetime);
 		$new_event->setDtEnd($end_datetime);
-		$new_event->setSummary($event["course"] . " " . $event["assignment"]);
+		$new_event->setSummary($event["course"] . ": " . $event["assignment"]);
 		$new_event->setLocation($event["location"]);
 		$cal->addComponent($new_event);
 	}
