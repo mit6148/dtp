@@ -131,10 +131,6 @@ body {
     display: none;
   }
 
-  #ical_id {
-    width: 400px;
-  }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -153,6 +149,22 @@ body {
 
   #containter {
     margin-bottom: 10px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+
+  #ical_id {
+    width: 150px;
+  }
+
+}
+
+@@media screen and (min-width: 321px) {
+
+  #ical_id {
+    width: 400px;
   }
 
 }
