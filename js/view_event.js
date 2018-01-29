@@ -63,6 +63,7 @@ function viewEvent(id, owner) {
             let month = "0" + (parseInt(start_time.getMonth()) + 1);
             let day = "0" + start_time.getDate();
             $('input[name=change_date]').val(year + "-" + month.substr(-2) + "-" + day.substr(-2));
+            $('#changeEventModalDelete').off('click');
             $('#changeEventModalDelete').on('click', function() {
                 deleteEvent(res.id);
             });
