@@ -136,7 +136,7 @@ body {
   #menubar {
     margin-right: auto;
   }
-  #eventHeader {
+  #eventHeader, #scheduleHeader {
     display: none;
   }
 }

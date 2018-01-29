@@ -304,7 +304,7 @@
 	    My Schedule
 	  </div>
 	  <table class="ui table center aligned viewModalBody">
-			<thead>
+			<thead id="scheduleHeader">
 				<tr>
 					<th>Course</th>
 					<th>Assignment</th>
