@@ -31,6 +31,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>dtp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -49,10 +50,10 @@
 	</script>
 </head>
 <body>
-	<div class="ui large secondary menu">
-		<a href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
+	<div class="ui secondary menu">
+		<a id="logo" href="<?php echo INDEX_URL;?>"><h1 class="item">dtp</h1></a>
   	<?php if ($logged_in) { ?>
-			<div class="right menu topMenu">
+			<div id="menubar" class="large right ui stackable menu topMenu">
 				<a class="item clickable" href="#" id="viewUserinfoModal">
 					<?php echo $userinfo["given_name"]; ?>&nbsp;<i class="user icon"></i>
 				</a>
@@ -74,7 +75,7 @@
 				</a>
 			</div>
 		<?php } else { ?>
-			<div class="right menu topMenu">
+			<div id="menubar" class="large right ui stackable menu topMenu">
 				<div class="ui item">
 					<select id="authMethod" class="ui dropdown">
 						<option value="mit">MIT</option>
@@ -169,12 +170,12 @@
 				  	</div>
 				  	<div class="field">
 						<label>Location</label>
-				  		<input placeholder="Next 5W Main Lounge"type="text" maxlength="40" name="submit_location" required>
+				  		<input placeholder="Next 5W Main Lounge" type="text" maxlength="40" name="submit_location" required>
 				  	</div>
 				</div>
 			</div>
 			<div class="field">
-				<div class="three fields" class="center">
+				<div class="three fields">
 					<div class="field">
 						<label>Date</label>
 						<input type="date" name="submit_date" required>
@@ -268,7 +269,7 @@
 				</div>
 			</div>
 			<div class="field">
-				<div class="three fields" class="center">
+				<div class="three fields">
 					<div class="field">
 						<label>Date</label>
 						<input type="date" name="change_date" required>
@@ -303,7 +304,7 @@
 	    My Schedule
 	  </div>
 	  <table class="ui table center aligned viewModalBody">
-			<thead>
+			<thead id="scheduleHeader">
 				<tr>
 					<th>Course</th>
 					<th>Assignment</th>
@@ -328,6 +329,8 @@
 
 		</div>
 	</div>
+	<?php
+	if ($logged_in) { ?>
 	<div class="ui modal" id="userinfoModal">
 		<i class="close icon"></i>
 		<div class="ui center aligned header">
@@ -341,14 +344,14 @@
 			<div class="ui segment">
 				<b>iCalendar URL</b> (for <a href="https://support.google.com/calendar/answer/37100">Google Calendar integration</a>):&nbsp;
 				<div class="ui input right action">
-					<input id="ical_id" size="50" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
+					<input id="ical_id" type="text" readonly value="<?php if ($userinfo["ical_id"] != "") echo INDEX_URL . "php/ical.php?id=" . $userinfo["ical_id"]; ?>">
 					<button class="ui icon button" onclick="$('#ical_id').select();document.execCommand('copy')">
 						<i class="copy icon"></i>
 					</button>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><?php } ?>
 	<div class="center aligned" id="messages">
 	</div>
 	<div class="ui container" id="eventsTableContainer">
@@ -369,10 +372,10 @@
 	</div>
 	<script src="js/universal.js"></script>
 	<script src="js/search_events.js"></script>
-	<script src="js/signup_event.js"></script>
 	<script src="js/view_event.js"></script>
-	<script src="js/userinfo.js"></script>
 	<?php if ($logged_in){ ?>
+		<script src="js/signup_event.js"></script>
+		<script src="js/userinfo.js"></script>
 		<script src="js/new_event.js"></script>
 		<script src="js/schedule.js"></script>
 		<script src="js/invitations.js"></script>
