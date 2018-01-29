@@ -152,19 +152,3 @@ body {
   }
 
 }
-
-@media screen and (max-width: 320px) {
-
-  #ical_id {
-    width: 150px;
-  }
-
-}
-
-@@media screen and (min-width: 321px) {
-
-  #ical_id {
-    width: 400px;
-  }
-
-}

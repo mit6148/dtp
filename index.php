@@ -312,6 +312,7 @@
 					<th>Date</th>
 					<th>Time</th>
 					<th>Attendees</th>
+					<th>Owner</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -364,6 +365,7 @@
 					<th>Date</th>
 					<th>Time</th>
 					<th>Attendees</th>
+					<th>Owner</th>
 					<th></th>
 					<th></th>
 				</tr>
