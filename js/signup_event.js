@@ -9,25 +9,25 @@ function signup(event_id) {
 	}).done(function() {
 		    //$('#messages').prepend('<div class="ui success compact message"><i class="close icon"></i><div class="header">Event Added</div></div>');
         //message('messages', 'success', 'Event Added', '');
-        $('.message .close').off('click');
+        /*$('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
               .closest('.message')
               .transition('fade')
             ;
-        });
+        });*/
     searchEvents();
     updateScheduleBody();
 	})
 	.fail(function() {
         //message('messages', 'error', 'Your request was not received by the server.', 'If the problem persists, contact a Network Adminstrator.');
-        $('.message .close').off('click');
+        /*$('.message .close').off('click');
         $('.message .close').on('click', function() {
             $(this)
               .closest('.message')
               .transition('fade')
             ;
-        });
+        });*/
     });
 }
 function cancel_signup(event_id) {
