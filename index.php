@@ -181,11 +181,11 @@
 						<input type="date" name="submit_date" required>
 					</div>
 					<div class="field">
-						<label>Start Time (HH:MM AM/PM)</label>
+						<label>Start Time</label>
 						<input type="time" name="submit_start_time" required>
 				  </div>
 				  <div class="field">
-						<label>End Time (HH:MM AM/PM)</label>
+						<label>End Time</label>
 						<input type="time" name="submit_end_time" required>
 				  </div>
 				</div>
@@ -275,11 +275,11 @@
 						<input type="date" name="change_date" required>
 					</div>
 					<div class="field">
-						<label>Start Time (HH:MM AM/PM)</label>
+						<label>Start Time</label>
 						<input type="time" name="change_start_time" required>
 				  </div>
 				  <div class="field">
-				  		<label>End Time (HH:MM AM/PM)</label>
+				  		<label>End Time</label>
 						<input type="time" name="change_end_time" required>
 				  </div>
 				</div>
