@@ -62,13 +62,15 @@
 					}
 					header("Location: " . INDEX_URL);
 				} else {
-					echo "Not all scopes enabled";
+					//echo "Not all scopes enabled";
+					echo "Please go back and enable all permissions.";
 				}
 			} else {
 				echo "nonce does not match";
 			}
 		} else {
-			echo "No id_token";
+			//echo "No id_token";
+			echo "Please go back and enable all permissions.";
 		}
 	} else {
 		echo "state does not match";
