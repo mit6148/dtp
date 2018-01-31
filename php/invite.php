@@ -34,8 +34,8 @@
 			$eventinfo = get_eventinfo($db, $_POST["event_id"]);
 			$recipient_email = $email;
 			$sender_email = "noreply";
-			$subject = $sender_userinfo["name"] . " invited you to work on " . $eventinfo["course"] . ": " . $eventinfo["assignment"];
-			$body = $sender_userinfo["name"] . " invited you to work on " . $eventinfo["course"] . ": " . $eventinfo["assignment"] . " on " . date("l F j, Y", $eventinfo["start_time"]) . " from " . date("g:i A", $eventinfo["start_time"]) . " to " . date("g:i A", $eventinfo["end_time"]) . " at " . $eventinfo["location"] . ".<br>\n";
+			$subject = $sender_userinfo["name"] . " invited you to " . $eventinfo["course"] . ": " . $eventinfo["assignment"];
+			$body = $sender_userinfo["name"] . " invited you to " . $eventinfo["course"] . ": " . $eventinfo["assignment"] . " on " . date("l F j, Y", $eventinfo["start_time"]) . " from " . date("g:i A", $eventinfo["start_time"]) . " to " . date("g:i A", $eventinfo["end_time"]) . " at " . $eventinfo["location"] . ".<br>\n";
 			$body .= '<a href="' . INDEX_URL . '">Click here to login and view your invitation.</a>';
 			$header = "From: " . $sender_email . "\n";
 			$header .= "Content-Type: text/html; charset=utf-8";
