@@ -17,6 +17,9 @@
 
 	$start_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["start_time"]);
 	$end_datetime = date_create_from_format("Y-m-d H:i", $_POST["date"] . " " .  $_POST["end_time"]);
+	if ($start_datetime > $end_datetime) {
+		date_add($end_datetime, date_interval_create_from_date_string('1 day'));
+	}
 	$event_stmt->execute(array(
 		$sub,
 		strip_tags($_POST["course"]),
