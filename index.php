@@ -1,6 +1,5 @@
 <?php
 	include("php/oidc.php");
-	include("php/google_oidc.php");
 	include("php/db.php");
 	include("php/user.php");
 

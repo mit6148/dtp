@@ -1,5 +1,5 @@
 <?php
-	include("php/google_oidc.php");
+	include("php/oidc.php");
 	include("php/db.php");
 
 	if (!isset($_COOKIE["session"])) {
@@ -54,7 +54,7 @@
 					} else {
 						setcookie("login", $login);
 					}
-					header("Location: " . GOOGLE_INDEX_URL);
+					header("Location: " . INDEX_URL);
 				} else {
 					echo "Not all scopes enabled";
 				}
